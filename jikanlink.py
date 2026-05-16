@@ -3,7 +3,7 @@ import time
 import requests
 import pandas as pd
 
-def update_entries(request, entry_list):
+def update_manga_entries(request, entry_list):
 
     data = request.json()['data']
     for elt in data:
@@ -33,7 +33,7 @@ def update_entries(request, entry_list):
         entry_list.append(entry)
     return entry_list
 
-def create_manga_database(page_limit=None, output_path='./manga.csv'):
+def create_manga_database(page_offset=0, page_limit=None, output_path='./manga.csv'):
     page = 1
     base_url = "https://api.jikan.moe/v4/manga"
     next_page = True
@@ -42,7 +42,7 @@ def create_manga_database(page_limit=None, output_path='./manga.csv'):
     while next_page:
         time.sleep(1.5)
         try :
-            req = requests.get(base_url, params={"page": page})
+            req = requests.get(base_url, params={"page": page_offset + page})
         except:
             print("Erreur : {}".format(req.status_code))
             continue
@@ -50,12 +50,11 @@ def create_manga_database(page_limit=None, output_path='./manga.csv'):
         print("adding entries from page {}...".format(page))
         print("Has next page ? : {}".format(req.json()['pagination']['has_next_page']))
         print()
-        entries = update_entries(req, entries)
+        entries = update_manga_entries(req, entries)
 
         if ((page_limit is not None) and (page >= page_limit)) or not (req.json()['pagination']['has_next_page']):
             next_page = False
         page += 1
-
 
     manga_df = pd.DataFrame(entries)
     print(manga_df)
