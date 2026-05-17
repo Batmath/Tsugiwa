@@ -16,8 +16,6 @@ class HTMLParsingException(Exception):
 class ScarceDataException(Exception):
     pass
 
-# TODO : deal with offsets, issues (another request to Jikan ? Request to MAL ?)
-# TODO : finish fetch_manga_list method, combine it with fetch user info to create 2 databases.
 # TODO : add comments
 # TODO : Will they finish the manga ? What location ? What age ? What gender ?
 
