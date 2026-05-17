@@ -16,12 +16,13 @@ class ScarceDataException(Exception):
 
 # TODO : deal with offsets, issues (another request to Jikan ? Request to MAL ?)
 # TODO : finish fetch_manga_list method, combine it with fetch user info to create 2 databases.
-# TODO : see if the age can be scrapped too.abs
-# TODO : maybe separate methods to create user database from method to create manga database.
 # TODO : add comments
 # TODO : Will they finish the manga ? What location ? What age ? What gender ?
 
 MANGA_STATUS_CODE = {1 : "Reading", 2 : "Completed", 3 : "On-Hold", 4 : "Dropped", 6 : "Plan to Read"}
+MANGA_DISPLAY_LIMIT = 300 # limit of manga per page is 300 (when calling "https://myanimelist.net/mangalist/username/load.json")
+
+
 def fetch_user_page():
 
     def is_user_href(tag):
@@ -37,11 +38,14 @@ def fetch_user_page():
     else : 
         req.raise_for_status()
 
-def fetch_manga_profile(name:str, min_entry=1):
+def fetch_manga_profile(name:str, min_entry=1, sleep_time=0.5):
         #re.compile("Access to this list has been restricted by the owner.").search(tag.find_next_sibling("p"))
         #re.compile("Last Manga Updates").search(tag.text) and re.compile("Access to this list has been restricted by the owner.").search(tag.find_next_sibling("p"))
+        #Could also add friends ! 
+    time.sleep(sleep_time)
     target_page = "https://myanimelist.net/profile/{}".format(name)
     req = requests.get(target_page)
+    
     if req.status_code == 200:
         soup = BeautifulSoup(req.text, "html.parser")
         
@@ -54,16 +58,13 @@ def fetch_manga_profile(name:str, min_entry=1):
         manga_status = soup.find("div", class_="updates manga")
         manga_stats = soup.find("div", class_="stats manga")
 
-        print("Something not found ? : {}".format(not(profile_info or manga_stats or manga_status)))
         if not(profile_info or manga_stats or manga_status):
             raise HTMLParsingException("Error while parsing the HTML file, one of the target class wasn't found")
         
         #Checking if the list is private
         is_private = manga_status.find(string=re.compile("Access to this list has been restricted by the owner.")) is not None
-        print("Private ? : {}".format(is_private))
-
         if is_private:
-            raise PrivateListException("The User's Manga List is marked as private, unable to fetch manga data")
+            raise PrivateListException("[fetch_manga_profile] : The User's Manga List is marked as private, unable to fetch manga data")
         
         # Check number of entries and to avoid scarce data & prepare offsets
         n_entry = -1
@@ -72,7 +73,7 @@ def fetch_manga_profile(name:str, min_entry=1):
             n_entry = int(entry_text.parent.next_sibling.text)
 
         if n_entry < min_entry:
-            raise ScarceDataException("The user has less registered manga entries than the minimal amount targeted (n={})".format(min_entry))
+            raise ScarceDataException("[fetch_manga_profile] : The user has less registered manga entries than the minimal amount targeted (n={})".format(min_entry))
 
         #informations to fetch : gender, birthday, location
         # These informations inside the user-status element are presented as two span element siblings (One has the type of category and the other, the value)
@@ -96,22 +97,37 @@ def fetch_manga_profile(name:str, min_entry=1):
     else:
         req.raise_for_status()
 
-def fetch_manga_list(name:str, profile_info:dict):
-    target_page = "https://myanimelist.net/mangalist/{}/load.json?".format(name)
-    req = requests.get(target_page)
-    if req.status_code == 200:
-        print(req.text)
-    else:
-        req.raise_for_status()
+def create_manga_interraction_entries(data, username, entries:list):
+    # json is structured as such : {[0..99] : [{entry 0}... {entry 99}], [100..199] : ...}
+    # raise error if nothing
+    print(data)
+    for manga in data:
+        review_entry = {
+            "username" : username,
+            "manga_id" : manga['manga_id'],
+            "status" : MANGA_STATUS_CODE[manga['status']],
+            "n_read_chapters" : manga['num_read_chapters'],
+            "score" : manga['score'] if manga['score'] != 0 else None,
+        }
+        entries.append(review_entry)
 
-def fetch_user_info(name:str, base_url= "https://api.jikan.moe/v4/users/"):
-    req = requests.get(base_url + name)
+def fetch_manga_list(name:str, n_entry:int, entries:list, sleep_time=0.5):
+    if n_entry < 1:
+        raise ScarceDataException("[fetch_manga_list] : Attempted to fetch a manga_list with no entry")
 
-    if req.status_code == 200:
-        data = req.json()['data']
-        return {'user_id' : data['mal_id'], 'username' : data['username'], 'gender' : data['gender'], 'location' : data['location']}
-    else:
-        req.raise_for_status()
+    n_offsets = n_entry//MANGA_DISPLAY_LIMIT
+    print(n_offsets)
+    for i in range(0, n_offsets+1):
+        time.sleep(sleep_time)
+        target_page = "https://myanimelist.net/mangalist/{}/load.json".format(name)
+        req = requests.get(target_page, params={"offset": i*MANGA_DISPLAY_LIMIT})
+        if req.status_code == 200:
+            print(req.url)
+            data = req.json()
+            create_manga_interraction_entries(data, name, entries)
+        else:
+            req.raise_for_status()
+    print("Manga list from {} has been fetched successfully!".format(name)) 
 
 def create_users(max_users = 10):
     return
@@ -121,4 +137,10 @@ def link_user_id():
         return
 
 if __name__ == "__main__":
-    print(fetch_manga_profile("Matmath"))
+    user_info = fetch_manga_profile("Matmath")
+    print(user_info)
+    all_entries = []
+    fetch_manga_list(user_info["username"], user_info["entries"], all_entries)
+    review_df = pd.DataFrame(all_entries)
+    print(review_df)
+    review_df.to_csv("user_review_entries.csv",index=False, encoding='utf-8')
