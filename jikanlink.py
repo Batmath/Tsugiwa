@@ -33,16 +33,15 @@ def update_manga_entries(request, entry_list):
         entry_list.append(entry)
     return entry_list
 
-def create_manga_database(page_offset=0, page_limit=None, output_path='./manga.csv'):
+def create_manga_database(base_url= "https://api.jikan.moe/v4/", page_offset=0, page_limit=None, output_path='./manga.csv'):
     page = 1
-    base_url = "https://api.jikan.moe/v4/manga"
     next_page = True
     entries = []
 
     while next_page:
         time.sleep(1.5)
         try :
-            req = requests.get(base_url, params={"page": page_offset + page})
+            req = requests.get(base_url + "manga", params={"page": page_offset + page})
         except:
             print("Erreur : {}".format(req.status_code))
             continue
