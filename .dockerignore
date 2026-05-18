@@ -1,0 +1,7 @@
+data/
+htmls/
+tsugiwa_venv/
+.vscode/
+.git/
+.gitignore
+README.md
