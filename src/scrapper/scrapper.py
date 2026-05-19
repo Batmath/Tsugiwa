@@ -2,12 +2,12 @@ import json
 import time
 import requests
 import pandas as pd
-from bs4 import BeautifulSoup
 import re
 import threading
 import queue
 import cProfile, pstats
 import sqlite3
+from bs4 import BeautifulSoup
 
 class PrivateListException(Exception):
     pass
