@@ -67,9 +67,7 @@ def find_friends(name:str, session, sleep_time=0.5):
         req.raise_for_status()
     
 def fetch_manga_profile(name:str, session, min_entry=1, sleep_time=0.5):
-        #re.compile("Access to this list has been restricted by the owner.").search(tag.find_next_sibling("p"))
-        #re.compile("Last Manga Updates").search(tag.text) and re.compile("Access to this list has been restricted by the owner.").search(tag.find_next_sibling("p"))
-        #Could also add friends ! 
+
     time.sleep(sleep_time)
     target_page = "https://myanimelist.net/profile/{}".format(name)
     req = session.get(target_page)
@@ -136,8 +134,9 @@ def create_manga_interraction_entries(data, username, cursor):
     for manga in data:
         if not(manga['status'] >= 0 and manga['status'] <7):
             continue # Not even unknown
-        cursor.execute("""INSERT OR IGNORE INTO ratings (username, manga_id, status, read_chapters, score, start_date_string, end_date_string) 
+        cursor.execute("""INSERT OR IGNORE INTO entries (username, manga_id, status, read_chapters, score, start_date_string, end_date_string) 
                         VALUES (?, ?, ?, ?, ?, ?, ?)""", (username, manga['manga_id'], MANGA_STATUS_CODE[manga['status']], manga['num_read_chapters'], manga['score'] if manga['score'] != 0 else None, manga['start_date_string'], manga['finish_date_string']))
+
 
 def fetch_manga_list(name:str, n_entry:int, cursor, session, sleep_time=0.5):
     data_list = [] # Instead of iterating over entries that were previously created or adding to the database while there may be other pages not fetched (which could return an error and fetch partial data), do the requests first, then operate on received object if it went well.
@@ -159,6 +158,7 @@ def fetch_manga_list(name:str, n_entry:int, cursor, session, sleep_time=0.5):
     print("Waiting for cursor validation")
 
 def init_db(cursor):
+    # entries in users create inconsistencies, it shouldn't be added at runtime
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS users(
             username TEXT PRIMARY KEY,
@@ -170,7 +170,7 @@ def init_db(cursor):
         );""")
 
     cursor.execute("""
-        CREATE TABLE IF NOT EXISTS ratings(
+        CREATE TABLE IF NOT EXISTS entries(
             username TEXT REFERENCES users(username),
             manga_id INTEGER,
             status TEXT,
@@ -180,11 +180,20 @@ def init_db(cursor):
             end_date_string TEXT,
             scraped_at DATETIME DEFAULT CURRENT_TIMESTAMP
         );""")
+    
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS relationships(
+            user_left TEXT REFERENCES users(username),
+            user_right TEXT REFERENCES users(username),
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
 
+            CONSTRAINT chk_alphabetical_order CHECK (user_left < user_right),
+            PRIMARY KEY (user_left, user_right)
+        );
+    """)
 
-def create_user_review_database(max_users = 10):
-    seen = set()
-    added = set()
+    cursor.execute("""CREATE TABLE IF NOT EXISTS pending_recovery(username TEXT PRIMARY KEY);""")
+
     name_queue = queue.Queue()
     all_rating_entries = []
     all_user_entries = []
@@ -274,30 +283,9 @@ def create_user_review_database(max_users = 10):
             print("Current sleep time : {}".format(user_page_sleep))
             name = name_queue.get()
 
-            if name is SENTINEL:
-                create_databases(all_rating_entries, all_user_entries)
-                name_queue.task_done()
-                break
-            try:
-                success = False
-                while not success:
-                    try:
-                        user_info = fetch_manga_profile(name, session, sleep_time=0.5)
-                        friends = user_info.pop("friends") #user_info doesn't have friends anymore
-                        all_user_entries.append(user_info)
-                        # Need lock on seen and name_queue ?
-                        if friends is not None:
-                            print("friend of {} : {}".format(name, friends))
-                            for friend in friends:
-                                with lock:
-                                    if friend not in seen and name_queue.qsize() < max_users * 2:
-                                        seen.add(friend)
-                                        name_queue.put(friend)
-                        # https://hoelz.ro/blog/with-sqlite-insert-or-ignore-is-often-not-what-you-want
-                        cursor.execute("""INSERT INTO users (username, gender, birthday, location, entries)
-                                            VALUES (?, ?, ?, ?, ?)""", (user_info["username"], user_info["gender"], user_info["birthday"], user_info["location"], user_info['entries']))
-                        fetch_manga_list(name, user_info["entries"], cursor,session) # we fecth after trying to insert the user, if it's already in the db (from previous runs), fails and no need to fetch ! (saving requests)
-                        conn.commit()
+                                        if friend in added and name not in added:
+                                            print(min(name, friend), max(name, friend))
+                                            cursor.execute("""INSERT INTO relationships (user_left, user_right) values (?, ?)""", (min(name, friend), max(name, friend))) #Add every relationship between user and friends that have already been added
 
                         with lock:
                             added.add(name)
