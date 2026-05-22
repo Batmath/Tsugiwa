@@ -8,6 +8,8 @@ import queue
 import cProfile, pstats
 import sqlite3
 from bs4 import BeautifulSoup
+import os
+from contextlib import closing
 
 class PrivateListException(Exception):
     pass
@@ -19,9 +21,11 @@ class ScarceDataException(Exception):
     pass
 
 # TODO : add comments
-# TODO : Will they finish the manga ? What location ? What age ? What gender ?
 # TODO : Create a docker image to run the code on the server
 # TODO : Setup an API
+# TODO : Setup tests (API)
+# TODO : Add logging instead of simple prints
+# TODO: More global variables/parameters that can be controlled (sleep_times, min and max dynamic sleep, directories...)
 
 
 MANGA_STATUS_CODE = {0: "Unknown", 1 : "Reading", 2 : "Completed", 3 : "On-Hold", 4 : "Dropped", 6 : "Plan to Read"}
@@ -67,9 +71,7 @@ def find_friends(name:str, session, sleep_time=0.5):
         req.raise_for_status()
     
 def fetch_manga_profile(name:str, session, min_entry=1, sleep_time=0.5):
-        #re.compile("Access to this list has been restricted by the owner.").search(tag.find_next_sibling("p"))
-        #re.compile("Last Manga Updates").search(tag.text) and re.compile("Access to this list has been restricted by the owner.").search(tag.find_next_sibling("p"))
-        #Could also add friends ! 
+
     time.sleep(sleep_time)
     target_page = "https://myanimelist.net/profile/{}".format(name)
     req = session.get(target_page)
@@ -133,17 +135,22 @@ def fetch_manga_profile(name:str, session, min_entry=1, sleep_time=0.5):
 def create_manga_interraction_entries(data, username, cursor):
     # json is structured as such : [{entry 0}... {entry 299}]
     # raise error if nothing
+    if not data: # Empty => Bad offset or other issue ?
+        return
+
     for manga in data:
         if not(manga['status'] >= 0 and manga['status'] <7):
             continue # Not even unknown
-        cursor.execute("""INSERT OR IGNORE INTO ratings (username, manga_id, status, read_chapters, score, start_date_string, end_date_string) 
+        cursor.execute("""INSERT OR IGNORE INTO entries (username, manga_id, status, read_chapters, score, start_date_string, end_date_string) 
                         VALUES (?, ?, ?, ?, ?, ?, ?)""", (username, manga['manga_id'], MANGA_STATUS_CODE[manga['status']], manga['num_read_chapters'], manga['score'] if manga['score'] != 0 else None, manga['start_date_string'], manga['finish_date_string']))
+
 
 def fetch_manga_list(name:str, n_entry:int, cursor, session, sleep_time=0.5):
     data_list = [] # Instead of iterating over entries that were previously created or adding to the database while there may be other pages not fetched (which could return an error and fetch partial data), do the requests first, then operate on received object if it went well.
     if n_entry < 1:
         raise ScarceDataException("[fetch_manga_list] : Attempted to fetch a manga_list with no entry")
 
+    session.scraped_entries_count = 0
     n_offsets = n_entry//MANGA_DISPLAY_LIMIT
     for i in range(0, n_offsets+1):
         time.sleep(sleep_time)
@@ -154,11 +161,13 @@ def fetch_manga_list(name:str, n_entry:int, cursor, session, sleep_time=0.5):
         else:
             req.raise_for_status()
     for data in data_list:
+        session.scraped_entries_count += len(data)
         create_manga_interraction_entries(data, name, cursor)
     print("Manga list from {} has been fetched successfully!".format(name)) 
     print("Waiting for cursor validation")
 
 def init_db(cursor):
+    # entries in users create inconsistencies, it shouldn't be added at runtime
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS users(
             username TEXT PRIMARY KEY,
@@ -170,7 +179,7 @@ def init_db(cursor):
         );""")
 
     cursor.execute("""
-        CREATE TABLE IF NOT EXISTS ratings(
+        CREATE TABLE IF NOT EXISTS entries(
             username TEXT REFERENCES users(username),
             manga_id INTEGER,
             status TEXT,
@@ -180,42 +189,61 @@ def init_db(cursor):
             end_date_string TEXT,
             scraped_at DATETIME DEFAULT CURRENT_TIMESTAMP
         );""")
+    
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS relationships(
+            user_left TEXT REFERENCES users(username),
+            user_right TEXT REFERENCES users(username),
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
 
+            CONSTRAINT chk_alphabetical_order CHECK (user_left < user_right),
+            PRIMARY KEY (user_left, user_right)
+        );
+    """)
 
-def create_user_review_database(max_users = 10):
-    seen = set()
-    added = set()
+    cursor.execute("""CREATE TABLE IF NOT EXISTS pending_recovery(username TEXT PRIMARY KEY);""")
+
+def create_user_review_database(max_users = 10, DB_PATH = "data/scraped_data.db"):
+
+    # Add os.search for variables regarding directories (names)...
+    def load_from_previous_session():
+        cursor.execute("""SELECT username FROM users""")
+        users = cursor.fetchall()
+        usernames = [user[0] for user in users]
+        n_user_previous_session = len(usernames)
+        return usernames, n_user_previous_session
+
+    conn = sqlite3.connect(DB_PATH, check_same_thread=False)
+    cursor = conn.cursor()
+    init_db(cursor)
+
+    previous_users, n_loaded = load_from_previous_session()
+    print(previous_users)
+    print(n_loaded)
+
+    seen = set(previous_users)
+    added = set(previous_users)
+    max_users = max_users 
     name_queue = queue.Queue()
-    all_rating_entries = []
-    all_user_entries = []
+
+    name_queue.put("Matmath")
+
     lock = threading.Lock()
+    link_user_data_crash = threading.Event()
+
     CONNECTION_ISSUES_SLEEP = 60
     RATE_LIMIT_SLEEP = 180
-    min_sleep=1
+
+    min_sleep=20
     user_page_sleep=min_sleep
-    max_sleep=10
-    SENTINEL = None
+    max_sleep=30
+    SENTINEL = object()
     user_per_page = 20 #myanimelist.net/users.php always gives 20 names
 
     session = requests.Session()
     session.headers.update(headers)
 
-    #If first instance, create database, then close to avoid thread issues.
-    conn = sqlite3.connect("./raw_scraped_data.db", check_same_thread=False)
-    cursor = conn.cursor()
-
-    # System WILL break with the current implementation of pending (je relance -> ajoute les pendings, on sait qu'ils ne sont pas vu, mais les pendings peuvent être des friends (qui seront récupérer quand on prends les amis)
-    # rien pour friend, mais pour user (et potentiellement d'autres amis de user) passe pas dans user mais passe dans ratings (duplicats de ratings))
-    # Also fails if mysterious black magic is used (user from seen passed, blocked by user but ratings will be copied).
-    # Change ON CONFLICT algorithm choice -> FAIL -> catch exception and abort adding the user whatsoever.
-
-    # IDEA to control the flow of users : Loosing users per second, not really important (may have been seen, if active, may be fetched...)
-    # Control the rate at which users are fetched (-> create_user_sleep_time is dynamically updated by link_user_data) + buffer (buffer with a limit size equal to 10% of the target_users, min 50) + actual queue (twice as )
-
-    #buffer -> useless (only storing usernames, overall size of the proccess : 3*seen, (assuming late in the code that seen > added), for 100k, seen may be 300k * 61 bytes ~ 17.45 mb)
-    #add offset time to the start of link_user and noise fetches to avoid sending requests at constant time 
-
-    def compute_dynamic_sleep(q_size:int, n_added, exp_factor=2, max_users=max_users, min_sleep=min_sleep, max_sleep=max_sleep):
+    def compute_dynamic_sleep(q_size:int, n_added, exp_factor=1/2, max_users=max_users, min_sleep=min_sleep, max_sleep=max_sleep):
         remaining_user_needed = max_users - n_added
         if remaining_user_needed <=0:
             return max_sleep
@@ -226,115 +254,167 @@ def create_user_review_database(max_users = 10):
         sleep_time = min_sleep + (ratio**exp_factor * (max_sleep - min_sleep))
         return round(sleep_time, 1)
 
-    def create_databases(entries_rating, entries_user, rating_path="./data/raw_rating.csv", user_path="./data/raw_user.csv"):
-        user_df = pd.DataFrame(entries_user)
-        rating_df = pd.DataFrame(entries_rating)
+    def dump_pending():
+        pending_users = []
+        while not name_queue.empty():
+            try:
+                user = name_queue.get_nowait()
+                if user is not SENTINEL:
+                    pending_users.append((user,))
+                name_queue.task_done()
 
-        user_df.to_csv(user_path,index=True, encoding='utf-8')
-        rating_df.to_csv(rating_path, index=False, encoding='utf-8')
+            except queue.Empty:
+                break
+        try:
+            cursor.executemany("INSERT OR IGNORE INTO pending_recovery (username) VALUES (?);", pending_users)
+            conn.commit()
+        except Exception as e:
+            print("Database is not happy : {}".format(e))
+            conn.rollback()
+        return
 
     def create_users():
-        while True:
-            with lock:
-                if len(added) >= max_users:
-                    break
+        while not link_user_data_crash.is_set():
+            if len(added) >= max_users:
+                break
             try:
                 names = fetch_user_page(session, sleep_time=user_page_sleep)
                 for name in names:
+                    
+                    if link_user_data_crash.is_set(): #thread B crashes while we are putting names on the queue
+                        break
+
+                    if len(added) >= max_users: #max_users is reached while we are adding new names
+                        break
+
                     with lock:
                         if name not in seen:
-                                seen.add(name)
-                                name_queue.put(name)
+                            print("adding user : {}".format(name))
+                            seen.add(name)
+                            name_queue.put(name)
 
             except requests.exceptions.ConnectionError:
                 print("Connection Error : Waiting for Connection...")
                 time.sleep(CONNECTION_ISSUES_SLEEP)
+
             except requests.exceptions.Timeout:
                 print("Timeout Error : Waiting before trying again...")
                 time.sleep(CONNECTION_ISSUES_SLEEP)
+
             except requests.exceptions.HTTPError as e:
                 if e.response.status_code == 429 :
                     print("Too Many Requests : Waiting before trying again...")
                     time.sleep(RATE_LIMIT_SLEEP)
-                if e.response.status_code == 403 :
+                elif e.response.status_code == 403 :
                     # According to (https://myanimelist.net/forum/?topicid=1991772) 403 is the rate limit response received
                     print("Too Many Requests : Waiting before trying again...")
                     time.sleep(RATE_LIMIT_SLEEP)
                 else:
-                    raise
+                    print("Unhandled HTTP error ({}) : Stopping Thread A".format(e.response.status_code))
+                    break
+
+            except Exception as ue:
+                name_queue.put(SENTINEL)
+                break
+
         name_queue.put(SENTINEL)
     
     def link_user_data():
-        init_db(cursor)
-        while True:
-            with lock:
-                q_size = name_queue.qsize()
-            n_added = len(added)
-            user_page_sleep = compute_dynamic_sleep(q_size, n_added)
-            print("Current sleep time : {}".format(user_page_sleep))
-            name = name_queue.get()
+        
 
-            if name is SENTINEL:
-                create_databases(all_rating_entries, all_user_entries)
-                name_queue.task_done()
-                break
-            try:
-                success = False
-                while not success:
-                    try:
-                        user_info = fetch_manga_profile(name, session, sleep_time=0.5)
-                        friends = user_info.pop("friends") #user_info doesn't have friends anymore
-                        all_user_entries.append(user_info)
-                        # Need lock on seen and name_queue ?
-                        if friends is not None:
-                            print("friend of {} : {}".format(name, friends))
-                            for friend in friends:
-                                with lock:
-                                    if friend not in seen and name_queue.qsize() < max_users * 2:
-                                        seen.add(friend)
-                                        name_queue.put(friend)
-                        # https://hoelz.ro/blog/with-sqlite-insert-or-ignore-is-often-not-what-you-want
-                        cursor.execute("""INSERT INTO users (username, gender, birthday, location, entries)
-                                            VALUES (?, ?, ?, ?, ?)""", (user_info["username"], user_info["gender"], user_info["birthday"], user_info["location"], user_info['entries']))
-                        fetch_manga_list(name, user_info["entries"], cursor,session) # we fecth after trying to insert the user, if it's already in the db (from previous runs), fails and no need to fetch ! (saving requests)
-                        conn.commit()
+        with closing(conn):
+            while True:
+                name = name_queue.get()
+                task_done = False
+                print("Current user : {}".format(name))
 
-                        with lock:
-                            added.add(name)
-                            q_size = name_queue.qsize()
-                        n_added = len(added)
+
+                if name is SENTINEL:
+                    # Nothing in queue, the war is over, only check if thread B has some leftovers.
+                    name_queue.task_done()
+                    dump_pending(name_queue)
+                    break
+
+                try:
+                    success = False
+                    while not success:
+                        try:
+                            user_info = fetch_manga_profile(name, session, sleep_time=1)
+                            friends = user_info.pop("friends") #user_info doesn't have friends anymore
+                            # Need lock on seen and name_queue ?
+                            if friends is not None:
+                                print("friend of {} : {}".format(name, friends))
+                                for friend in friends:
+                                    with lock:
+                                        if friend in added and name not in added:
+                                            print(min(name, friend), max(name, friend))
+                                            cursor.execute("""INSERT INTO relationships (user_left, user_right) values (?, ?)""", (min(name, friend), max(name, friend))) #Add every relationship between user and friends that have already been added
+                                        if friend not in seen and name_queue.qsize() < max_users * 2:
+                                            seen.add(friend)
+                                            name_queue.put(friend)
+                                        # https://hoelz.ro/blog/with-sqlite-insert-or-ignore-is-often-not-what-you-want
+
+                            fetch_manga_list(name, user_info["entries"], cursor,session) # we fecth after trying to insert the user, if it's already in the db (from previous runs), fails and no need to fetch ! (saving requests)
+                            cursor.execute("""INSERT INTO users (username, gender, birthday, location, entries)
+                                                VALUES (?, ?, ?, ?, ?)""", (user_info["username"], user_info["gender"], user_info["birthday"], user_info["location"], session.scraped_entries_count))
+                            conn.commit()
+
+                            with lock:
+                                added.add(name)
+                                q_size = name_queue.qsize()
+                            n_added = len(added)
+                            
+                            user_page_sleep = compute_dynamic_sleep(q_size, n_added - n_loaded)
+                            success = True
+                            print("Current user page fetch time sleep : {}\n Number of currently fetched users : {}\n Number of currently added users {}\n (Previously loaded : {})".format(user_page_sleep, q_size, n_added - n_loaded, n_loaded))
                         
-                        user_page_sleep = compute_dynamic_sleep(q_size, n_added)
-                        success = True
-                        print("Current user page fetch time sleep : {}\n Number of currently fetched users : {}\n Number of currently added users".format(user_page_sleep, q_size, n_added))
-                    except requests.exceptions.ConnectionError:
-                        print("Connection Error : Waiting for Connection...")
-                        time.sleep(CONNECTION_ISSUES_SLEEP)
-                    except requests.exceptions.Timeout:
-                        print("Timeout Error : Waiting before trying again...")
-                        time.sleep(CONNECTION_ISSUES_SLEEP)
-                    except requests.exceptions.HTTPError as e:
-                        if e.response.status_code == 429 :
-                            print("Too Many Requests : Waiting before trying again...")
-                            time.sleep(RATE_LIMIT_SLEEP)
-                        if e.response.status_code == 403 :
-                            # According to (https://myanimelist.net/forum/?topicid=1991772) 403 is the rate limit response received
-                            print("Too Many Requests : Waiting before trying again...")
-                            time.sleep(RATE_LIMIT_SLEEP)
-                        else:
-                            raise
-            except (HTMLParsingException, ScarceDataException, PrivateListException) as e:
-                print("Skiping user {}, cause : {}".format(name, e))
-            except sqlite3.IntegrityError as e:
-                print("User {} is already in the database, skipping user".format(name))
-                conn.rollback()
-            except sqlite3.Error as e:
-                print("Database error while saving {}: {} \nCurrently no clue what to do here, user will be skipped".format(name,e))
-                conn.rollback()
-                raise
-            finally:
-                name_queue.task_done()
-        conn.close()
+                        except (requests.exceptions.ConnectionError, requests.exceptions.Timeout) as e:
+                            print("Connection Error : {} | Waiting for Connection...".format(e))
+                            conn.rollback()
+                            time.sleep(CONNECTION_ISSUES_SLEEP)
+
+                        except requests.exceptions.HTTPError as e:
+                            if (e.response.status_code == 429 or e.response.status_code == 403):
+                                print("Too Many Requests : Waiting before trying again...")
+                                conn.rollback()
+                                time.sleep(RATE_LIMIT_SLEEP)
+                            elif (e.response.status_code == 404):
+                                print("User {} not found. Skipping ...".format(name))
+                                conn.rollback()
+                                break
+                            else:
+                                print("Error : {}".format(e))
+                                link_user_data_crash.set()
+                                user_page_sleep = max_sleep # we don't know if thread A crashed, put maximum timer and dump.
+                                name_queue.task_done()
+                                task_done=True
+                                conn.rollback()
+                                dump_pending(name_queue)
+                                break
+
+                except (HTMLParsingException, ScarceDataException, PrivateListException) as e:
+                    print("Skiping user {}, cause : {}".format(name, e))
+                    conn.rollback()
+                
+                except sqlite3.IntegrityError as e:
+                    print("User {} is already in the database, skipping user : {}".format(name,e))
+                    conn.rollback()
+                
+                except sqlite3.Error as e:
+                    print("Database error while saving {}: {} \nCurrently no clue what to do here, user will be skipped".format(name,e))
+                    conn.rollback()
+                
+                except Exception as ue:
+                    print("Unknwon exception ; Abort scraping : {}".format(ue))
+                    conn.rollback()
+                    user_page_sleep = max_sleep # we don't know if thread A crashed, put maximum timer and dump.
+                    name_queue.task_done()
+                    task_done=True
+                    conn.rollback()
+                    dump_pending(name_queue)
+                finally:
+                    if not task_done: # If an error requiring to dump names from the queue has been caught, ignore the task_done order (was done before)
+                        name_queue.task_done()
 
     user_name_thread = threading.Thread(target=create_users)
     rating_thread = threading.Thread(target=link_user_data)
@@ -347,7 +427,9 @@ def create_user_review_database(max_users = 10):
     rating_thread.join()
 
 if __name__ == "__main__":
-    cProfile.run("create_user_review_database(max_users=10)", "./data/scrapper_perfs.prof")
+    DB_PATH = os.environ.get("DB_PATH", "data/scraped_data.db")
+    create_user_review_database(max_users=100, DB_PATH=DB_PATH)
+    #cProfile.run("create_user_review_database(max_users=10, DB_PATH={})".format(DB_PATH), "./data/scrapper_perfs.prof")
     #p = pstats.Stats("scrapper_perfs.prof")
     #p.sort_stats("cumulative")
     #p.print_stats(100)
