@@ -4,7 +4,7 @@ from contextlib import closing
 
 # Here the relative path depends on the name of the directory and the name of the database, find a way to make it "global"
 
-DB_PATH = os.environ.get("DB_PATH", "data/raw_scraped_data.db")
+DB_PATH = os.environ.get("DB_PATH", "data/scraped_data.db")
 
 def get_db():
     print(DB_PATH)
@@ -65,7 +65,7 @@ def query_ratings(conn, username=None, manga_id=None, min_score=None, max_score=
     params = []
     constraints = []
     
-    query = "SELECT {} FROM ratings ".format(target)
+    query = "SELECT {} FROM entries ".format(target)
 
     if username is not None:
         constraints.append("username = ? ")

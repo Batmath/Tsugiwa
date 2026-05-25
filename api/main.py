@@ -1,14 +1,14 @@
 from fastapi import FastAPI
 import sqlite3
 import os
-from .routes import users, ratings
+from .routes import users, entries
 from .database import *
 
 # LOCAL TEST : uvicorn src.api.main:app --reload --port 8000
 app = FastAPI()
 
 app.include_router(users.router)
-app.include_router(ratings.router)
+app.include_router(entries.router)
 
 @app.get("/progress")
 def get_progress():
