@@ -247,15 +247,21 @@ def create_user_review_database(max_users = 10, DB_PATH = "data/scraped_data.db"
     session = requests.Session()
     session.headers.update(headers)
 
-    def compute_dynamic_sleep(q_size:int, n_added, exp_factor=1/2, max_users=max_users, min_sleep=min_sleep, max_sleep=max_sleep):
+    def compute_dynamic_sleep(q_size:int, n_added, exp_factor=9, max_users=max_users, min_sleep=min_sleep, max_sleep=max_sleep):
+        print("Computing current time sleep, added currently : {}".format(n_added))
         remaining_user_needed = max_users - n_added
         if remaining_user_needed <=0:
             return max_sleep
 
-        ratio = q_size/remaining_user_needed
-        ratio = min(remaining_user_needed,1) 
+        ratio = min(q_size/remaining_user_needed,1) 
 
+        print("remaining users : {}".format(remaining_user_needed))
+        print("qsize : {}".format(q_size))
+        print("ratio : {}".format(ratio))
         sleep_time = min_sleep + (ratio**exp_factor * (max_sleep - min_sleep))
+
+        print(sleep_time)
+        print("Time sleep computed : {}".format(round(sleep_time, 1)))
         return round(sleep_time, 1)
 
     def dump_pending():
