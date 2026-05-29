@@ -4,7 +4,7 @@ import os
 from .routes import users, entries
 from .database import *
 
-# LOCAL TEST : uvicorn src.api.main:app --reload --port 8000
+# LOCAL TEST : uvicorn api.main:app --reload --port 8080
 app = FastAPI()
 
 app.include_router(users.router)
