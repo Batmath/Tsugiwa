@@ -6,5 +6,8 @@ raw_user.csv
 htmls/
 data/
 .vscode/
-src/api/__pycache__
-src/api/routes/__pycache__
+api/__pycache__
+api/routes/__pycache__
+ui/__pycache__
+ui/penguins.csv
+ui/pages/__pycache__
