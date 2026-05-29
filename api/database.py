@@ -39,7 +39,7 @@ def query_users(conn, username=None, gender=None, location=None, min_entries=Non
 
 
     if username is not None:
-        constraints.append("username = ? ")
+        constraints.append("u.username = ?")
         params.append(username)
 
     if min_birthday is not None:
@@ -51,19 +51,19 @@ def query_users(conn, username=None, gender=None, location=None, min_entries=Non
         params.append(max_birthday)
 
     if min_entries is not None:
-        constraints.append("score >= ?")
+        constraints.append("u.entries >= ?")
         params.append(min_entries)
     
     if max_entries is not None:
-        constraints.append("score <= ?")
+        constraints.append("u.entries <= ?")
         params.append(max_entries)
 
     if gender is not None:
-        constraints.append("gender = ? ")
+        constraints.append("u.gender = ?")
         params.append(gender)
 
     if location is not None:
-        constraints.append("location = ? ")
+        constraints.append("u.location = ?")
         params.append(location)
     
     if manga_id is not None:
@@ -90,15 +90,15 @@ def query_users(conn, username=None, gender=None, location=None, min_entries=Non
         query += " " + " ".join(joins)
 
     if constraints:
-        query += "WHERE " + " AND ".join(constraints)
+        query += " WHERE " + " AND ".join(constraints)
 
     if not counting:
         if limit is not None:
-            query += "LIMIT ? "
+            query += " LIMIT ?"
             params.append(limit)
         
         if offset is not None:
-            query += "OFFSET ? "
+            query += " OFFSET ?"
             params.append(offset)
     print(query)
     print(params)
@@ -132,23 +132,23 @@ def query_ratings(conn, username=None, manga_id=None, min_score=None, max_score=
         joins.append("JOIN manga_genres m ON e.manga_id = m.manga_id")
     
     if username is not None:
-        constraints.append("username = ? ")
+        constraints.append("e.username = ?")
         params.append(username)
 
     if min_score is not None:
-        constraints.append("score >= ? ")
+        constraints.append("e.score >= ?")
         params.append(min_score)
     
     if max_score is not None:
-        constraints.append("score <= ? ")
+        constraints.append("e.score <= ?")
         params.append(max_score)
     
     if status is not None:
-        constraints.append("status = ? ")
+        constraints.append("e.status = ?")
         params.append(status)
     
     if manga_id is not None:
-        constraints.append("manga_id = ? ")
+        constraints.append("e.manga_id = ?")
         params.append(manga_id)
     
     # Join triggering options
