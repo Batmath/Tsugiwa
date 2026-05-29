@@ -207,7 +207,7 @@ def init_db(conn, cursor):
     cursor.execute("""CREATE TABLE IF NOT EXISTS pending_recovery(username TEXT PRIMARY KEY);""")
     conn.commit()
 
-def create_user_review_database(max_users = 10, DB_PATH = "data/scraped_data.db"):
+def create_user_review_database(max_users = 10, min_entry=1,DB_PATH = "data/data.db"):
 
     # Add os.search for variables regarding directories (names)...
     def load_from_previous_session():
@@ -216,6 +216,20 @@ def create_user_review_database(max_users = 10, DB_PATH = "data/scraped_data.db"
         usernames = [user[0] for user in users]
         n_user_previous_session = len(usernames)
         return usernames, n_user_previous_session
+    
+    def load_pending():
+        try:
+            cursor.execute("""SELECT username FROM pending_recovery""")
+            users = cursor.fetchall()
+            usernames = [user[0] for user in users]
+            for u in usernames:
+                name_queue.put(u)
+                seen.add(u)
+            cursor.execute("""DELETE FROM pending_recovery""")
+            conn.commit()
+        except Exception as e:
+            raise
+        return
 
     conn = sqlite3.connect(DB_PATH, check_same_thread=False)
     cursor = conn.cursor()
@@ -228,8 +242,8 @@ def create_user_review_database(max_users = 10, DB_PATH = "data/scraped_data.db"
     added = set(previous_users)
     max_users = max_users 
     name_queue = queue.Queue()
-
-    name_queue.put("Matmath")
+    
+    load_pending()
 
     lock = threading.Lock()
     link_user_data_stop = threading.Event()
