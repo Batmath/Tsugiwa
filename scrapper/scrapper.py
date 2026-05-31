@@ -10,6 +10,9 @@ import sqlite3
 from bs4 import BeautifulSoup
 import os
 from contextlib import closing
+import logging
+logger = logging.getLogger(__name__)
+
 
 class PrivateListException(Exception):
     pass
@@ -163,8 +166,6 @@ def fetch_manga_list(name:str, n_entry:int, cursor, session, sleep_time=0.5):
     for data in data_list:
         session.scraped_entries_count += len(data)
         create_manga_interraction_entries(data, name, cursor)
-    print("Manga list from {} has been fetched successfully!".format(name)) 
-    print("Waiting for cursor validation")
 
 def init_db(conn, cursor):
     # entries in users create inconsistencies, it shouldn't be added at runtime
@@ -236,7 +237,7 @@ def create_user_review_database(max_users = 10, min_entry=1,DB_PATH = "data/data
     init_db(conn, cursor)
 
     previous_users, n_loaded = load_from_previous_session()
-    print("Currently loaded : {}".format(n_loaded))
+    logging.info("Currently loaded : {}".format(n_loaded))
 
     seen = set(previous_users)
     added = set(previous_users)
@@ -262,20 +263,14 @@ def create_user_review_database(max_users = 10, min_entry=1,DB_PATH = "data/data
     session.headers.update(headers)
 
     def compute_dynamic_sleep(q_size:int, n_added, exp_factor=9, max_users=max_users, min_sleep=min_sleep, max_sleep=max_sleep):
-        print("Computing current time sleep, added currently : {}".format(n_added))
         remaining_user_needed = max_users - n_added
         if remaining_user_needed <=0:
             return max_sleep
 
         ratio = min(q_size/remaining_user_needed,1) 
 
-        print("remaining users : {}".format(remaining_user_needed))
-        print("qsize : {}".format(q_size))
-        print("ratio : {}".format(ratio))
         sleep_time = min_sleep + (ratio**exp_factor * (max_sleep - min_sleep))
 
-        print(sleep_time)
-        print("Time sleep computed : {}".format(round(sleep_time, 1)))
         return round(sleep_time, 1)
 
     def dump_pending():
@@ -293,7 +288,7 @@ def create_user_review_database(max_users = 10, min_entry=1,DB_PATH = "data/data
             cursor.executemany("INSERT OR IGNORE INTO pending_recovery (username) VALUES (?);", pending_users)
             conn.commit()
         except Exception as e:
-            print("Database is not happy : {}".format(e))
+            logging.error("dump_pending : error while converting pending names : {}".format(e))
             conn.rollback()
             raise
         return
@@ -305,8 +300,9 @@ def create_user_review_database(max_users = 10, min_entry=1,DB_PATH = "data/data
             try:
                 with lock:
                     current_sleep = user_page_sleep
-                print("[THREAD A] : Current sleep time : {}".format(current_sleep))
+                logging.debug("[THREAD A] : Current sleep time : {}".format(current_sleep))
                 names = fetch_user_page(session, sleep_time=current_sleep)
+                added_loop = []
                 for name in names:
                     
                     if link_user_data_stop.is_set(): #thread B crashes while we are putting names on the queue
@@ -317,28 +313,30 @@ def create_user_review_database(max_users = 10, min_entry=1,DB_PATH = "data/data
 
                     with lock:
                         if name not in seen:
-                            print("adding user : {}".format(name))
                             seen.add(name)
                             name_queue.put(name)
+                            added_loop.append(name)
+                
+                logging.info("[THREAD A] : {} Users added during loop : {}".format(len(added_loop), added_loop))
 
             except requests.exceptions.ConnectionError:
-                print("[THREAD A] : Connection Error : Waiting for Connection...")
+                logging.error("[THREAD A] : Connection Error : Waiting for Connection...")
                 time.sleep(CONNECTION_ISSUES_SLEEP)
 
             except requests.exceptions.Timeout:
-                print("[THREAD A] : Timeout Error : Waiting before trying again...")
+                logging.error("[THREAD A] : Timeout Error : Waiting before trying again...")
                 time.sleep(CONNECTION_ISSUES_SLEEP)
 
             except requests.exceptions.HTTPError as e:
                 if e.response.status_code == 429 :
-                    print("[THREAD A] : Too Many Requests : Waiting before trying again...")
+                    logging.error("[THREAD A] : Too Many Requests : Waiting before trying again...")
                     time.sleep(RATE_LIMIT_SLEEP)
                 elif e.response.status_code == 403 :
                     # According to (https://myanimelist.net/forum/?topicid=1991772) 403 is the rate limit response received
-                    print("[THREAD A] : Too Many Requests : Waiting before trying again...")
+                    logging.error("[THREAD A] : Too Many Requests : Waiting before trying again...")
                     time.sleep(RATE_LIMIT_SLEEP)
                 else:
-                    print("[THREAD A] : Unhandled HTTP error ({}) : Stopping Thread A".format(e.response.status_code))
+                    logging.error("[THREAD A] : Unhandled HTTP error ({}) : Stopping Thread A".format(e.response.status_code))
                     break
 
             except Exception as ue:
@@ -354,14 +352,14 @@ def create_user_review_database(max_users = 10, min_entry=1,DB_PATH = "data/data
             while True:
                 name = name_queue.get()
                 task_done = False
-                print("Current user : {}".format(name))
+                logging.debug("Current user : {}".format(name))
 
                 with lock:
                     q_size = name_queue.qsize()
                     n_added = len(added)
-                    print("[THREAD B] : Added total {}".format(n_added))
+                    logging.debug("[THREAD B] : Added total {}".format(n_added))
                     user_page_sleep = compute_dynamic_sleep(q_size, n_added - n_loaded)
-                    print("[THREAD B] : Current user page fetch time sleep : {}\n \t Number of currently fetched users : {}\n \t Number of currently added users {}\n \t(Previously loaded : {})".format(user_page_sleep, q_size, n_added - n_loaded, n_loaded))
+                    logging.debug("[THREAD B] : Current user page fetch time sleep : {}\n \t Number of currently fetched users : {}\n \t Number of currently added users {}\n \t(Previously loaded : {})".format(user_page_sleep, q_size, n_added - n_loaded, n_loaded))
 
                 if name is SENTINEL or len(added) > max_users + n_loaded:
                     name_queue.task_done()
@@ -380,12 +378,13 @@ def create_user_review_database(max_users = 10, min_entry=1,DB_PATH = "data/data
                             fetch_manga_list(name, user_info["entries"], cursor,session, sleep_time=1) # we fecth after trying to insert the user, if it's already in the db (from previous runs), fails and no need to fetch ! (saving requests)
 
                             if friends is not None:
-                                print("friend of {} : {}".format(name, friends))
                                 for friend in friends:
                                     with lock:
                                         if friend in added: #name not in added because INSERT INTO users didn't fail.
-                                            print(min(name, friend), max(name, friend))
-                                            cursor.execute("""INSERT INTO relationships (user_left, user_right) values (?, ?)""", (min(name, friend), max(name, friend))) #Add every relationship between user and friends that have already been added
+                                            left_user = min(name, friend)
+                                            right_user = max(name, friend)
+                                            logging.debug("Friend in db detected, relationship is being created : ({}, {})".format(left_user, right_user))
+                                            cursor.execute("""INSERT INTO relationships (user_left, user_right) values (?, ?)""", (left_user, right_user)) #Add every relationship between user and friends that have already been added
                                         elif friend not in seen and name_queue.qsize():
                                             seen.add(friend)
                                             name_queue.put(friend)
@@ -396,21 +395,21 @@ def create_user_review_database(max_users = 10, min_entry=1,DB_PATH = "data/data
                             success = True
                         
                         except (requests.exceptions.ConnectionError, requests.exceptions.Timeout) as e:
-                            print("[THREAD B] : Connection Error : {} | Waiting for Connection...".format(e))
+                            logging.error("[THREAD B] : Connection Error : {} | Waiting for Connection...".format(e))
                             conn.rollback()
                             time.sleep(CONNECTION_ISSUES_SLEEP)
 
                         except requests.exceptions.HTTPError as e:
                             if (e.response.status_code == 429 or e.response.status_code == 403):
-                                print("[THREAD B] : Too Many Requests : Waiting before trying again...")
+                                logging.error("[THREAD B] : Too Many Requests : Waiting before trying again...")
                                 conn.rollback()
                                 time.sleep(RATE_LIMIT_SLEEP)
                             elif (e.response.status_code == 404):
-                                print("[THREAD B] : User {} not found. Skipping ...".format(name))
+                                logging.error("[THREAD B] : User {} not found. Skipping ...".format(name))
                                 conn.rollback()
                                 break
                             else:
-                                print("[THREAD B] : Error : {}".format(e))
+                                logging.error("[THREAD B] : Error : {}".format(e))
                                 link_user_data_stop.set()
                                 user_page_sleep = max_sleep # we don't know if thread A crashed, put maximum timer and dump.
                                 name_queue.task_done()
@@ -420,19 +419,19 @@ def create_user_review_database(max_users = 10, min_entry=1,DB_PATH = "data/data
                                 break
 
                 except (HTMLParsingException, ScarceDataException, PrivateListException) as e:
-                    print("[THREAD B] : Skiping user {}, cause : {}".format(name, e))
+                    logging.error("[THREAD B] : Skiping user {}, cause : {}".format(name, e))
                     conn.rollback()
                 
                 except sqlite3.IntegrityError as e:
-                    print("[THREAD B] : User {} is already in the database, skipping user : {}".format(name,e))
+                    logging.error("[THREAD B] : User {} is already in the database, skipping user : {}".format(name,e))
                     conn.rollback()
                 
                 except sqlite3.Error as e:
-                    print("[THREAD B] : Database error while saving {}: {} \nCurrently no clue what to do here, user will be skipped".format(name,e))
+                    logging.error("[THREAD B] : Database error while saving {}: {} \nCurrently no clue what to do here, user will be skipped".format(name,e))
                     conn.rollback()
                 
                 except Exception as ue:
-                    print("[THREAD B] : Unknwon exception ; Abort scraping : {}".format(ue))
+                    logging.error("[THREAD B] : Unknwon exception ; Abort scraping : {}".format(ue))
                     conn.rollback()
                     user_page_sleep = max_sleep # we don't know if thread A crashed, put maximum timer and dump.
                     name_queue.task_done()
@@ -458,9 +457,15 @@ def create_user_review_database(max_users = 10, min_entry=1,DB_PATH = "data/data
     user_name_thread.join()
     rating_thread.join()
 
+def main(log_path="./log"):
+    if not os.path.exists(log_path):
+        os.makedirs(log_path)
+    DB_PATH = os.environ.get("DB_PATH", "data/data.db")
+    logging.basicConfig(filename=log_path+"/scraper.log", level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+    create_user_review_database(max_users=920, min_entry=1, DB_PATH=DB_PATH)
+
 if __name__ == "__main__":
-    DB_PATH = os.environ.get("DB_PATH", "data/scraped_data.db")
-    create_user_review_database(max_users=900, min_entry=1, DB_PATH=DB_PATH)
+    main()
     #cProfile.run("create_user_review_database(max_users=10, DB_PATH={})".format(DB_PATH), "./data/scrapper_perfs.prof")
     #p = pstats.Stats("scrapper_perfs.prof")
     #p.sort_stats("cumulative")
