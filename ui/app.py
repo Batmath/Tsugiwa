@@ -9,6 +9,7 @@ app_ui = ui.page_navbar(
     ui.nav_panel("Users", users.page_ui()),
     ui.nav_panel("Entries", entries.page_ui()),
     ui.nav_panel("Manga", manga.page_ui()),
+    ui.nav_control(ui.input_dark_mode()), 
     title="次は",
 )
 
