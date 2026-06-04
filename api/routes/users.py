@@ -22,11 +22,21 @@ def get_user(username:str):
 
 @router.get("/{username}/entries")
 def get_user_ratings(username: str, min_score=None, max_score=None, limit=None, offset=None, status=None, counting=False,
-                    gender=None, location=None, min_entries=None, max_entries=None, min_birthday=None, max_birthday=None, genres=[]):
+                     genres=[]):
 
     conn = get_db()
     with closing(conn):
         genres_list = list(map(lambda x: int(x), genres.split(","))) if genres else []
         ratings = query_ratings(conn, username=username, min_score=min_score, max_score=max_score, limit=limit, offset=offset, status=status, counting=counting,
-                                gender=gender,location=location, min_entries=min_entries, max_entries=max_entries, min_birthday=min_birthday, max_birthday=max_birthday, genres=genres_list)
+                                genres=genres_list)
+    return {"data" : ratings}
+
+@router.get("/{username}/entries/full")
+def get_full_user_ratings(username: str, min_score=None, max_score=None, limit=None, offset=None, status=None, genres=[]):
+    # What if username is search ???
+    conn = get_db()
+    with closing(conn):
+        genres_list = list(map(lambda x: int(x), genres.split(","))) if genres else []
+        ratings = query_ratings(conn, username=username, min_score=min_score, max_score=max_score, limit=limit, offset=offset, status=status,
+                                genres=genres_list, full=True)
     return {"data" : ratings}
