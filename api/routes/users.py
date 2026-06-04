@@ -13,6 +13,13 @@ def get_users(gender:str|None = None, location=None, entries=None, min_entries=N
                             min_score=min_score, max_score=max_score, genres=genres_list, status=status, limit=limit, offset=offset, counting=counting)
     return {"data" : users}
 
+@router.get("/search")
+def get_search_user(q: str = "", limit = 15):
+    conn = get_db()
+    with closing(conn):
+        usernames = search_user(conn, q, limit)
+    return {'data' : usernames}
+
 @router.get("/{username}")
 def get_user(username:str):
     conn = get_db()
