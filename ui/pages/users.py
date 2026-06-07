@@ -2,20 +2,31 @@ from shiny import ui, Inputs, Outputs, Session, reactive, render
 from .config import * 
 import pandas as pd
 import plotly.graph_objects as go
-from .plotly_streaming import render_plotly_streaming
 from shinywidgets import render_widget, output_widget
 
 # TODO: search a better way to make the search query (Or create my own Shiny widget !)
 # TODO : Graph for reading/completed/on-hold manga
 # TODO : Graph for note per genra
 # TODO : List of entries
+
+# Add different types of graphs : PERCENTAGE, Notes etc. And then filter options to choose how to display these informations (Per genres, per status, per media_type..)
 def page_ui():
     return ui.page_sidebar(
         ui.sidebar(
             ui.input_text("search_query", "Search for a user", placeholder="Search for a username"), 
             ui.output_data_frame("searched_user")),
         ui.card(
-            ui.card_header("Genres pie chart"),
+            ui.card_header(
+                "Distribution Pie Chart",
+                ui.toolbar(
+                    ui.toolbar_input_select(
+                        id="pie_filter",
+                        label="Filtre",
+                        choices=["Genres", "Reading Status", "Media Type", "Publication Status", "Demography"],
+                        selected="Genres"
+                    )
+                )
+            ),
             output_widget("plot_camembert"),
             full_screen=True,  
             height="350px", 
@@ -57,13 +68,49 @@ def server(input: Inputs, output: Outputs, session: Session):
     @output
     @render_widget
     def plot_camembert():
-        def search_genre_entries(genre_id, df):
-            cpt = 0
+        def search_genre_count_entries(df):
+            genres = {}
             for row_dict in df.to_dict(orient="records"):
                 for genre in row_dict['manga']['genres']:
-                    if genre_id == genre['genre_id']:
-                        cpt +=1
-            return cpt
+
+                    genre_name = genre['genre']
+                    genres[genre_name] = genres.get(genre_name, 0) + 1
+
+            genres = dict(sorted(genres.items(), key=lambda item: item[1]))
+
+            return genres
+
+        def search_filter_count_entries(df, filter_option="Genres"):
+            if filter_option=="Genres":
+                return search_genre_count_entries(df)
+            else :
+                res = {}
+                filter_option_target = {"Reading Status" : ["status"], "Media Type" : ["manga", "media_type"], "Publication Status" : ["manga", "publishing"], "Demography" : ["manga", "demographics"]}
+                d = filter_option_target[filter_option] 
+                
+                for row_dict in df.to_dict(orient="records"):
+                    
+                    targets = row_dict
+                    for path in d:
+                        targets = targets[path]
+
+                    if targets is None:
+                        continue
+
+                    if type(targets) == str:
+                        targets = targets.split(",") #Some have 2 demography separated by commas. 
+                        for target in targets:
+                            res[target] = res.get(target, 0) + 1
+                    
+                    if type(targets) == int:
+                        if filter_option == "Publication Status":
+                            target_str = "Publishing" if targets else "Publication finished"
+                            res[target_str] = res.get(target_str, 0) + 1
+                        else:
+                            res[target_str] = res.get(target_str, 0) + 1 #Correspond to nothing but avoid failing silently
+
+                sorted_res = dict(sorted(res.items(), key=lambda item: item[1]))
+                return res
 
         user = compute_user_data()
         if not user :
@@ -80,30 +127,28 @@ def server(input: Inputs, output: Outputs, session: Session):
             df = pd.DataFrame(response.json()['data'])
             print(df)
 
-            genre_ids = list(GENRES_DICT.keys())
-            genres_to_plot = []
-            cpt_genres = []
-            for id in genre_ids:
-                n_entry_genre = search_genre_entries(id,df)
-                if n_entry_genre > 0:
-                    genres_to_plot.append(id)
-                    cpt_genres.append(n_entry_genre)
-            genres_to_plot = list(map(lambda x : GENRES_DICT[x], genres_to_plot))
-            print(cpt_genres)
-            pie_colors = [GENRE_COLORS.get(genre, "#CCCCCC") for genre in genres_to_plot]
+            plot_vars = search_filter_count_entries(df, filter_option=input.pie_filter())
+            labels = list(plot_vars.keys())
+            vals = list(plot_vars.values())
+
+            nb_labels = len(labels)
+            label_hide=None
+            if nb_labels >= 11:
+                label_hide = labels[:nb_labels-10]
+            
 
             fig = go.FigureWidget(data=[
                 go.Pie(
-                    labels=genres_to_plot, 
-                    values=cpt_genres, 
+                    labels=labels, 
+                    values=vals, 
                     hole=.3,
-                    textinfo='none',
-                    marker=dict(colors=pie_colors)
+                    textinfo='none'
                 )
             ])
 
             fig.update_layout(
-                margin=dict(t=20, b=20, l=20, r=20)
+                margin=dict(t=20, b=20, l=20, r=20),
+                hiddenlabels=label_hide
             )
             print("Done")
         return fig
