@@ -451,22 +451,17 @@ def create_user_review_database(max_users = 10, min_entry=1,DB_PATH = "data/data
     rating_thread = threading.Thread(target=link_user_data)
 
     user_name_thread.start()
-    time.sleep(0.5)
     rating_thread.start()
 
     user_name_thread.join()
     rating_thread.join()
 
-def main(log_path="./log"):
-    if not os.path.exists(log_path):
-        os.makedirs(log_path)
+def main(max_users=500000, min_entry=1):
+    LOG_PATH = os.environ.get("LOG_PATH", "log/scraper.log")
     DB_PATH = os.environ.get("DB_PATH", "data/data.db")
-    logging.basicConfig(filename=log_path+"/scraper.log", level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
-    create_user_review_database(max_users=920, min_entry=1, DB_PATH=DB_PATH)
+    PROFILER_PATH = os.environ.get("PROFILER_PATH", "log/scraper.prof")
+    logging.basicConfig(filename=LOG_PATH, level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+    cProfile.run("create_user_review_database(max_users={}, min_entry={}, DB_PATH={})".format(max_users, min_entry, DB_PATH), PROFILER_PATH)
 
 if __name__ == "__main__":
     main()
-    #cProfile.run("create_user_review_database(max_users=10, DB_PATH={})".format(DB_PATH), "./data/scrapper_perfs.prof")
-    #p = pstats.Stats("scrapper_perfs.prof")
-    #p.sort_stats("cumulative")
-    #p.print_stats(100)
