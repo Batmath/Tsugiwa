@@ -16,7 +16,7 @@ def update_manga_entries(request, entry_list):
             "themes" : ",".join([theme['name'] for theme in elt['themes']]),
             "media_type" : elt['type'],
             "demographics" : ",".join([demographic['name'] for demographic in elt['demographics']]),
-            "score" : elt['score'],
+            "mean_score" : elt['score'],
             "scored_by" : elt['scored_by'],
             "rank" : elt['rank'],
             "popularity_rank" : elt['popularity'],

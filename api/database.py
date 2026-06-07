@@ -238,6 +238,7 @@ def query_ratings(conn, username=None, manga_id=None, min_score=None, max_score=
                         'media_type' : matching_entries[0]['media_type'],
                         'genres' : entry.pop('genres'),
                         'demographics' : matching_entries[0]['demographics'],
+                        'score' : matching_entries[0]['mean_score'],
                         'scored_by' : matching_entries[0]['scored_by'],
                         'rank' : matching_entries[0]['rank'],
                         'popularity_rank' : matching_entries[0]['popularity_rank'],
