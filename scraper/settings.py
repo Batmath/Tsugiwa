@@ -44,8 +44,8 @@ class ParameterScraper(BaseSettings):
             path.parent.mkdir(parents=True, exist_ok=True)
             path.touch()
 
-        return path
+        return value
     
 if __name__ == "__main__":  
-    p = ParameterScraper(PROFILER_PATH="data/scrapper_perfs_test.prof", LOG_PATH="log/scraper_test.log")
+    p = ParameterScraper()
     print(p.model_dump())

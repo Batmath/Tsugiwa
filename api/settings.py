@@ -5,3 +5,7 @@ from pydantic_settings import BaseSettings
 class ParametersAPI(BaseSettings):
     DB_PATH : FilePath
     API_PORT : int = 8080 # settings for api
+
+if __name__ == "__main__":  
+    p = ParametersAPI()
+    print(p.model_dump())
