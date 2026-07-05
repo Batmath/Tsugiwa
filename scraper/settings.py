@@ -1,6 +1,7 @@
 from pydantic import BaseModel, FilePath, ValidationError, field_validator, ValidationInfo, ValidationError
 from pydantic_settings import BaseSettings
 from pathlib import Path
+import db_scheme as dbs
 
 # TODO : rajouter paramètres
 
@@ -10,7 +11,7 @@ class ParameterError(Exception):
 # Ajouter systématiquement les extensions quand rajouter un paramètre de type FilePath
 extensions = {"PROFILER_PATH" : [".prof"], "LOG_PATH" : [".log"], "DB_PATH" : [".db"]}
 
-class ParameterScraper(BaseSettings):
+class ParametersScraper(BaseSettings):
     PROFILER_PATH : FilePath
     LOG_PATH : FilePath
     DB_PATH : FilePath
@@ -43,9 +44,13 @@ class ParameterScraper(BaseSettings):
         if not path.exists():
             path.parent.mkdir(parents=True, exist_ok=True)
             path.touch()
+            if info.field_name == "DB_PATH" :
+                # If the db scheme is created here, then there's no data for manga -> FOREIGN KEY CONSTRAINT ERROR for entries.
+                # -> Add the .db to the github project and archive ?
+                dbs.init_db(path)
 
         return value
     
 if __name__ == "__main__":  
-    p = ParameterScraper()
+    p = ParametersScraper()
     print(p.model_dump())
