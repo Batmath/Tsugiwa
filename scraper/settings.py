@@ -1,9 +1,7 @@
-from pydantic import BaseModel, FilePath, ValidationError, field_validator, ValidationInfo, ValidationError
+from pydantic import BaseModel, FilePath, ValidationError, field_validator, ValidationInfo, ValidationError, model_validator
 from pydantic_settings import BaseSettings
 from pathlib import Path
 import db_scheme as dbs
-
-# TODO : rajouter paramètres
 
 class ParameterError(Exception):
     pass
@@ -15,13 +13,15 @@ class ParametersScraper(BaseSettings):
     PROFILER_PATH : FilePath
     LOG_PATH : FilePath
     DB_PATH : FilePath
+    DUMP_PATH : FilePath
 
-    CONNECTION_ISSUES_SLEEP : int = 60
-    RATE_LIMIT_SLEEP : int = 180
+    CONNECTION_ISSUES_SLEEP : float = 60
+    RATE_LIMIT_SLEEP : float = 180
     MIN_SLEEP : int = 5
     MAX_SLEEP : int = 1200
     MAX_USERS : int = 1000
     MIN_ENTRIES : int = 1
+    QUEUE_TIMEOUT : float = 60
 
     @field_validator('PROFILER_PATH', 'LOG_PATH', 'DB_PATH', mode='before')
     @classmethod
@@ -44,12 +44,16 @@ class ParametersScraper(BaseSettings):
         if not path.exists():
             path.parent.mkdir(parents=True, exist_ok=True)
             path.touch()
-            if info.field_name == "DB_PATH" :
-                # If the db scheme is created here, then there's no data for manga -> FOREIGN KEY CONSTRAINT ERROR for entries.
-                # -> Add the .db to the github project and archive ?
-                dbs.init_db(path)
 
-        return value
+        return path
+    
+    @model_validator(mode='after')
+    def ensure_db_init_from_dump(self):
+        print(self.DB_PATH.stat().st_size)
+        if self.DB_PATH.stat().st_size == 0:
+            dbs.init_db(self.DB_PATH)
+            dbs.build_db_from_dump(self.DUMP_PATH, self.DB_PATH)
+        return self
     
 if __name__ == "__main__":  
     p = ParametersScraper()
