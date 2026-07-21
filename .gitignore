@@ -4,7 +4,10 @@ profile.html
 raw_rating.csv
 raw_user.csv
 htmls/
-data/
+htmlcov/
+prof/
+data/*
+!data/dump.sql
 .vscode/
 scraper/__pycache__
 api/__pycache__
@@ -14,3 +17,9 @@ ui/penguins.csv
 ui/pages/__pycache__
 log/
 .env
+scraper/tests/__pycache__
+shared/__pycache__
+shared/shared.egg-info
+.coverage
+.pytest_cache
+
