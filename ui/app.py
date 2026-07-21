@@ -1,5 +1,4 @@
 from shiny import App, ui, render
-from faicons import icon_svg as icon
 from pages import dashboard, users, entries, manga
 
 # shiny run ./ui/app.py --port 7950 --reload
