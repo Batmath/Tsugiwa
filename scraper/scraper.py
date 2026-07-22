@@ -1,5 +1,3 @@
-import json
-import time
 import requests, time, json
 import pandas as pd
 import re #regex
@@ -10,9 +8,9 @@ from bs4 import BeautifulSoup
 import os
 from contextlib import closing
 import logging
-import settings
+from shared.db_scheme import *
+import scraper.settings as settings
 logger = logging.getLogger(__name__)
-
 
 class PrivateListException(Exception):
     pass
@@ -23,28 +21,29 @@ class HTMLParsingException(Exception):
 class ScarceDataException(Exception):
     pass
 
+class ThreadError(Exception):
+    pass
+
 # TODO : add comments
 # TODO : Create a docker image to run the code on the server
-# TODO : Setup an API
-# TODO : Setup tests (API)
-# TODO : Add logging instead of simple prints
-# TODO: More global variables/parameters that can be controlled (sleep_times, min and max dynamic sleep, directories...)
-# TODO : Class with different datas (Paths etc. and pydantic verification)
+# TODO : Setup tests (API + Scraper)
 # TODO : Commenter le code
+# TODO : Review logs : Look at what is really important in logs and modify them accordingly.abs
+# TODO : Add rule enforcement on values such as SLEEP Times, Users etc (non negative) -> Change impact Tests (make sure each variable checked is then chekced in the tests)
 
 class Scraper():
     
-    def __init__(self, params : settings.ParametersScraper = settings.ParametersScraper()):
+    def __init__(self, params : settings.ParametersScraper | None = None, session : requests.Session | None = None, conn : sqlite3.Connection | None = None):
         """Constructor method
         """
 
-        self.params = params.model_dump()
-        self.conn = sqlite3.connect(self.params["DB_PATH"], check_same_thread=False)
+        self.params = params.model_dump() if params is not None else settings.ParametersScraper().model_dump()
+        self.conn = conn if conn is not None else sqlite3.connect(self.params["DB_PATH"], check_same_thread=False)
         self.cursor = self.conn.cursor()
         self.user_page_sleep = self.params["MIN_SLEEP"]
         self.MANGA_STATUS_CODE = {0: "Unknown", 1 : "Reading", 2 : "Completed", 3 : "On-Hold", 4 : "Dropped", 6 : "Plan to Read"} # Code on MAL for different entries statuses (Last checked : 27/06/26)
         self.MANGA_DISPLAY_LIMIT = 300 # limit of manga per page is 300 (when calling "https://myanimelist.net/mangalist/username/load.json")
-        self.session = requests.Session()
+        self.session = session if session is not None else requests.Session()
         self.seen = set()
         self.added = set()
         self.SENTINEL = object()
@@ -56,11 +55,11 @@ class Scraper():
             "Connection": "keep-alive",
         }
         self.session.headers.update(self.headers) # Update the current session with headers given
-        self.name_queue = queue.Queue() 
-        
+        self.name_queue = queue.Queue()
+        self.lock = threading.Lock()
+        self.thread_A_stop_signal = threading.Event()
 
-
-    def fetch_html(self, url, params=None):
+    def fetch_html(self, url:str, params=None):
         """
         Method that fetches the text content from a url page.
         :param url: Target url from which the text is fetched
@@ -69,19 +68,19 @@ class Scraper():
         :param params: parameters associated to the url (field key=val, limit..)
         :type params: dict
 
-        :raises RequestException: Request Errors for Status codes 4xx and 2xx
+        :raises RequestException: Request Errors for Status codes > 4xx (400-599)
 
         :return: Body of the response in string fromat (raw)
         :rtype: str
         """
         try :
-            response = requests.get(url,timeout=10, params=params)
+            response = self.session.get(url,timeout=10, params=params)
             response.raise_for_status()
             return response.text
         except requests.exceptions.RequestException as e:
             raise e
 
-    def fetch_json(self, url, params=None):
+    def fetch_json(self, url:str, params=None):
         """
         Method that fetches the json object from the target url.
 
@@ -91,19 +90,19 @@ class Scraper():
         :param params: parameters associated to the url (field key=val, limit..)
         :type params: dict
 
-        :raises RequestException: Request Errors for Status codes 4xx and 2xx
+        :raises RequestException: Request Errors for Status codes > 4xx (400-599)
 
         :return: Body of the response in string fromat (raw)
         :rtype: json
         """
         try :
-            response = requests.get(url,timeout=10, params=params)
+            response = self.session.get(url,timeout=10, params=params)
             response.raise_for_status()
             return response.json()
         except requests.exceptions.RequestException as e:
             raise e
 
-    def fetch_user_page(self, sleep_time=0.5):
+    def fetch_user_page(self, sleep_time:float=0.5):
         """
         Method that collect users name from the MAL recently connected users page
         
@@ -121,12 +120,13 @@ class Scraper():
         time.sleep(sleep_time)
         target_page = "https://myanimelist.net/users.php"
 
-        page_text = self.fetch_html(target_page)    
+        page_text = self.fetch_html(target_page)
         soup = BeautifulSoup(page_text, "html.parser")
-        users = list(map(lambda x : x.text, soup.find_all(is_user_href)))
+        user_block = soup.find("div", class_="normal_header").next_sibling.next_sibling
+        users = list(map(lambda x : x.text, user_block.find_all(is_user_href)))
         return users
 
-    def find_friends(self, name:str, sleep_time=0.5):
+    def find_friends(self, name:str, sleep_time:float=0.5):
         """
         Method that collect friends' users name from the a specific profile page.
         
@@ -178,11 +178,7 @@ class Scraper():
         
         page_text = self.fetch_html(target_page) 
         soup = BeautifulSoup(page_text, "html.parser")
-        #print(soup.find_all("p", string=re.compile("Access to this list has been restricted by the owner.")))
-        # On the Statistics layout, there are two Total Entries, Anime and Manga
 
-        #Other approach : search for the Blocks then fetch informations
-        #
         profile_info = soup.find("ul", class_="user-status")
         manga_status = soup.find("div", class_="updates manga")
         manga_stats = soup.find("div", class_="stats manga")
@@ -230,9 +226,10 @@ class Scraper():
         
         return {"username" : name, "gender" : gender, "birthday" : birthday, "location" : location, "entries" : n_entry, "friends" : friends}
 
-    def create_manga_interraction_entries(self, data, username):
+    def create_manga_interraction_entries(self, data, userid):
         """
         Method to create and insert entries from a specific user's manga list into the entries table
+        the json input from MAL website is structured as such : [{entry 0}... {entry 299}]
 
         :param data: list of dict containing entries of the user `username`
         :type data: list
@@ -242,19 +239,31 @@ class Scraper():
 
         :return: None
         """
-        # json is structured as such : [{entry 0}... {entry 299}]
-        # raise error if nothing ?
+        # json is structured as such : 
         if not data: # Empty => Bad offset or other issue ?
             return
 
         for manga in data:
-            if not(manga['status'] >= 0 and manga['status'] <7):
+            if not(manga['status'] >= 0 and manga['status'] <7 and manga['status'] != 5):
                 continue # Not even unknown
-            self.cursor.execute("""INSERT OR IGNORE INTO entries (username, manga_id, status, read_chapters, score, start_date_string, end_date_string) 
-                            VALUES (?, ?, ?, ?, ?, ?, ?)""", (username, manga['manga_id'],self. MANGA_STATUS_CODE[manga['status']], manga['num_read_chapters'], manga['score'] if manga['score'] != 0 else None, manga['start_date_string'], manga['finish_date_string']))
+            self.cursor.execute("""INSERT OR IGNORE INTO entries (user_id, manga_id, status, read_chapters, score, start_date_string, end_date_string) 
+                            VALUES (?, ?, ?, ?, ?, ?, ?)""", (userid, manga['manga_id'],self. MANGA_STATUS_CODE[manga['status']], manga['num_read_chapters'], manga['score'] if manga['score'] != 0 else None, manga['start_date_string'], manga['finish_date_string']))
 
+    def collect_manga_data(self, name, n_entry, sleep_time=0.5):
+        data_list = [] 
+        if n_entry < 1:
+            raise ScarceDataException("[fetch_manga_list] : Attempted to fetch a manga_list with no entry")
 
-    def fetch_manga_list(self, name:str, n_entry:int, sleep_time=0.5):
+        n_offsets = n_entry//self.MANGA_DISPLAY_LIMIT
+        for i in range(0, n_offsets+1):
+            time.sleep(sleep_time)
+            target_page = "https://myanimelist.net/mangalist/{}/load.json".format(name)
+            req_json = self.fetch_json(target_page, params={"offset": i*self.MANGA_DISPLAY_LIMIT})
+            data_list.append(req_json)
+        
+        return data_list
+    
+    def fetch_manga_list(self, name:str, userid:int, n_entry:int, sleep_time=0.5):
         """
         Method to fetch and insert entries from the manga list of user `name` into the database
 
@@ -269,32 +278,43 @@ class Scraper():
 
         :return: None
         """
-        data_list = [] # Instead of iterating over entries that were previously created or adding to the database while there may be other pages not fetched (which could return an error and fetch partial data), do the requests first, then operate on received object if it went well.
-        if n_entry < 1:
-            raise ScarceDataException("[fetch_manga_list] : Attempted to fetch a manga_list with no entry")
-
-        n_offsets = n_entry//self.MANGA_DISPLAY_LIMIT
-        for i in range(0, n_offsets+1):
-            time.sleep(sleep_time)
-            target_page = "https://myanimelist.net/mangalist/{}/load.json".format(name)
-            req_json = self.fetch_json(target_page, params={"offset": i*self.MANGA_DISPLAY_LIMIT})
-            data_list.append(req_json)
-            
+        data_list = self.collect_manga_data(name, n_entry, sleep_time)
         for data in data_list:
-            self.create_manga_interraction_entries(data, name)
+            self.create_manga_interraction_entries(data, userid)
 
     def compute_dynamic_sleep(self, q_size:int, n_added:int, exp_factor:float=9) -> float:
-            remaining_user_needed = self.params['MAX_USERS'] - n_added
-            if remaining_user_needed <=0:
-                return self.params["MAX_SLEEP"]
+        """
+        Method that compute sleep time (between function calls) according to the current number of name fetched and difference between the targeted number of user
+        and the current number of users.
+        
+        :param q_size: Size of the queue in which the pending usernames are added.
+        :type q_size: int
+        
+        :param n_added: Number of users added to the data during the current scraper run.
+        :type n_added: int
+        
+        :param exp_factor: power added to the ratio. Control the "speed" at which the computed sleep time reach MAX_SLEEP (the smaller the power is, the quicker sleep_time reaches MAX_SLEEP).
+        :type exp_factor: int
 
-            ratio = min(q_size/remaining_user_needed,1) 
+        :return: Computed sleep time rounded to one decimal. (MAX_SLEEP if no remaining user needed).
+        :rtype: float
+        """
+        remaining_user_needed = self.params['MAX_USERS'] - n_added
+        if remaining_user_needed <=0:
+            return self.params["MAX_SLEEP"]
 
-            sleep_time = self.params["MIN_SLEEP"] + (ratio**exp_factor * (self.params["MAX_SLEEP"] - self.params["MIN_SLEEP"]))
+        ratio = min(q_size/remaining_user_needed,1) 
 
-            return round(sleep_time, 1)
+        sleep_time = self.params["MIN_SLEEP"] + (ratio**exp_factor * (self.params["MAX_SLEEP"] - self.params["MIN_SLEEP"]))
+        return round(sleep_time, 1)
 
     def load_from_previous_session(self):
+        """
+        Method to load pending usernames from previous scraper runs (usernames that were discovered and added to the dataset)
+
+        :return: number of users 
+        :rtype: int
+        """
         self.cursor.execute("""SELECT username FROM users""")
         users = self.cursor.fetchall()
         usernames = [user[0] for user in users]
@@ -304,79 +324,118 @@ class Scraper():
         return n_user_previous_session
 
     def load_pending(self):
-            try:
-                self.cursor.execute("""SELECT username FROM pending_recovery""")
-                users = self.cursor.fetchall()
-                usernames = [user[0] for user in users]
-                for u in usernames:
-                    self.name_queue.put(u)
-                    self.seen.add(u)
-                self.cursor.execute("""DELETE FROM pending_recovery""")
-                self.conn.commit()
-            except Exception as e:
-                raise # Raise ? Return ? Define what are the issues here
-            # Table may not exist.
-            # Issue with the connection
-            return
+        """
+        Method to load pending usernames from previous scraper runs (usernames that were discovered and but not treated)
+        """
+        try:
+            self.cursor.execute("""SELECT username FROM pending_recovery""")
+            users = self.cursor.fetchall()
+            usernames = [user[0] for user in users]
+            for u in usernames:
+                self.name_queue.put(u)
+                self.seen.add(u)
+            self.cursor.execute("""DELETE FROM pending_recovery""")
+            self.conn.commit()
+        except Exception as e:
+            raise e
     
     def dump_pending(self):
-            pending_users = []
-            while not self.name_queue.empty():
-                try:
-                    user = self.name_queue.get_nowait()
-                    if user is not self.SENTINEL:
-                        pending_users.append((user,))
-                    self.name_queue.task_done()
-
-                except queue.Empty:
-                    break
+        """
+        Method to dump pending usernames from previous scraper runs (usernames that were discovered and added to the dataset)
+        """
+        pending_users = []
+        while not self.name_queue.empty():
+            user = self.name_queue.get_nowait()
+            if user is not self.SENTINEL:
+                pending_users.append((user,))
+            self.name_queue.task_done()
+        try:
+            self.cursor.executemany("INSERT OR IGNORE INTO pending_recovery (username) VALUES (?);", pending_users)
+            self.conn.commit()
+        except Exception as e:
+            logging.error("dump_pending : error while converting pending names : {}".format(e))
+            self.conn.rollback()
+            raise e
+    
+    def integrate_user(self, name, sleep_time=1):
+        success = False
+        while not success:
             try:
-                self.cursor.executemany("INSERT OR IGNORE INTO pending_recovery (username) VALUES (?);", pending_users)
-                self.conn.commit()
-            except Exception as e:
-                logging.error("dump_pending : error while converting pending names : {}".format(e))
-                self.conn.rollback()
-                raise
-            return
-        
-    def create_user_review_database(self):
-        n_loaded = self.load_from_previous_session()
-        logging.info("Currently loaded : {}".format(n_loaded)) # TODO : Review logs -> This ?
-        self.load_pending() # self
-        lock = threading.Lock()
-        link_user_data_stop = threading.Event()
-        
+                user_info = self.fetch_manga_profile(name, sleep_time=sleep_time)
+                friends = user_info.pop("friends") #user_info doesn't have friends anymore
 
-        def create_users():
-            print("chasse usernames ?")
-            while not link_user_data_stop.is_set():
-                print(self.added, len(self.added))
-                if len(self.added) >= self.params['MAX_USERS'] + n_loaded: #self
+                self.cursor.execute("""INSERT INTO users (username, gender, birthday, location, entries)
+                                    VALUES (?, ?, ?, ?, ?)""", (user_info["username"], user_info["gender"], user_info["birthday"], user_info["location"], user_info["entries"]))
+                user_id = self.cursor.execute("""SELECT user_id FROM users WHERE username = ?""", (user_info["username"],)).fetchone()[0]
+                self.fetch_manga_list(name, user_id, user_info["entries"],  sleep_time=sleep_time) # we fecth after trying to insert the user, if it's already in the db (from previous runs), fails and no need to fetch ! (saving requests)
+
+                if friends is not None:
+                    for friend in friends:
+                        with self.lock:
+                            if friend in self.added: #name not in added because INSERT INTO users didn't fail.
+                                friend_id = self.cursor.execute("""SELECT user_id FROM users WHERE username = ?""", (friend,)).fetchone()[0]
+                                left_user = min(user_id, friend_id)
+                                right_user = max(user_id, friend_id)
+                                logging.debug(f"Friend in db detected, relationship is being created : ({left_user}, {right_user})")
+                                self.cursor.execute("""INSERT INTO relationships (user_id_left, user_id_right) values (?, ?)""", (left_user, right_user)) #Add every relationship between user and friends that have already been added
+                            elif friend not in self.seen:
+                                self.seen.add(friend)
+                                self.name_queue.put(friend)
+                with self.lock:
+                    self.added.add(name)
+                
+                self.conn.commit()
+                success = True
+            
+            except (requests.exceptions.ConnectionError, requests.exceptions.Timeout) as e:
+                logging.error(f"[THREAD B] : Connection Error : {e} | Waiting for Connection...")
+                time.sleep(self.params['CONNECTION_ISSUES_SLEEP'])
+                self.conn.rollback()
+
+            except (HTMLParsingException, ScarceDataException, PrivateListException) as e:
+                    logging.error(f"[THREAD B] : Skiping user {name}, cause : \n \t{e}")
+                    self.conn.rollback()
+                    return
+
+            except sqlite3.IntegrityError as e:
+                logging.error(f"[THREAD B] : Database integrity violation on user {name}, aborting program : \n \t{e}")
+                self.conn.rollback()
+                raise e
+
+            except requests.exceptions.HTTPError as e:
+                if (e.response.status_code == 429 or e.response.status_code == 403):
+                    logging.error("[THREAD B] : Too Many Requests : Waiting before trying again...")
+                    time.sleep(self.params['RATE_LIMIT_SLEEP'])
+                    self.conn.rollback()
+                else:
+                    logging.error(f"[THREAD B] : Uncharacterised HTTP Error ({e.response.status_code}) Abort integration")
+                    self.conn.rollback()
+                    raise e
+
+            except Exception as e:
+                logging.error(f"[THREAD B] : Uncharacterised Error ({e}) Abort integration")
+                self.conn.rollback()
+                raise e
+                
+    def create_users(self, n_loaded):
+            """
+            Method that collects usernames from MAL user page to add them to the scraper name queue.
+            :raises requests.exceptions.ConnectionError: Internet connection was cut (retries)
+            :raises requests.exceptions.Timeout: Request timeout (retries)
+            :raises requests.exceptions.HTTPError: Rate limit code leads to a retry (403 according to https://myanimelist.net/forum/?topicid=1991772 and 429) any other HTTPError code stops Thread A.
+            :raises Exception: Unknown errors also leads to Thread A stopping
+            """
+            while not self.thread_A_stop_signal.is_set():
+                if len(self.added) >= self.params['MAX_USERS'] + n_loaded:
                     break
                 try:
-                    print("we are trying to chase.")
-                    with lock:
-                        current_sleep = self.user_page_sleep
-                    print("Is everything going well ?")
-                    logging.debug(f"[THREAD A] : Current sleep time : {current_sleep}")
-                    names = self.fetch_user_page(sleep_time=current_sleep)
-                    added_loop = []
-                    print(f"names : {names}")
+                    logging.debug(f"[THREAD A] : Current sleep time : {self.user_page_sleep}")
+                    names = self.fetch_user_page(sleep_time=self.user_page_sleep)
                     for name in names:
-                        
-                        if link_user_data_stop.is_set(): #thread B crashes while we are putting names on the queue
-                            break
-
-                        if len(self.added) >= self.params['MAX_USERS'] + n_loaded: #max_users is reached while we are adding new names
-                            break
-
-                        with lock:
+                        with self.lock:
                             if name not in self.seen:
                                 self.seen.add(name)
                                 self.name_queue.put(name)
-                                added_loop.append(name)
-                    
-                    logging.info("[THREAD A] : {} Users added during loop : {}".format(len(added_loop), added_loop))
 
                 except requests.exceptions.ConnectionError:
                     logging.error("[THREAD A] : Connection Error : Waiting for Connection...")
@@ -391,131 +450,87 @@ class Scraper():
                         logging.error("[THREAD A] : Too Many Requests : Waiting before trying again...")
                         time.sleep(self.params['RATE_LIMIT_SLEEP'])
                     elif e.response.status_code == 403 :
-                        # According to (https://myanimelist.net/forum/?topicid=1991772) 403 is the rate limit response received
                         logging.error("[THREAD A] : Too Many Requests : Waiting before trying again...")
                         time.sleep(self.params['RATE_LIMIT_SLEEP'])
                     else:
-                        logging.error("[THREAD A] : Unhandled HTTP error ({}) : Stopping Thread A".format(e.response.status_code))
-                        break
+                        logging.error(f"[THREAD A] : Unhandled HTTP error ({e.response.status_code} -> {e}) : Stopping Thread A")
+                        self.name_queue.put(self.SENTINEL)
+                        raise e
 
                 except Exception as ue:
-                    logging.error(f"[THREAD A] Unknown error : {ue} aborting scraping.")
+                    logging.error(f"[THREAD A] Unknown error : {ue} aborting scraping, thread A has been stopped.")
                     self.name_queue.put(self.SENTINEL)
+                    raise ue
+                
+            self.name_queue.put(self.SENTINEL)
+    
+    def link_user_data(self, n_loaded):
+            """
+            Method that collect user's profile data and manga entries. Adds discovered friends name back to the scraper name queue
+            :raises requests.exceptions.ConnectionError: Internet connection was cut (retries)
+            :raises requests.exceptions.Timeout: Request timeout (retries)
+            :raises requests.exceptions.HTTPError: Rate limit code leads to a retry (403 according to https://myanimelist.net/forum/?topicid=1991772 and 429) any other HTTPError code stops Thread B.
+            :raises HTMLParsingException: Request timeout (retries)
+            :raises ScarceDataException: Request timeout (retries)
+            :raises PrivateListException: Request timeout (retries)
+            :raises sqlite3.IntegrityError: Request timeout (retries)
+            :raises Exception: Unknown errors also leads to Thread B stopping
+            """
+            while True:
+                try:
+                    name = self.name_queue.get(timeout=self.params["QUEUE_TIMEOUT"])
+
+                except (queue.Empty) as e:
+                    logging.error(f"[THREAD B] : Queue has been empty for {self.params["QUEUE_TIMEOUT"]}s, aborting linking")
                     break
 
-            self.name_queue.put(self.SENTINEL)
+                logging.debug(f"Current user : {name}")
+
+                with self.lock:
+                    q_size = self.name_queue.qsize()
+                    n_added = len(self.added)
+                    logging.debug(f"[THREAD B] : Added total {n_added}")
+                    self.user_page_sleep = self.compute_dynamic_sleep(q_size, n_added - n_loaded)
+                    logging.debug("[THREAD B] : Current user page fetch time sleep : {}\n \t Number of currently fetched users : {}\n \t Number of currently added users {}\n \t(Previously loaded : {})".format(self.user_page_sleep, q_size, n_added - n_loaded, n_loaded))
+
+                if name is self.SENTINEL or len(self.added) > self.params['MAX_USERS'] + n_loaded:
+                    self.name_queue.task_done()
+                    self.dump_pending()
+                    break
+
+                try:
+                    self.integrate_user(name)
+
+                except Exception as ue:
+                    logging.error(f"[THREAD B] : Unexpected error; Abort scraping : \n \t {ue}")
+                    self.conn.rollback()
+                    self.user_page_sleep = self.params["MIN_SLEEP"]
+                    self.thread_A_stop_signal.set()
+                    self.name_queue.task_done()
+                    self.dump_pending()
+                    raise ue
+            
+            self.thread_A_stop_signal.set()
+
+
+    def create_user_review_database(self):
+        """
+        Method to create the manga entries dataset. Build a Bi-Thread web scraper that fetches users information and manga reviews from MAL :
+            - Thread A : Collects usernames from MAL user page (https://myanimelist.net/users.php), add them to the queue.
+            - Thread B : Collects (when applicable) the data (profile data & manga entries data) for the user. Adds friends name to the queue.
+        """
+        n_loaded = self.load_from_previous_session()
+        logging.info("Currently loaded : {}".format(n_loaded)) 
+        self.load_pending()
         
-        def link_user_data():
-            print("on link ?")
-            with closing(self.conn):
-                while True:
-                    name = self.name_queue.get()
-                    task_done = False
-                    logging.debug(f"Current user : {name}")
-
-                    with lock:
-                        q_size = self.name_queue.qsize()
-                        n_added = len(self.added)
-                        logging.debug(f"[THREAD B] : Added total {n_added}")
-                        self.user_page_sleep = self.compute_dynamic_sleep(q_size, n_added - n_loaded)
-                        logging.debug("[THREAD B] : Current user page fetch time sleep : {}\n \t Number of currently fetched users : {}\n \t Number of currently added users {}\n \t(Previously loaded : {})".format(self.user_page_sleep, q_size, n_added - n_loaded, n_loaded))
-
-                    if name is self.SENTINEL or len(self.added) > self.params['MAX_USERS'] + n_loaded:
-                        self.name_queue.task_done()
-                        self.dump_pending()
-                        break
-
-                    try:
-                        success = False
-                        while not success:
-                            try:
-                                user_info = self.fetch_manga_profile(name, sleep_time=1)
-                                friends = user_info.pop("friends") #user_info doesn't have friends anymore
-
-                                self.cursor.execute("""INSERT INTO users (username, gender, birthday, location, entries)
-                                                    VALUES (?, ?, ?, ?, ?)""", (user_info["username"], user_info["gender"], user_info["birthday"], user_info["location"], user_info["entries"]))
-                                self.fetch_manga_list(name, user_info["entries"], sleep_time=1) # we fecth after trying to insert the user, if it's already in the db (from previous runs), fails and no need to fetch ! (saving requests)
-
-                                if friends is not None:
-                                    for friend in friends:
-                                        with lock:
-                                            if friend in self.added: #name not in added because INSERT INTO users didn't fail.
-                                                left_user = min(name, friend)
-                                                right_user = max(name, friend)
-                                                logging.debug(f"Friend in db detected, relationship is being created : ({left_user}, {right_user})")
-                                                self.cursor.execute("""INSERT INTO relationships (user_left, user_right) values (?, ?)""", (left_user, right_user)) #Add every relationship between user and friends that have already been added
-                                            elif friend not in self.seen and self.name_queue.qsize():
-                                                self.seen.add(friend)
-                                                self.name_queue.put(friend)
-                                with lock:
-                                    self.added.add(name)
-                                
-                                self.conn.commit()
-                                success = True
-                            
-                            except (requests.exceptions.ConnectionError, requests.exceptions.Timeout) as e:
-                                logging.error(f"[THREAD B] : Connection Error : {e} | Waiting for Connection...")
-                                self.conn.rollback()
-                                time.sleep(self.params['CONNECTION_ISSUES_SLEEP'])
-
-                            except requests.exceptions.HTTPError as e:
-                                if (e.response.status_code == 429 or e.response.status_code == 403):
-                                    logging.error("[THREAD B] : Too Many Requests : Waiting before trying again...")
-                                    self.conn.rollback()
-                                    time.sleep(self.params['RATE_LIMIT_SLEEP'])
-                                elif (e.response.status_code == 404):
-                                    logging.error(f"[THREAD B] : User {name} not found. Skipping ...")
-                                    self.conn.rollback()
-                                    break
-                                else:
-                                    logging.error(F"[THREAD B] : Error : {e}")
-                                    link_user_data_stop.set()
-                                    self.user_page_sleep = self.params["MAX_SLEEP"] # we don't know if thread A crashed, put maximum timer and dump.
-                                    self.name_queue.task_done()
-                                    task_done=True
-                                    self.conn.rollback()
-                                    self.dump_pending(self.name_queue)
-                                    break
-
-                    except (HTMLParsingException, ScarceDataException, PrivateListException) as e:
-                        logging.error(f"[THREAD B] : Skiping user {name}, cause : {e}")
-                        self.conn.rollback()
-                    
-                    except sqlite3.IntegrityError as e:
-                        logging.error(f"[THREAD B] : User {name} is already in the database, skipping user : {e}")
-                        self.conn.rollback()
-                    
-                    except sqlite3.Error as e:
-                        logging.error(f"[THREAD B] : Database error while saving {name}: {e} \nCurrently no clue what to do here, user will be skipped")
-                        self.conn.rollback()
-                    
-                    except Exception as ue:
-                        logging.error(f"[THREAD B] : Unknwon exception ; Abort scraping : {ue}")
-                        self.conn.rollback()
-                        self.user_page_sleep = self.params["MAX_SLEEP"] # we don't know if thread A crashed, put maximum timer and dump.
-                        self.name_queue.task_done()
-                        task_done=True
-                        self.conn.rollback()
-                        link_user_data_stop.set()
-                        self.dump_pending()
-                        break
-
-                    finally:
-                        if not task_done: # If an error requiring to dump names from the queue has been caught, ignore the task_done order (was done before)
-                            self.name_queue.task_done()
-                
-                link_user_data_stop.set()
-
-        print("Starting..")
-        user_name_thread = threading.Thread(target=create_users)
-        rating_thread = threading.Thread(target=link_user_data)
+        user_name_thread = threading.Thread(target=self.create_users, args=(n_loaded,))
+        rating_thread = threading.Thread(target=self.link_user_data, args=(n_loaded,))
 
         user_name_thread.start()
         rating_thread.start()
 
         user_name_thread.join()
         rating_thread.join()
-        print("Done !")
 
     def run(self, profiler = True):
         if profiler :
