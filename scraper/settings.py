@@ -2,6 +2,10 @@ from pydantic import BaseModel, FilePath, ValidationError, field_validator, Vali
 from pydantic_settings import BaseSettings
 from pathlib import Path
 import db_scheme as dbs
+from dotenv import load_dotenv
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(BASE_DIR / ".env")
 
 class ParameterError(Exception):
     pass

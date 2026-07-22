@@ -22,4 +22,7 @@ shared/__pycache__
 shared/shared.egg-info
 .coverage
 .pytest_cache
+coverage.xml
+junit/
+freeze
 
