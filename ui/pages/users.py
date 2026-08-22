@@ -1,5 +1,5 @@
+from ui.pages.config import * 
 from shiny import ui, Inputs, Outputs, Session, reactive, render
-from .config import * 
 import pandas as pd
 import plotly.graph_objects as go
 import plotly.express as px
@@ -60,7 +60,7 @@ def server(input: Inputs, output: Outputs, session: Session):
         q = input.search_query()
         if not q or len(q) < 2:
             return pd.DataFrame([], columns=["Usernames found"])
-        response = requests.get(API_URL + "/users/search?q={}&limit=10".format(q))
+        response = requests.get(param["API_URL"] + "/users/search?q={}&limit=10".format(q))
         user_df = pd.DataFrame(response.json()['data'], columns=["Usernames found"])
         print(response.json()['data'])
         return user_df
@@ -129,7 +129,7 @@ def server(input: Inputs, output: Outputs, session: Session):
             fig = go.Figure()
             return fig
         else:
-            req = API_URL + "/users/{}/entries/full".format(user)
+            req = param["API_URL"] + "/users/{}/entries/full".format(user)
             response = requests.get(req)
             df = pd.DataFrame(response.json()['data'])
 
@@ -167,7 +167,7 @@ def server(input: Inputs, output: Outputs, session: Session):
             fig = go.Figure()
             return go.Figure()
         else:
-            req = API_URL + "/users/{}/entries/full".format(user)
+            req = param["API_URL"] + "/users/{}/entries/full".format(user)
             print(req)
             response = requests.get(req)
             df = pd.DataFrame(response.json()['data'])
