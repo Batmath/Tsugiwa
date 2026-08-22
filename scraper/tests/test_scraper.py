@@ -7,7 +7,7 @@ import sqlite3
 import os
 import requests, queue
 import json
-import db_scheme as dbs
+import shared.db_scheme as dbs
 
 # TODO : Add fixture for full information cases when scraping MAL profiles 
 
