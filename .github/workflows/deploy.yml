@@ -1,0 +1,91 @@
+name: deploy-to-server
+on:
+  workflow_run:
+    workflows: ["continuous-testing"]
+    types: [completed]
+    branches: [main]
+
+jobs:
+    changes:
+        if: github.event.workflow_run.conclusion == 'success'
+        runs-on: ubuntu-latest
+        outputs:
+            scraper: ${{ steps.filter.outputs.scraper }}
+            api: ${{ steps.filter.outputs.api }}
+            ui: ${{ steps.filter.outputs.ui }}
+            compose: ${{ steps.filter.outputs.compose }}
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                ref: ${{ github.event.workflow_run.head_sha }}
+            - uses: dorny/paths-filter@v3
+              id: filter
+              with:
+                base: ${{ github.event.workflow_run.head_branch }}
+                ref: ${{ github.event.workflow_run.head_sha }}
+                filters: |
+                    scraper:
+                      - 'scraper/**'
+                      - 'shared/**'
+                    api:
+                      - 'api/**'
+                      - 'shared/**'
+                    ui:
+                      - 'ui/**'
+                      - 'shared/**'
+                    compose:
+                      - 'docker-compose.yml'
+
+    deploy-scraper:
+        needs: changes
+        if: needs.changes.outputs.scraper == 'true'
+        runs-on: self-hosted
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                ref: ${{ github.event.workflow_run.head_sha }}
+            - run: rsync -avz --delete scraper/ ~/tsugiwa/scraper/
+            - run: rsync -avz --delete shared/ ~/tsugiwa/shared/
+            - run: rsync -avz docker-compose.yml ~/tsugiwa/docker-compose.yml
+            - run: mkdir -p ~/tsugiwa/data ~/tsugiwa/logs
+            - run: cd ~/tsugiwa && docker compose up -d --build scraper
+
+    deploy-api:
+        needs: changes
+        if: needs.changes.outputs.api == 'true'
+        runs-on: self-hosted
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                ref: ${{ github.event.workflow_run.head_sha }}
+            - run: rsync -avz --delete api/ ~/tsugiwa/api/
+            - run: rsync -avz --delete shared/ ~/tsugiwa/shared/
+            - run: rsync -avz docker-compose.yml ~/tsugiwa/docker-compose.yml
+            - run: mkdir -p ~/tsugiwa/data ~/tsugiwa/logs
+            - run: cd ~/tsugiwa && docker compose up -d --build api
+
+    deploy-ui:
+        needs: changes
+        if: needs.changes.outputs.ui == 'true'
+        runs-on: self-hosted
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                ref: ${{ github.event.workflow_run.head_sha }}
+            - run: rsync -avz --delete ui/ ~/tsugiwa/ui/
+            - run: rsync -avz --delete shared/ ~/tsugiwa/shared/
+            - run: rsync -avz docker-compose.yml ~/tsugiwa/docker-compose.yml
+            - run: mkdir -p ~/tsugiwa/data ~/tsugiwa/logs
+            - run: cd ~/tsugiwa && docker compose up -d --build ui
+
+    deploy-compose-only:
+        needs: changes
+        if: needs.changes.outputs.compose == 'true' && needs.changes.outputs.scraper != 'true' && needs.changes.outputs.api != 'true' && needs.changes.outputs.ui != 'true'
+        runs-on: self-hosted
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                ref: ${{ github.event.workflow_run.head_sha }}
+            - run: rsync -avz docker-compose.yml ~/tsugiwa/docker-compose.yml
+            - run: mkdir -p ~/tsugiwa/data ~/tsugiwa/logs
+            - run: cd ~/tsugiwa && docker compose up -d
