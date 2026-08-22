@@ -1,5 +1,7 @@
 from shiny import App, ui, render
-from pages import dashboard, users, entries, manga
+from ui.pages import dashboard, users, entries, manga
+from ui.pages.config import param
+import subprocess
 
 # shiny run ./ui/app.py --port 7950 --reload
 # TODO : Ajouter
@@ -19,3 +21,6 @@ def server(input, output, session):
     manga.server(input, output, session)
 
 app = App(app_ui, server)
+
+if __name__ == "__main__":
+    subprocess.run(["shiny", "run", "ui.app:app", "--app-dir", ".", "--host", param["HOST_IP_ADDRESS"], "--port", str(param["UI_PORT"]),"--reload",])

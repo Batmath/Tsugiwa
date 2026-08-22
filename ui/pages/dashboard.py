@@ -1,6 +1,7 @@
+from ui.pages.config import *
 from shiny import ui, Inputs, Outputs, Session, reactive, render
 import requests
-from .config import *
+
 
 # shiny run ./ui/app.py --port 7950 --reload
 # localurl API : http://localhost:8080
@@ -28,7 +29,7 @@ def page_ui():
 def server(input: Inputs, output: Outputs, session: Session):
 
     def fetch_count(endpoint, gender=None, birthday_bounds=None, entries_bounds=None):
-        url = API_URL+"/{}?counting=True".format(endpoint)
+        url = param["API_URL"]+"/{}?counting=True".format(endpoint)
 
         if gender != "None":
             url += "&gender={}".format(gender)

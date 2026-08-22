@@ -1,94 +1,21 @@
 import requests
 import faicons as fa
-
-API_URL = "http://localhost:8080"
+import ui.settings as settings
+import json
+from pathlib import Path
 
 ICONS = {
     "user": fa.icon_svg("user", "regular"),
     "book" : fa.icon_svg("book")
 }
 
-response = requests.get(API_URL + "/genres")
-GENRES_DICT = {genre['genre_id'] : genre['genre_name'] for genre in response.json()['data']}
+param = settings.ParametersUI().model_dump()
 
-GENRE_COLORS = {
-    "Action": "#E53935",
-    "Adventure": "#FB8C00",
-    "Racing": "#FDD835",
-    "Comedy": "#43A047",
-    "Avant Garde": "#8E24AA",
-    "Mythology": "#3949AB",
-    "Mystery": "#1E88E5",
-    "Drama": "#00ACC1",
-    "Ecchi": "#F06292",
-    "Fantasy": "#00897B",
-    "Strategy Game": "#5E35B1",
-    "Hentai": "#D81B60",
-    "Historical": "#795548",
-    "Horror": "#212121",
-    "Kids": "#FFB300",
-    "Martial Arts": "#D32F2F",
-    "Mecha": "#546E7A",
-    "Music": "#1A237E",
-    "Parody": "#C0CA33",
-    "Samurai": "#6D4C41",
-    "Romance": "#F48FB1",
-    "School": "#039BE5",
-    "Sci-Fi": "#00ACC1",
-    "Shoujo": "#F44336",
-    "Girls Love": "#AD1457",
-    "Shounen": "#F57C00",
-    "Boys Love": "#4A148C",
-    "Space": "#283593",
-    "Sports": "#FF8F00",
-    "Super Power": "#C62828",
-    "Vampire": "#880E4F",
-    "Harem": "#FF80AB",
-    "Slice of Life": "#8BC34A",
-    "Supernatural": "#512DA8",
-    "Military": "#33691E",
-    "Detective": "#455A64",
-    "Psychological": "#6A1B9A",
-    "Seinen": "#1565C0",
-    "Josei": "#D81B60",
-    "Crossdressing": "#CE93D8",
-    "Suspense": "#37474F",
-    "Award Winning": "#FFD54F",
-    "Gourmet": "#FF7043",
-    "Workplace": "#8D6E63",
-    "Erotica": "#EC407A",
-    "Adult Cast": "#5C2665",
-    "Anthropomorphic": "#A1887F",
-    "CGDCT": "#F8BBD0",
-    "Childcare": "#FFF59D",
-    "Combat Sports": "#BF360C",
-    "Delinquents": "#4E342E",
-    "Educational": "#81C784",
-    "Gag Humor": "#DCE775",
-    "Gore": "#B71C1C",
-    "High Stakes Game": "#311B92",
-    "Idols (Female)": "#FF4081",
-    "Idols (Male)": "#00B0FF",
-    "Isekai": "#26A69A",
-    "Iyashikei": "#A5D6A7",
-    "Love Polygon": "#AB47BC",
-    "Magical Sex Shift": "#BA68C8",
-    "Mahou Shoujo": "#F48FB1",
-    "Medical": "#4DB6AC",
-    "Memoir": "#BCAAA4",
-    "Organized Crime": "#263238",
-    "Otaku Culture": "#9FA8DA",
-    "Performing Arts": "#FFCA28",
-    "Pets": "#D7CCC8",
-    "Reincarnation": "#80CBC4",
-    "Reverse Harem": "#E1BEE7",
-    "Love Status Quo": "#F06292",
-    "Showbiz": "#FFEB3B",
-    "Survival": "#558B2F",
-    "Team Sports": "#EF6C00",
-    "Time Travel": "#0277BD",
-    "Video Game": "#00E676",
-    "Villainess": "#4A148C",
-    "Visual Arts": "#29B6F6",
-    "Urban Fantasy": "#651FFF"
-}
+# TODO : refactor this garbage once the containers are set up
+config_path = str(Path(__file__).parent.parent) + "/data/" + "genre_colors.json"
+
+with open(config_path) as f:
+    response = dict(json.load(f))
+
+GENRE_COLORS = {value[0] : value[1]['color'] for key,value in enumerate(response.items())}
+GENRES_DICT = {value[0] : value[1]['name'] for key,value in enumerate(response.items())}
