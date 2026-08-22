@@ -24,5 +24,4 @@ shared/shared.egg-info
 coverage.xml
 junit/
 freeze
-.github
 
