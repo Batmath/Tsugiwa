@@ -10,6 +10,8 @@ from contextlib import closing
 import logging
 from shared.db_scheme import *
 import scraper.settings as settings
+import signal
+import sys
 logger = logging.getLogger(__name__)
 
 class PrivateListException(Exception):
@@ -58,6 +60,7 @@ class Scraper():
         self.name_queue = queue.Queue()
         self.lock = threading.Lock()
         self.thread_A_stop_signal = threading.Event()
+        self.container_stop_signal = threading.Event()
 
     def fetch_html(self, url:str, params=None):
         """
@@ -425,7 +428,7 @@ class Scraper():
             :raises requests.exceptions.HTTPError: Rate limit code leads to a retry (403 according to https://myanimelist.net/forum/?topicid=1991772 and 429) any other HTTPError code stops Thread A.
             :raises Exception: Unknown errors also leads to Thread A stopping
             """
-            while not self.thread_A_stop_signal.is_set():
+            while not self.thread_A_stop_signal.is_set() and not self.container_stop_signal.is_set():
                 if len(self.added) >= self.params['MAX_USERS'] + n_loaded:
                     break
                 try:
@@ -476,7 +479,7 @@ class Scraper():
             :raises sqlite3.IntegrityError: Request timeout (retries)
             :raises Exception: Unknown errors also leads to Thread B stopping
             """
-            while True:
+            while not self.container_stop_signal.is_set():
                 try:
                     name = self.name_queue.get(timeout=self.params["QUEUE_TIMEOUT"])
 
@@ -512,6 +515,9 @@ class Scraper():
             
             self.thread_A_stop_signal.set()
 
+    def handle_sigterm(self, signum, frame):
+        print("SIGTERM caught, dumping queued usernames")
+        self.container_stop_signal.set()
 
     def create_user_review_database(self):
         """
@@ -523,6 +529,8 @@ class Scraper():
         logging.info("Currently loaded : {}".format(n_loaded)) 
         self.load_pending()
         
+        signal.signal(signal.SIGTERM, self.handle_sigterm)
+        
         user_name_thread = threading.Thread(target=self.create_users, args=(n_loaded,))
         rating_thread = threading.Thread(target=self.link_user_data, args=(n_loaded,))
 
@@ -531,6 +539,8 @@ class Scraper():
 
         user_name_thread.join()
         rating_thread.join()
+
+        self.dump_pending()
 
     def run(self, profiler = True):
         if profiler :
