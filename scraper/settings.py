@@ -1,7 +1,7 @@
 from pydantic import BaseModel, FilePath, ValidationError, field_validator, ValidationInfo, ValidationError, model_validator
 from pydantic_settings import BaseSettings
 from pathlib import Path
-import db_scheme as dbs
+import shared.db_scheme as dbs
 from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -48,7 +48,6 @@ class ParametersScraper(BaseSettings):
         if not path.exists():
             path.parent.mkdir(parents=True, exist_ok=True)
             path.touch()
-
         return path
     
     @model_validator(mode='after')
