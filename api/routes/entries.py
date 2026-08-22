@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from ..database import *
+from api.database import *
 
 router = APIRouter(prefix="/entries", tags=["entries"])
 
