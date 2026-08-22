@@ -1,0 +1,10 @@
+[project]
+name = "shared"
+authors = [{name = "Batmath"}]
+version = "0.0.2"
+description = "Small internal package to share methods to create a sample databases"
+requires-python = "==3.12.13"
+
+[build-system]
+requires = ["setuptools >= 77.0.3"]
+build-backend = "setuptools.build_meta"

@@ -1,0 +1,16 @@
+data/*.db
+data/*.db-journal
+data/*.prof
+htmls
+tsugiwa_venv
+.vscode
+.git
+.gitignore
+README.md
+*.pyc
+.pytest_cache
+__pycache__
+log
+junit
+freeze
+.github

@@ -1,0 +1,6692 @@
+[
+  {
+    "id": 173045511,
+    "status": 1,
+    "score": 7,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 120,
+    "num_read_volumes": 0,
+    "created_at": 1735577626,
+    "manga_title": "A Returner's Magic Should Be Special",
+    "manga_english": "A Returner's Magic Should Be Special",
+    "manga_num_chapters": 268,
+    "manga_num_volumes": 0,
+    "manga_publishing_status": 2,
+    "manga_id": 132247,
+    "manga_magazines": null,
+    "manga_total_members": 60996,
+    "manga_total_scores": 23882,
+    "manga_score_val": 7.6,
+    "manga_score_diff": -0.6,
+    "manga_popularity": 317,
+    "genres": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 10,
+        "name": "Fantasy"
+      }
+    ],
+    "demographics": [],
+    "title_localized": null,
+    "manga_url": "/manga/132247/A_Returners_Magic_Should_Be_Special",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/239089.jpg?s=a7a14a4746c8433f2aef911f7623261b",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manhwa",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "19-05-18",
+    "manga_end_date_string": "22-06-24",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 168561641,
+    "status": 1,
+    "score": 9,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1726080596,
+    "manga_title": "Deatte 5-byou de Battle",
+    "manga_english": "Battle in 5 Seconds",
+    "manga_num_chapters": 0,
+    "manga_num_volumes": 0,
+    "manga_publishing_status": 1,
+    "manga_id": 102690,
+    "manga_magazines": null,
+    "manga_total_members": 18372,
+    "manga_total_scores": 5335,
+    "manga_score_val": 7.23,
+    "manga_score_diff": 1.77,
+    "manga_popularity": 1264,
+    "genres": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 37,
+        "name": "Supernatural"
+      }
+    ],
+    "demographics": [],
+    "title_localized": null,
+    "manga_url": "/manga/102690/Deatte_5-byou_de_Battle",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/185911.jpg?s=def72df71c239b4b157dd448878c0f04",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "11-08-15",
+    "manga_end_date_string": null,
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 145988588,
+    "status": 1,
+    "score": 8,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 219,
+    "num_read_volumes": 0,
+    "created_at": 1685639561,
+    "manga_title": "Blue Lock",
+    "manga_english": "Blue Lock",
+    "manga_num_chapters": 0,
+    "manga_num_volumes": 0,
+    "manga_publishing_status": 1,
+    "manga_id": 114745,
+    "manga_magazines": null,
+    "manga_total_members": 223944,
+    "manga_total_scores": 104351,
+    "manga_score_val": 8.41,
+    "manga_score_diff": -0.41,
+    "manga_popularity": 37,
+    "genres": [
+      {
+        "id": 46,
+        "name": "Award Winning"
+      },
+      {
+        "id": 30,
+        "name": "Sports"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 27,
+        "name": "Shounen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/114745/Blue_Lock",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/5/213340.jpg?s=6c10dbb829819e1eebc2622e1e929276",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "01-08-18",
+    "manga_end_date_string": null,
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "Le manga est tr&egrave;s prenant en &eacute;tant dedans. Cependant, avec le rythme semaine par semaine, j&#039;ai juste l&#039;impression que le manga avance lentement (une action sur une partie du terrain pour un chapitre)",
+    "editable_notes": "Le manga est très prenant en étant dedans. Cependant, avec le rythme semaine par semaine, j'ai juste l'impression que le manga avance lentement (une action sur une partie du terrain pour un chapitre)"
+  },
+  {
+    "id": 134586370,
+    "status": 1,
+    "score": 10,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 102,
+    "num_read_volumes": 0,
+    "created_at": 1666985375,
+    "manga_title": "Chainsaw Man",
+    "manga_english": "Chainsaw Man",
+    "manga_num_chapters": 232,
+    "manga_num_volumes": 24,
+    "manga_publishing_status": 2,
+    "manga_id": 116778,
+    "manga_magazines": null,
+    "manga_total_members": 739478,
+    "manga_total_scores": 450602,
+    "manga_score_val": 8.63,
+    "manga_score_diff": 1.37,
+    "manga_popularity": 2,
+    "genres": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 46,
+        "name": "Award Winning"
+      },
+      {
+        "id": 10,
+        "name": "Fantasy"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 27,
+        "name": "Shounen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/116778/Chainsaw_Man",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/216464.jpg?s=23d5cb31dba546d91281364ddc35bfc3",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "03-12-18",
+    "manga_end_date_string": "25-03-26",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "La partie 1 est incroyable, les combats sont parfois vraiment sp&eacute;ciaux (aussi en accord avec le style impr&eacute;visible mais pourtant simpliste de Denji). Les personnages et leurs motivations m&#039;ont aussi beaucoup touch&eacute;.<br />\n<br />\nPARTIE 2 &Agrave; VENIR.",
+    "editable_notes": "La partie 1 est incroyable, les combats sont parfois vraiment spéciaux (aussi en accord avec le style imprévisible mais pourtant simpliste de Denji). Les personnages et leurs motivations m'ont aussi beaucoup touché.\n\nPARTIE 2 À VENIR."
+  },
+  {
+    "id": 163459999,
+    "status": 1,
+    "score": 8,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1716574654,
+    "manga_title": "Lv2 kara Cheat datta Motoyuusha Kouho no Mattari Isekai Life",
+    "manga_english": "Chillin' in Another World with Level 2 Super Cheat Powers",
+    "manga_num_chapters": 0,
+    "manga_num_volumes": 0,
+    "manga_publishing_status": 1,
+    "manga_id": 119152,
+    "manga_magazines": null,
+    "manga_total_members": 34600,
+    "manga_total_scores": 9906,
+    "manga_score_val": 7.16,
+    "manga_score_diff": 0.84,
+    "manga_popularity": 604,
+    "genres": [
+      {
+        "id": 2,
+        "name": "Adventure"
+      },
+      {
+        "id": 10,
+        "name": "Fantasy"
+      },
+      {
+        "id": 22,
+        "name": "Romance"
+      }
+    ],
+    "demographics": [],
+    "title_localized": null,
+    "manga_url": "/manga/119152/Lv2_kara_Cheat_datta_Motoyuusha_Kouho_no_Mattari_Isekai_Life",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/1/221664.jpg?s=fa451205d46132706e7cc904d124574a",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "10-01-19",
+    "manga_end_date_string": null,
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167678178,
+    "status": 1,
+    "score": 6,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1724633169,
+    "manga_title": "DNA²: Dokoka de Nakushita Aitsu no Aitsu",
+    "manga_english": "DNA²",
+    "manga_num_chapters": 42,
+    "manga_num_volumes": 5,
+    "manga_publishing_status": 2,
+    "manga_id": 683,
+    "manga_magazines": null,
+    "manga_total_members": 8524,
+    "manga_total_scores": 4397,
+    "manga_score_val": 6.88,
+    "manga_score_diff": -0.88,
+    "manga_popularity": 3034,
+    "genres": [
+      {
+        "id": 4,
+        "name": "Comedy"
+      },
+      {
+        "id": 22,
+        "name": "Romance"
+      },
+      {
+        "id": 24,
+        "name": "Sci-Fi"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 27,
+        "name": "Shounen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/683/DNA²__Dokoka_de_Nakushita_Aitsu_no_Aitsu",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/1/177761.jpg?s=8be86aa26f222846053f7e663aa18c3f",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "10-08-93",
+    "manga_end_date_string": "21-06-94",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 134588248,
+    "status": 1,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1666989059,
+    "manga_title": "Dr. Stone",
+    "manga_english": "Dr. Stone",
+    "manga_num_chapters": 237,
+    "manga_num_volumes": 27,
+    "manga_publishing_status": 2,
+    "manga_id": 103897,
+    "manga_magazines": null,
+    "manga_total_members": 216198,
+    "manga_total_scores": 104817,
+    "manga_score_val": 8.2,
+    "manga_score_diff": -99,
+    "manga_popularity": 41,
+    "genres": [
+      {
+        "id": 2,
+        "name": "Adventure"
+      },
+      {
+        "id": 46,
+        "name": "Award Winning"
+      },
+      {
+        "id": 45,
+        "name": "Suspense"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 27,
+        "name": "Shounen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/103897/Dr_Stone",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/1/197883.jpg?s=4db96c09bcc021dfe234261d02e7d7e7",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "06-03-17",
+    "manga_end_date_string": "25-12-23",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 169310506,
+    "status": 1,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1727625054,
+    "manga_title": "GTO",
+    "manga_english": "GTO: Great Teacher Onizuka",
+    "manga_num_chapters": 208,
+    "manga_num_volumes": 25,
+    "manga_publishing_status": 2,
+    "manga_id": 336,
+    "manga_magazines": null,
+    "manga_total_members": 191907,
+    "manga_total_scores": 72773,
+    "manga_score_val": 8.86,
+    "manga_score_diff": -99,
+    "manga_popularity": 58,
+    "genres": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 46,
+        "name": "Award Winning"
+      },
+      {
+        "id": 4,
+        "name": "Comedy"
+      },
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 9,
+        "name": "Ecchi"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 27,
+        "name": "Shounen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/336/GTO",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/172982.jpg?s=c2e0d855dfca3c765b1f5834ece1b0db",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "11-12-96",
+    "manga_end_date_string": "30-01-02",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167677773,
+    "status": 1,
+    "score": 7,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1724632551,
+    "manga_title": "Tengoku Daimakyou",
+    "manga_english": "Heavenly Delusion",
+    "manga_num_chapters": 0,
+    "manga_num_volumes": 0,
+    "manga_publishing_status": 1,
+    "manga_id": 111745,
+    "manga_magazines": null,
+    "manga_total_members": 46770,
+    "manga_total_scores": 11270,
+    "manga_score_val": 8.17,
+    "manga_score_diff": -1.17,
+    "manga_popularity": 425,
+    "genres": [
+      {
+        "id": 2,
+        "name": "Adventure"
+      },
+      {
+        "id": 7,
+        "name": "Mystery"
+      },
+      {
+        "id": 24,
+        "name": "Sci-Fi"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/111745/Tengoku_Daimakyou",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/210308.jpg?s=a0f4a5df335371b2ba931fa0f18052d2",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "25-01-18",
+    "manga_end_date_string": null,
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 134585613,
+    "status": 1,
+    "score": 10,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 400,
+    "num_read_volumes": 0,
+    "created_at": 1666983910,
+    "manga_title": "Hunter x Hunter",
+    "manga_english": "Hunter x Hunter",
+    "manga_num_chapters": 0,
+    "manga_num_volumes": 0,
+    "manga_publishing_status": 1,
+    "manga_id": 26,
+    "manga_magazines": null,
+    "manga_total_members": 315681,
+    "manga_total_scores": 143463,
+    "manga_score_val": 8.78,
+    "manga_score_diff": 1.22,
+    "manga_popularity": 23,
+    "genres": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 2,
+        "name": "Adventure"
+      },
+      {
+        "id": 10,
+        "name": "Fantasy"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 27,
+        "name": "Shounen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/26/Hunter_x_Hunter",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/253119.jpg?s=4fe33bcf99b9dd5d485c1a027cb3c85d",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": "00-00-17",
+    "finish_date_string": null,
+    "manga_start_date_string": "03-03-98",
+    "manga_end_date_string": null,
+    "days_string": 3288,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "En terme de construction de monde, et de syst&egrave;me de pouvoir, il s&#039;agit probablement du meilleur manga. Il s&#039;agit d&#039;une histoire que je pourrais clairement lire en novel, ou roman. de 400 comme de 2000 pages.",
+    "editable_notes": "En terme de construction de monde, et de système de pouvoir, il s'agit probablement du meilleur manga. Il s'agit d'une histoire que je pourrais clairement lire en novel, ou roman. de 400 comme de 2000 pages."
+  },
+  {
+    "id": 163460540,
+    "status": 1,
+    "score": 7,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1716575915,
+    "manga_title": "Juujika no Rokunin",
+    "manga_english": "",
+    "manga_num_chapters": 233,
+    "manga_num_volumes": 24,
+    "manga_publishing_status": 2,
+    "manga_id": 125076,
+    "manga_magazines": null,
+    "manga_total_members": 92618,
+    "manga_total_scores": 37356,
+    "manga_score_val": 6.67,
+    "manga_score_diff": 0.33,
+    "manga_popularity": 193,
+    "genres": [
+      {
+        "id": 7,
+        "name": "Mystery"
+      },
+      {
+        "id": 45,
+        "name": "Suspense"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 27,
+        "name": "Shounen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/125076/Juujika_no_Rokunin",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/234431.jpg?s=0a0b514c087bb70a4970f848999e6f53",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": "00-03-24",
+    "finish_date_string": null,
+    "manga_start_date_string": "09-03-20",
+    "manga_end_date_string": "25-12-25",
+    "days_string": 853,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 168880338,
+    "status": 1,
+    "score": 9,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 55,
+    "num_read_volumes": 0,
+    "created_at": 1726782760,
+    "manga_title": "Kimi ni Aisarete Itakatta",
+    "manga_english": "",
+    "manga_num_chapters": 0,
+    "manga_num_volumes": 0,
+    "manga_publishing_status": 1,
+    "manga_id": 107776,
+    "manga_magazines": null,
+    "manga_total_members": 17172,
+    "manga_total_scores": 4077,
+    "manga_score_val": 6.28,
+    "manga_score_diff": 2.72,
+    "manga_popularity": 1367,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/107776/Kimi_ni_Aisarete_Itakatta",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/219898.jpg?s=791e9e68e324647f2b7496c5ccefedb0",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "06-06-17",
+    "manga_end_date_string": null,
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167678063,
+    "status": 1,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 2,
+    "num_read_volumes": 0,
+    "created_at": 1724632964,
+    "manga_title": "Mieruko-chan",
+    "manga_english": "Mieruko-chan",
+    "manga_num_chapters": 0,
+    "manga_num_volumes": 0,
+    "manga_publishing_status": 1,
+    "manga_id": 116790,
+    "manga_magazines": null,
+    "manga_total_members": 99698,
+    "manga_total_scores": 31603,
+    "manga_score_val": 7.87,
+    "manga_score_diff": -99,
+    "manga_popularity": 167,
+    "genres": [
+      {
+        "id": 4,
+        "name": "Comedy"
+      },
+      {
+        "id": 14,
+        "name": "Horror"
+      }
+    ],
+    "demographics": [],
+    "title_localized": null,
+    "manga_url": "/manga/116790/Mieruko-chan",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/217799.jpg?s=95daa83bdc2eb40b3872a88d5ab3c380",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "02-11-18",
+    "manga_end_date_string": null,
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 145988685,
+    "status": 1,
+    "score": 9,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 90,
+    "num_read_volumes": 0,
+    "created_at": 1685639703,
+    "manga_title": "Sono Bisque Doll wa Koi wo Suru",
+    "manga_english": "My Dress-Up Darling",
+    "manga_num_chapters": 119,
+    "manga_num_volumes": 15,
+    "manga_publishing_status": 2,
+    "manga_id": 112268,
+    "manga_magazines": null,
+    "manga_total_members": 201237,
+    "manga_total_scores": 87623,
+    "manga_score_val": 8.01,
+    "manga_score_diff": 0.99,
+    "manga_popularity": 51,
+    "genres": [
+      {
+        "id": 22,
+        "name": "Romance"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/112268/Sono_Bisque_Doll_wa_Koi_wo_Suru",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/215054.jpg?s=96e5ce649232b2024de65e58bf8487e4",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "19-01-18",
+    "manga_end_date_string": "21-03-25",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167678052,
+    "status": 1,
+    "score": 10,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1724632943,
+    "manga_title": "Omniscient Reader's Viewpoint",
+    "manga_english": "Omniscient Reader's Viewpoint",
+    "manga_num_chapters": 0,
+    "manga_num_volumes": 0,
+    "manga_publishing_status": 1,
+    "manga_id": 132214,
+    "manga_magazines": null,
+    "manga_total_members": 174342,
+    "manga_total_scores": 71536,
+    "manga_score_val": 8.66,
+    "manga_score_diff": 1.34,
+    "manga_popularity": 76,
+    "genres": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 2,
+        "name": "Adventure"
+      },
+      {
+        "id": 10,
+        "name": "Fantasy"
+      }
+    ],
+    "demographics": [],
+    "title_localized": null,
+    "manga_url": "/manga/132214/Omniscient_Readers_Viewpoint",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/238873.jpg?s=7193dfd7549d9a28976b51d960d4aca8",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manhwa",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "26-05-20",
+    "manga_end_date_string": null,
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "L&#039;histoire et le concept sont incroyables, incroyablement bien ex&eacute;cut&eacute;s et incroyablement bien dessin&eacute;. Incroyable.",
+    "editable_notes": "L'histoire et le concept sont incroyables, incroyablement bien exécutés et incroyablement bien dessiné. Incroyable."
+  },
+  {
+    "id": 202681862,
+    "status": 1,
+    "score": 10,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 79,
+    "num_read_volumes": 0,
+    "created_at": 1780909885,
+    "manga_title": "Omniscient Reader's Viewpoint",
+    "manga_english": "Omniscient Reader's Viewpoint",
+    "manga_num_chapters": 105,
+    "manga_num_volumes": 20,
+    "manga_publishing_status": 2,
+    "manga_id": 143441,
+    "manga_magazines": null,
+    "manga_total_members": 36119,
+    "manga_total_scores": 14425,
+    "manga_score_val": 9.04,
+    "manga_score_diff": 0.96,
+    "manga_popularity": 579,
+    "genres": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 2,
+        "name": "Adventure"
+      },
+      {
+        "id": 10,
+        "name": "Fantasy"
+      }
+    ],
+    "demographics": [],
+    "title_localized": null,
+    "manga_url": "/manga/143441/Omniscient_Readers_Viewpoint",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/1/265768.jpg?s=b0c7a58a8b29c3fb6717224831f13ec9",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Novel",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "20-01-22",
+    "manga_end_date_string": "11-09-23",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 134586077,
+    "status": 1,
+    "score": 8,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 1064,
+    "num_read_volumes": 0,
+    "created_at": 1666984755,
+    "manga_title": "One Piece",
+    "manga_english": "One Piece",
+    "manga_num_chapters": 0,
+    "manga_num_volumes": 0,
+    "manga_publishing_status": 1,
+    "manga_id": 13,
+    "manga_magazines": null,
+    "manga_total_members": 702750,
+    "manga_total_scores": 423660,
+    "manga_score_val": 9.21,
+    "manga_score_diff": -1.21,
+    "manga_popularity": 3,
+    "genres": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 2,
+        "name": "Adventure"
+      },
+      {
+        "id": 10,
+        "name": "Fantasy"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 27,
+        "name": "Shounen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/13/One_Piece",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/253146.jpg?s=67f72eb3f6402e10351596b8b5340171",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "22-07-97",
+    "manga_end_date_string": null,
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167678157,
+    "status": 1,
+    "score": 7,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1724633133,
+    "manga_title": "Kaette Kudasai! Akutsu-san",
+    "manga_english": "Please Go Home, Miss Akutsu!",
+    "manga_num_chapters": 0,
+    "manga_num_volumes": 0,
+    "manga_publishing_status": 1,
+    "manga_id": 122353,
+    "manga_magazines": null,
+    "manga_total_members": 55665,
+    "manga_total_scores": 18869,
+    "manga_score_val": 7.34,
+    "manga_score_diff": -0.34,
+    "manga_popularity": 343,
+    "genres": [
+      {
+        "id": 4,
+        "name": "Comedy"
+      },
+      {
+        "id": 22,
+        "name": "Romance"
+      }
+    ],
+    "demographics": [],
+    "title_localized": null,
+    "manga_url": "/manga/122353/Kaette_Kudasai_Akutsu-san",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/305251.jpg?s=a668eb86422232b6fccb61829577c5ef",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "29-07-19",
+    "manga_end_date_string": null,
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 134587395,
+    "status": 1,
+    "score": 7,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 66,
+    "num_read_volumes": 0,
+    "created_at": 1666987534,
+    "manga_title": "Shuumatsu no Walküre",
+    "manga_english": "Record of Ragnarok",
+    "manga_num_chapters": 0,
+    "manga_num_volumes": 0,
+    "manga_publishing_status": 1,
+    "manga_id": 110485,
+    "manga_magazines": null,
+    "manga_total_members": 154055,
+    "manga_total_scores": 64392,
+    "manga_score_val": 7.97,
+    "manga_score_diff": -0.97,
+    "manga_popularity": 90,
+    "genres": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 10,
+        "name": "Fantasy"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/110485/Shuumatsu_no_Walküre",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/209957.jpg?s=8385c667c2df5c66bc1faa2c61ea477e",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "25-11-17",
+    "manga_end_date_string": null,
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 173044915,
+    "status": 1,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 2,
+    "num_read_volumes": 0,
+    "created_at": 1735576813,
+    "manga_title": "Mabataki no Oto",
+    "manga_english": "Sound of a Blink",
+    "manga_num_chapters": 32,
+    "manga_num_volumes": 4,
+    "manga_publishing_status": 2,
+    "manga_id": 177066,
+    "manga_magazines": null,
+    "manga_total_members": 1342,
+    "manga_total_scores": 223,
+    "manga_score_val": 7.3,
+    "manga_score_diff": -99,
+    "manga_popularity": 14953,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/177066/Mabataki_no_Oto",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/326076.jpg?s=52cc510a0bdd524fd652fb3bc90b8f90",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "13-12-24",
+    "manga_end_date_string": "27-03-26",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 134585429,
+    "status": 1,
+    "score": 10,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 101,
+    "num_read_volumes": 0,
+    "created_at": 1666983650,
+    "manga_title": "Gokushufudou",
+    "manga_english": "The Way of the Househusband",
+    "manga_num_chapters": 0,
+    "manga_num_volumes": 0,
+    "manga_publishing_status": 1,
+    "manga_id": 112922,
+    "manga_magazines": null,
+    "manga_total_members": 136838,
+    "manga_total_scores": 45864,
+    "manga_score_val": 8.09,
+    "manga_score_diff": 1.91,
+    "manga_popularity": 107,
+    "genres": [
+      {
+        "id": 4,
+        "name": "Comedy"
+      }
+    ],
+    "demographics": [],
+    "title_localized": null,
+    "manga_url": "/manga/112922/Gokushufudou",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/210716.jpg?s=aee9fb8072cb0339d97bce729d63a1dc",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": "17-09-22",
+    "finish_date_string": null,
+    "manga_start_date_string": "23-02-18",
+    "manga_end_date_string": null,
+    "days_string": 1399,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "Manga le plus dr&ocirc;le que j&#039;ai pu lire. (pour le moment)",
+    "editable_notes": "Manga le plus drôle que j'ai pu lire. (pour le moment)"
+  },
+  {
+    "id": 167677955,
+    "status": 1,
+    "score": 7,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1724632816,
+    "manga_title": "Watashitachi wa Moto Joshi desu",
+    "manga_english": "",
+    "manga_num_chapters": 0,
+    "manga_num_volumes": 0,
+    "manga_publishing_status": 1,
+    "manga_id": 163359,
+    "manga_magazines": null,
+    "manga_total_members": 2573,
+    "manga_total_scores": 480,
+    "manga_score_val": 7.03,
+    "manga_score_diff": -0.03,
+    "manga_popularity": 9046,
+    "genres": [
+      {
+        "id": 4,
+        "name": "Comedy"
+      }
+    ],
+    "demographics": [],
+    "title_localized": null,
+    "manga_url": "/manga/163359/Watashitachi_wa_Moto_Joshi_desu",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/289810.jpg?s=bcf52c6008032024ba7460ca2b2f66e2",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "08-04-22",
+    "manga_end_date_string": null,
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 145988566,
+    "status": 2,
+    "score": 10,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 249,
+    "num_read_volumes": 22,
+    "created_at": 1685639481,
+    "manga_title": "20th Century Boys",
+    "manga_english": "20th Century Boys",
+    "manga_num_chapters": 249,
+    "manga_num_volumes": 22,
+    "manga_publishing_status": 2,
+    "manga_id": 3,
+    "manga_magazines": null,
+    "manga_total_members": 314263,
+    "manga_total_scores": 110365,
+    "manga_score_val": 8.93,
+    "manga_score_diff": 1.07,
+    "manga_popularity": 24,
+    "genres": [
+      {
+        "id": 46,
+        "name": "Award Winning"
+      },
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 7,
+        "name": "Mystery"
+      },
+      {
+        "id": 24,
+        "name": "Sci-Fi"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/3/20th_Century_Boys",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/5/260006.jpg?s=7f3b38921d425246134dff3c12757010",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": "07-02-23",
+    "finish_date_string": "00-02-23",
+    "manga_start_date_string": "27-09-99",
+    "manga_end_date_string": "24-04-06",
+    "days_string": 10,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "Un incontournable d&#039;Urasawa. L&#039;intrigue et le jeu dans le temps au fur et &agrave; mesure que l&#039;histoire avance pour mieux comprendre l&#039;ensemble",
+    "editable_notes": "Un incontournable d'Urasawa. L'intrigue et le jeu dans le temps au fur et à mesure que l'histoire avance pour mieux comprendre l'ensemble"
+  },
+  {
+    "id": 145988578,
+    "status": 2,
+    "score": 10,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 16,
+    "num_read_volumes": 2,
+    "created_at": 1685639525,
+    "manga_title": "21st Century Boys",
+    "manga_english": "21st Century Boys",
+    "manga_num_chapters": 16,
+    "manga_num_volumes": 2,
+    "manga_publishing_status": 2,
+    "manga_id": 743,
+    "manga_magazines": null,
+    "manga_total_members": 111726,
+    "manga_total_scores": 57395,
+    "manga_score_val": 8.43,
+    "manga_score_diff": 1.57,
+    "manga_popularity": 144,
+    "genres": [
+      {
+        "id": 46,
+        "name": "Award Winning"
+      },
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 7,
+        "name": "Mystery"
+      },
+      {
+        "id": 24,
+        "name": "Sci-Fi"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/743/21st_Century_Boys",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/263856.jpg?s=5cfe77ee1c560c870375682c3abd10df",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": "00-00-22",
+    "finish_date_string": "00-00-23",
+    "manga_start_date_string": "25-12-06",
+    "manga_end_date_string": "14-07-07",
+    "days_string": 366,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "Addition &agrave; l&#039;univers de 20th Century Boys (vraiment sympa) ",
+    "editable_notes": "Addition à l'univers de 20th Century Boys (vraiment sympa) "
+  },
+  {
+    "id": 167677909,
+    "status": 2,
+    "score": 9,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 154,
+    "num_read_volumes": 14,
+    "created_at": 1724632726,
+    "manga_title": "Kimi ga Bokura wo Akuma to Yonda Koro",
+    "manga_english": "Back When You Called Us Devils",
+    "manga_num_chapters": 154,
+    "manga_num_volumes": 14,
+    "manga_publishing_status": 2,
+    "manga_id": 115670,
+    "manga_magazines": null,
+    "manga_total_members": 11091,
+    "manga_total_scores": 3260,
+    "manga_score_val": 7.66,
+    "manga_score_diff": 1.34,
+    "manga_popularity": 2260,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 45,
+        "name": "Suspense"
+      }
+    ],
+    "demographics": [],
+    "title_localized": null,
+    "manga_url": "/manga/115670/Kimi_ga_Bokura_wo_Akuma_to_Yonda_Koro",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/226512.jpg?s=64cd0b4b55cea8bdb819ce75d55f8a6f",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": "30-08-24",
+    "finish_date_string": "01-09-24",
+    "manga_start_date_string": "16-08-17",
+    "manga_end_date_string": "05-08-20",
+    "days_string": 3,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 163459972,
+    "status": 2,
+    "score": 10,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 165,
+    "num_read_volumes": 20,
+    "created_at": 1716574616,
+    "manga_title": "Billy Bat",
+    "manga_english": "Billy Bat",
+    "manga_num_chapters": 165,
+    "manga_num_volumes": 20,
+    "manga_publishing_status": 2,
+    "manga_id": 11054,
+    "manga_magazines": null,
+    "manga_total_members": 89653,
+    "manga_total_scores": 24425,
+    "manga_score_val": 8.6,
+    "manga_score_diff": 1.4,
+    "manga_popularity": 202,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 7,
+        "name": "Mystery"
+      },
+      {
+        "id": 37,
+        "name": "Supernatural"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/11054/Billy_Bat",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/181197.jpg?s=9d06c5bc429e80f4877898d8a7fe4866",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "16-10-08",
+    "manga_end_date_string": "18-08-16",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 163459963,
+    "status": 2,
+    "score": 10,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 153,
+    "num_read_volumes": 17,
+    "created_at": 1716574598,
+    "manga_title": "Chi no Wadachi",
+    "manga_english": "Blood on the Tracks",
+    "manga_num_chapters": 153,
+    "manga_num_volumes": 17,
+    "manga_publishing_status": 2,
+    "manga_id": 104271,
+    "manga_magazines": null,
+    "manga_total_members": 137614,
+    "manga_total_scores": 48984,
+    "manga_score_val": 8.06,
+    "manga_score_diff": 1.94,
+    "manga_popularity": 104,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 45,
+        "name": "Suspense"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/104271/Chi_no_Wadachi",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/1/200350.jpg?s=3efff8354980c512f3088ceee96e7265",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": "00-04-24",
+    "finish_date_string": "00-04-24",
+    "manga_start_date_string": "24-02-17",
+    "manga_end_date_string": "08-09-23",
+    "days_string": 1,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "&Agrave; ne jamais lire. L&#039;histoire &eacute;tait tr&egrave;s belle, et les th&egrave;mes abord&eacute;s frappent vraiment fort. Le style artistique de l&#039;auteur sert &agrave; rendre le r&eacute;cit encore plus poignant qu&#039;il ne l&#039;est d&eacute;j&agrave;. ",
+    "editable_notes": "À ne jamais lire. L'histoire était très belle, et les thèmes abordés frappent vraiment fort. Le style artistique de l'auteur sert à rendre le récit encore plus poignant qu'il ne l'est déjà. "
+  },
+  {
+    "id": 163460797,
+    "status": 2,
+    "score": 8,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 18,
+    "created_at": 1716576457,
+    "manga_title": "Shounen no Abyss",
+    "manga_english": "Boy's Abyss",
+    "manga_num_chapters": 185,
+    "manga_num_volumes": 18,
+    "manga_publishing_status": 2,
+    "manga_id": 126699,
+    "manga_magazines": null,
+    "manga_total_members": 104041,
+    "manga_total_scores": 36270,
+    "manga_score_val": 7.13,
+    "manga_score_diff": 0.87,
+    "manga_popularity": 160,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/126699/Shounen_no_Abyss",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/232167.jpg?s=b2805dd426998057562caed08da15b6f",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": "00-00-23",
+    "finish_date_string": "00-07-24",
+    "manga_start_date_string": "27-02-20",
+    "manga_end_date_string": "25-07-24",
+    "days_string": 367,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 145988546,
+    "status": 2,
+    "score": 10,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 89,
+    "num_read_volumes": 10,
+    "created_at": 1685639475,
+    "manga_title": "Dragon Head",
+    "manga_english": "Dragon Head",
+    "manga_num_chapters": 89,
+    "manga_num_volumes": 10,
+    "manga_publishing_status": 2,
+    "manga_id": 229,
+    "manga_magazines": null,
+    "manga_total_members": 29407,
+    "manga_total_scores": 9990,
+    "manga_score_val": 7.15,
+    "manga_score_diff": 2.85,
+    "manga_popularity": 732,
+    "genres": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 46,
+        "name": "Award Winning"
+      },
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 14,
+        "name": "Horror"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/229/Dragon_Head",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/1/196300.jpg?s=86bea977ff389b0fe8fec5acdea9ac85",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": "00-00-23",
+    "finish_date_string": "00-00-23",
+    "manga_start_date_string": "12-09-94",
+    "manga_end_date_string": "13-12-99",
+    "days_string": 1,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 168177109,
+    "status": 2,
+    "score": 6,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 63,
+    "num_read_volumes": 7,
+    "created_at": 1725377000,
+    "manga_title": "Hyouryuu Net Cafe",
+    "manga_english": "Drifting Net Café",
+    "manga_num_chapters": 63,
+    "manga_num_volumes": 7,
+    "manga_publishing_status": 2,
+    "manga_id": 28303,
+    "manga_magazines": null,
+    "manga_total_members": 11008,
+    "manga_total_scores": 3886,
+    "manga_score_val": 6.32,
+    "manga_score_diff": -0.32,
+    "manga_popularity": 2275,
+    "genres": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 7,
+        "name": "Mystery"
+      },
+      {
+        "id": 22,
+        "name": "Romance"
+      },
+      {
+        "id": 24,
+        "name": "Sci-Fi"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/28303/Hyouryuu_Net_Cafe",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/45421.jpg?s=7fa4107cdb00c6f934b2125832f581f6",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "28-02-09",
+    "manga_end_date_string": "28-06-11",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 134587103,
+    "status": 2,
+    "score": 7,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 549,
+    "num_read_volumes": 63,
+    "created_at": 1666986918,
+    "manga_title": "Fairy Tail",
+    "manga_english": "Fairy Tail",
+    "manga_num_chapters": 549,
+    "manga_num_volumes": 63,
+    "manga_publishing_status": 2,
+    "manga_id": 598,
+    "manga_magazines": null,
+    "manga_total_members": 282567,
+    "manga_total_scores": 163560,
+    "manga_score_val": 7.55,
+    "manga_score_diff": -0.55,
+    "manga_popularity": 28,
+    "genres": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 2,
+        "name": "Adventure"
+      },
+      {
+        "id": 46,
+        "name": "Award Winning"
+      },
+      {
+        "id": 10,
+        "name": "Fantasy"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 27,
+        "name": "Shounen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/598/Fairy_Tail",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/198604.jpg?s=c0046aadbecfbde8b7d96d6777d60410",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "02-08-06",
+    "manga_end_date_string": "26-07-17",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "Sur Youtube, en espagnol sur la Nintendo DS.",
+    "editable_notes": "Sur Youtube, en espagnol sur la Nintendo DS."
+  },
+  {
+    "id": 145988533,
+    "status": 2,
+    "score": 9,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 83,
+    "num_read_volumes": 8,
+    "created_at": 1685639448,
+    "manga_title": "Fire Punch",
+    "manga_english": "Fire Punch",
+    "manga_num_chapters": 83,
+    "manga_num_volumes": 8,
+    "manga_publishing_status": 2,
+    "manga_id": 98270,
+    "manga_magazines": null,
+    "manga_total_members": 228356,
+    "manga_total_scores": 111627,
+    "manga_score_val": 7.95,
+    "manga_score_diff": 1.05,
+    "manga_popularity": 35,
+    "genres": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 7,
+        "name": "Mystery"
+      },
+      {
+        "id": 37,
+        "name": "Supernatural"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 27,
+        "name": "Shounen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/98270/Fire_Punch",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/180430.jpg?s=a67a642654f4d92596d276ac7d8b3529",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "18-04-16",
+    "manga_end_date_string": "01-01-18",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "Suivre l&#039;aventure et l&#039;&eacute;volution d&#039;Agni a &eacute;t&eacute; un vrai plaisir (pour le meilleur et pour le pire) et j&#039;ai ador&eacute; la fin.",
+    "editable_notes": "Suivre l'aventure et l'évolution d'Agni a été un vrai plaisir (pour le meilleur et pour le pire) et j'ai adoré la fin."
+  },
+  {
+    "id": 145988513,
+    "status": 2,
+    "score": 10,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 147,
+    "num_read_volumes": 13,
+    "created_at": 1685639452,
+    "manga_title": "Oyasumi Punpun",
+    "manga_english": "Goodnight Punpun",
+    "manga_num_chapters": 147,
+    "manga_num_volumes": 13,
+    "manga_publishing_status": 2,
+    "manga_id": 4632,
+    "manga_magazines": null,
+    "manga_total_members": 524532,
+    "manga_total_scores": 221206,
+    "manga_score_val": 8.97,
+    "manga_score_diff": 1.03,
+    "manga_popularity": 8,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 36,
+        "name": "Slice of Life"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/4632/Oyasumi_Punpun",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/266834.jpg?s=d115dad9b51edc0a43a57d625d81ddde",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": "00-00-22",
+    "finish_date_string": "00-00-22",
+    "manga_start_date_string": "15-03-07",
+    "manga_end_date_string": "02-11-13",
+    "days_string": 1,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "Je cherche encore un manga qui pourrait &eacute;galer celui-l&agrave;. Trop de choses &agrave; dire qui pourrait &ecirc;tre r&eacute;sum&eacute;es en un mot : mythique.",
+    "editable_notes": "Je cherche encore un manga qui pourrait égaler celui-là. Trop de choses à dire qui pourrait être résumées en un mot : mythique."
+  },
+  {
+    "id": 167677305,
+    "status": 2,
+    "score": 10,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 50,
+    "num_read_volumes": 10,
+    "created_at": 1724631879,
+    "manga_title": "Happiness",
+    "manga_english": "Happiness",
+    "manga_num_chapters": 50,
+    "manga_num_volumes": 10,
+    "manga_publishing_status": 2,
+    "manga_id": 85173,
+    "manga_magazines": null,
+    "manga_total_members": 88395,
+    "manga_total_scores": 36872,
+    "manga_score_val": 7.44,
+    "manga_score_diff": 2.56,
+    "manga_popularity": 204,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 27,
+        "name": "Shounen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/85173/Happiness",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/161562.jpg?s=29a4a975f0c894fc9377d87aba3062cf",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": "26-08-24",
+    "finish_date_string": "26-08-24",
+    "manga_start_date_string": "09-02-15",
+    "manga_end_date_string": "09-03-19",
+    "days_string": 1,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "Simplement incroyable, l&#039;une de mes lectures pr&eacute;f&eacute;r&eacute;es. L&#039;oeuvre est moins sombre que ce que propose l&#039;auteur (Chi no Wadachi / Aku no Hana). <br />\nLa touche d&#039;espoir &agrave; la fin m&#039;a compl&egrave;tement achev&eacute;. L&#039;histoire n&#039;est pas parfaite mais j&#039;ai beaucoup aim&eacute; les personnages. Le style artistique de l&#039;auteur n&#039;a fait que sublimer le tout",
+    "editable_notes": "Simplement incroyable, l'une de mes lectures préférées. L'oeuvre est moins sombre que ce que propose l'auteur (Chi no Wadachi / Aku no Hana). \nLa touche d'espoir à la fin m'a complètement achevé. L'histoire n'est pas parfaite mais j'ai beaucoup aimé les personnages. Le style artistique de l'auteur n'a fait que sublimer le tout"
+  },
+  {
+    "id": 163459944,
+    "status": 2,
+    "score": 10,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 264,
+    "num_read_volumes": 22,
+    "created_at": 1716574578,
+    "manga_title": "I Am a Hero",
+    "manga_english": "I Am a Hero",
+    "manga_num_chapters": 264,
+    "manga_num_volumes": 22,
+    "manga_publishing_status": 2,
+    "manga_id": 14440,
+    "manga_magazines": null,
+    "manga_total_members": 117582,
+    "manga_total_scores": 35581,
+    "manga_score_val": 7.64,
+    "manga_score_diff": 2.36,
+    "manga_popularity": 132,
+    "genres": [
+      {
+        "id": 46,
+        "name": "Award Winning"
+      },
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 14,
+        "name": "Horror"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/14440/I_Am_a_Hero",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/1/121183.jpg?s=1e58e2a8daa6d613f0d2b33a654ff848",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": "00-03-24",
+    "finish_date_string": "00-05-24",
+    "manga_start_date_string": "20-04-09",
+    "manga_end_date_string": "27-02-17",
+    "days_string": 62,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "J&#039;ai ador&eacute; ce manga notamment parce que l&#039;auteur arrive &agrave; g&eacute;rer plusieurs intrigues &agrave; des endroits totalement diff&eacute;rents avec une aisance d&eacute;concertante. Les convergences et divergences des diff&eacute;rents points de vue offerts par l&#039;auteur se font &agrave; travers Hideo qui n&#039;&eacute;tait pas dans mon c&oelig;ur dans les premiers chapitres. On fini quand m&ecirc;me par le trouver attachant par moment (non). Les dessins sont incroyables et servent &agrave; renforcer l&#039;immersion dans cet univers qui se d&eacute;grade graduellement.",
+    "editable_notes": "J'ai adoré ce manga notamment parce que l'auteur arrive à gérer plusieurs intrigues à des endroits totalement différents avec une aisance déconcertante. Les convergences et divergences des différents points de vue offerts par l'auteur se font à travers Hideo qui n'était pas dans mon cœur dans les premiers chapitres. On fini quand même par le trouver attachant par moment (non). Les dessins sont incroyables et servent à renforcer l'immersion dans cet univers qui se dégrade graduellement."
+  },
+  {
+    "id": 167677420,
+    "status": 2,
+    "score": 8,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 80,
+    "num_read_volumes": 9,
+    "created_at": 1724632030,
+    "manga_title": "Boku wa Mari no Naka",
+    "manga_english": "Inside Mari",
+    "manga_num_chapters": 80,
+    "manga_num_volumes": 9,
+    "manga_publishing_status": 2,
+    "manga_id": 36267,
+    "manga_magazines": null,
+    "manga_total_members": 74027,
+    "manga_total_scores": 33008,
+    "manga_score_val": 7.57,
+    "manga_score_diff": 0.43,
+    "manga_popularity": 243,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 7,
+        "name": "Mystery"
+      },
+      {
+        "id": 22,
+        "name": "Romance"
+      },
+      {
+        "id": 37,
+        "name": "Supernatural"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/36267/Boku_wa_Mari_no_Naka",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/88263.jpg?s=afbc241a6bdec3025b800dbb8ed68925",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": "22-08-24",
+    "finish_date_string": null,
+    "manga_start_date_string": "06-03-12",
+    "manga_end_date_string": "06-09-16",
+    "days_string": 694,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 145988527,
+    "status": 2,
+    "score": 9,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 163,
+    "num_read_volumes": 14,
+    "created_at": 1685639437,
+    "manga_title": "Jagaaaaaan",
+    "manga_english": "Jagaaan",
+    "manga_num_chapters": 163,
+    "manga_num_volumes": 14,
+    "manga_publishing_status": 2,
+    "manga_id": 104314,
+    "manga_magazines": null,
+    "manga_total_members": 98905,
+    "manga_total_scores": 33149,
+    "manga_score_val": 7.42,
+    "manga_score_diff": 1.58,
+    "manga_popularity": 171,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 14,
+        "name": "Horror"
+      },
+      {
+        "id": 7,
+        "name": "Mystery"
+      },
+      {
+        "id": 37,
+        "name": "Supernatural"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/104314/Jagaaaaaan",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/273180.jpg?s=b2ebcb12442862235af905f131ee8871",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "06-02-17",
+    "manga_end_date_string": "08-11-21",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 134585523,
+    "status": 2,
+    "score": 8,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 110,
+    "num_read_volumes": 27,
+    "created_at": 1666983788,
+    "manga_title": "JoJo no Kimyou na Bouken Part 8: JoJolion",
+    "manga_english": "",
+    "manga_num_chapters": 110,
+    "manga_num_volumes": 27,
+    "manga_publishing_status": 2,
+    "manga_id": 25515,
+    "manga_magazines": null,
+    "manga_total_members": 177225,
+    "manga_total_scores": 87715,
+    "manga_score_val": 8.49,
+    "manga_score_diff": -0.49,
+    "manga_popularity": 70,
+    "genres": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 2,
+        "name": "Adventure"
+      },
+      {
+        "id": 46,
+        "name": "Award Winning"
+      },
+      {
+        "id": 7,
+        "name": "Mystery"
+      },
+      {
+        "id": 37,
+        "name": "Supernatural"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/25515/JoJo_no_Kimyou_na_Bouken_Part_8__JoJolion",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/1/179885.jpg?s=b309a0cd6eee53689bf3ce6cb36a3da8",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": "16-10-22",
+    "finish_date_string": null,
+    "manga_start_date_string": "19-05-11",
+    "manga_end_date_string": "19-08-21",
+    "days_string": 1370,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "L&#039;une des parties de JoJo que j&#039;ai le moins aim&eacute; (reste cependant devant Stone Ocean et Stardust Crusader).",
+    "editable_notes": "L'une des parties de JoJo que j'ai le moins aimé (reste cependant devant Stone Ocean et Stardust Crusader)."
+  },
+  {
+    "id": 134585478,
+    "status": 2,
+    "score": 8,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 158,
+    "num_read_volumes": 17,
+    "created_at": 1666983725,
+    "manga_title": "JoJo no Kimyou na Bouken Part 6: Stone Ocean",
+    "manga_english": "JoJo's Bizarre Adventure Part 6: Stone Ocean",
+    "manga_num_chapters": 158,
+    "manga_num_volumes": 17,
+    "manga_publishing_status": 2,
+    "manga_id": 3009,
+    "manga_magazines": null,
+    "manga_total_members": 219674,
+    "manga_total_scores": 143953,
+    "manga_score_val": 8.24,
+    "manga_score_diff": -0.24,
+    "manga_popularity": 39,
+    "genres": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 2,
+        "name": "Adventure"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 27,
+        "name": "Shounen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/3009/JoJo_no_Kimyou_na_Bouken_Part_6__Stone_Ocean",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/255379.jpg?s=7baba391539b2aabec3df7c4d188fc2a",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": "02-10-22",
+    "finish_date_string": "02-10-22",
+    "manga_start_date_string": "07-12-99",
+    "manga_end_date_string": "08-04-03",
+    "days_string": 1,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 134585495,
+    "status": 2,
+    "score": 10,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 96,
+    "num_read_volumes": 24,
+    "created_at": 1666983755,
+    "manga_title": "JoJo no Kimyou na Bouken Part 7: Steel Ball Run",
+    "manga_english": "JoJo's Bizarre Adventure Part 7: Steel Ball Run",
+    "manga_num_chapters": 96,
+    "manga_num_volumes": 24,
+    "manga_publishing_status": 2,
+    "manga_id": 1706,
+    "manga_magazines": null,
+    "manga_total_members": 328274,
+    "manga_total_scores": 203713,
+    "manga_score_val": 9.34,
+    "manga_score_diff": 0.66,
+    "manga_popularity": 20,
+    "genres": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 2,
+        "name": "Adventure"
+      },
+      {
+        "id": 7,
+        "name": "Mystery"
+      },
+      {
+        "id": 37,
+        "name": "Supernatural"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      },
+      {
+        "id": 27,
+        "name": "Shounen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/1706/JoJo_no_Kimyou_na_Bouken_Part_7__Steel_Ball_Run",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/179882.jpg?s=79f03515062fee9f7f6fe2efec61fd2b",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": "02-10-22",
+    "finish_date_string": "04-10-22",
+    "manga_start_date_string": "19-01-04",
+    "manga_end_date_string": "19-04-11",
+    "days_string": 3,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 134586316,
+    "status": 2,
+    "score": 6,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 272,
+    "num_read_volumes": 30,
+    "created_at": 1666985239,
+    "manga_title": "Jujutsu Kaisen",
+    "manga_english": "Jujutsu Kaisen",
+    "manga_num_chapters": 272,
+    "manga_num_volumes": 30,
+    "manga_publishing_status": 2,
+    "manga_id": 113138,
+    "manga_magazines": null,
+    "manga_total_members": 517364,
+    "manga_total_scores": 268000,
+    "manga_score_val": 8.18,
+    "manga_score_diff": -2.18,
+    "manga_popularity": 9,
+    "genres": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 37,
+        "name": "Supernatural"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 27,
+        "name": "Shounen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/113138/Jujutsu_Kaisen",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/210341.jpg?s=da93611d33638f8cc6d8e12c7e3f6cb2",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "05-03-18",
+    "manga_end_date_string": "30-09-24",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "Le manga n&#039;est pas encore fini, mais JJK a perdu 2 points uniquement &agrave; cause du raid boss Sukuna qui n&#039;avait plus vraiment l&#039;air d&#039;un &ecirc;tre supr&ecirc;me &agrave; vaincre, mais juste d&#039;un outil pour prolonger le manga. Si la fin est r&eacute;ellement b&acirc;cl&eacute;e, -1 point faciiile",
+    "editable_notes": "Le manga n'est pas encore fini, mais JJK a perdu 2 points uniquement à cause du raid boss Sukuna qui n'avait plus vraiment l'air d'un être suprême à vaincre, mais juste d'un outil pour prolonger le manga. Si la fin est réellement bâclée, -1 point faciiile"
+  },
+  {
+    "id": 197924080,
+    "status": 2,
+    "score": 6,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 25,
+    "num_read_volumes": 3,
+    "created_at": 1774341042,
+    "manga_title": "Jujutsu Kaisen Modulo",
+    "manga_english": "Jujutsu Kaisen Modulo",
+    "manga_num_chapters": 25,
+    "manga_num_volumes": 3,
+    "manga_publishing_status": 2,
+    "manga_id": 186597,
+    "manga_magazines": null,
+    "manga_total_members": 33573,
+    "manga_total_scores": 17242,
+    "manga_score_val": 7.15,
+    "manga_score_diff": -1.15,
+    "manga_popularity": 629,
+    "genres": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 24,
+        "name": "Sci-Fi"
+      },
+      {
+        "id": 37,
+        "name": "Supernatural"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 27,
+        "name": "Shounen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/186597/Jujutsu_Kaisen_Modulo",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/339595.jpg?s=abd866150036dddca51bf6d9d090c0cc",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "08-09-25",
+    "manga_end_date_string": "09-03-26",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 134585691,
+    "status": 2,
+    "score": 9,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 281,
+    "num_read_volumes": 28,
+    "created_at": 1666984034,
+    "manga_title": "Kaguya-sama wa Kokurasetai: Tensai-tachi no Renai Zunousen",
+    "manga_english": "Kaguya-sama: Love Is War",
+    "manga_num_chapters": 281,
+    "manga_num_volumes": 28,
+    "manga_publishing_status": 2,
+    "manga_id": 90125,
+    "manga_magazines": null,
+    "manga_total_members": 307402,
+    "manga_total_scores": 150819,
+    "manga_score_val": 8.88,
+    "manga_score_diff": 0.12,
+    "manga_popularity": 25,
+    "genres": [
+      {
+        "id": 46,
+        "name": "Award Winning"
+      },
+      {
+        "id": 4,
+        "name": "Comedy"
+      },
+      {
+        "id": 22,
+        "name": "Romance"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/90125/Kaguya-sama_wa_Kokurasetai__Tensai-tachi_no_Renai_Zunousen",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/188896.jpg?s=a2844cb4d66895f66a46a15ac776d0de",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "19-05-15",
+    "manga_end_date_string": "02-11-22",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167677864,
+    "status": 2,
+    "score": 7,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 71,
+    "num_read_volumes": 10,
+    "created_at": 1724632655,
+    "manga_title": "Kimi no Knife",
+    "manga_english": "",
+    "manga_num_chapters": 71,
+    "manga_num_volumes": 10,
+    "manga_publishing_status": 2,
+    "manga_id": 19154,
+    "manga_magazines": null,
+    "manga_total_members": 12581,
+    "manga_total_scores": 4309,
+    "manga_score_val": 7.57,
+    "manga_score_diff": -0.57,
+    "manga_popularity": 2009,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 7,
+        "name": "Mystery"
+      },
+      {
+        "id": 37,
+        "name": "Supernatural"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/19154/Kimi_no_Knife",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/54419.jpg?s=c8b2f2af5c88d75663f80bf81d2d95c0",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": "28-08-24",
+    "finish_date_string": "01-09-24",
+    "manga_start_date_string": "08-07-09",
+    "manga_end_date_string": "24-04-13",
+    "days_string": 5,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "Bien, mais sans plus. Le myst&egrave;re n&#039;est pas trop mys&eacute;rieux et le plot est un peu pr&eacute;visible (m&ecirc;me si c&#039;est toujours plaisant &agrave; lire). <br />\nCertains des personnages &eacute;taient un peu trop bateau &agrave; mon go&ucirc;t et pas assez d&eacute;velopp&eacute;s. Kuzumi en plus de tout &ccedil;a, a eu la porte de sortie la plus facile de tout ce que j&#039;ai pu lire dans le genre jusqu&#039;ici",
+    "editable_notes": "Bien, mais sans plus. Le mystère n'est pas trop mysérieux et le plot est un peu prévisible (même si c'est toujours plaisant à lire). \nCertains des personnages étaient un peu trop bateau à mon goût et pas assez développés. Kuzumi en plus de tout ça, a eu la porte de sortie la plus facile de tout ce que j'ai pu lire dans le genre jusqu'ici"
+  },
+  {
+    "id": 163459985,
+    "status": 2,
+    "score": 9,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 1,
+    "num_read_volumes": 0,
+    "created_at": 1716574638,
+    "manga_title": "Kowareta Bokura no Senryaku Renai",
+    "manga_english": "",
+    "manga_num_chapters": 1,
+    "manga_num_volumes": 0,
+    "manga_publishing_status": 2,
+    "manga_id": 150374,
+    "manga_magazines": null,
+    "manga_total_members": 4812,
+    "manga_total_scores": 2473,
+    "manga_score_val": 7.43,
+    "manga_score_diff": 1.57,
+    "manga_popularity": 5293,
+    "genres": [
+      {
+        "id": 22,
+        "name": "Romance"
+      }
+    ],
+    "demographics": [],
+    "title_localized": null,
+    "manga_url": "/manga/150374/Kowareta_Bokura_no_Senryaku_Renai",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/266603.jpg?s=4ecda5263e32c601e036b918144fb98d",
+    "is_added_to_list": false,
+    "manga_media_type_string": "One-shot",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "21-07-22",
+    "manga_end_date_string": "21-07-22",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "Le message pass&eacute; &agrave; travers ce one shot r&eacute;sonne encore. Simple ou pas, Banal ou pas, je l&#039;ai vraiment bien aim&eacute;.",
+    "editable_notes": "Le message passé à travers ce one shot résonne encore. Simple ou pas, Banal ou pas, je l'ai vraiment bien aimé."
+  },
+  {
+    "id": 145988495,
+    "status": 2,
+    "score": 10,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 162,
+    "num_read_volumes": 18,
+    "created_at": 1685639384,
+    "manga_title": "Monster",
+    "manga_english": "Monster",
+    "manga_num_chapters": 162,
+    "manga_num_volumes": 18,
+    "manga_publishing_status": 2,
+    "manga_id": 1,
+    "manga_magazines": null,
+    "manga_total_members": 292445,
+    "manga_total_scores": 117956,
+    "manga_score_val": 9.16,
+    "manga_score_diff": 0.84,
+    "manga_popularity": 27,
+    "genres": [
+      {
+        "id": 46,
+        "name": "Award Winning"
+      },
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 7,
+        "name": "Mystery"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/1/Monster",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/258224.jpg?s=b9815665e353190f3b2be723f13f022f",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": "00-01-23",
+    "finish_date_string": "00-01-23",
+    "manga_start_date_string": "05-12-94",
+    "manga_end_date_string": "20-12-01",
+    "days_string": 1,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "Un manga myst&egrave;re/thriller tout simplement incroyable. Le dilemme moral sur lequel se base l&#039;oeuvre est tout aussi int&eacute;ressant. Les personnages, autant principaux que secondaires sont tous bien &eacute;crit et int&eacute;ressant &agrave; retrouver &agrave; chaque nouvelle page.",
+    "editable_notes": "Un manga mystère/thriller tout simplement incroyable. Le dilemme moral sur lequel se base l'oeuvre est tout aussi intéressant. Les personnages, autant principaux que secondaires sont tous bien écrit et intéressant à retrouver à chaque nouvelle page."
+  },
+  {
+    "id": 168880864,
+    "status": 2,
+    "score": 10,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 5,
+    "num_read_volumes": 1,
+    "created_at": 1726783441,
+    "manga_title": "My Broken Mariko",
+    "manga_english": "My Broken Mariko",
+    "manga_num_chapters": 5,
+    "manga_num_volumes": 1,
+    "manga_publishing_status": 2,
+    "manga_id": 123812,
+    "manga_magazines": null,
+    "manga_total_members": 43470,
+    "manga_total_scores": 20972,
+    "manga_score_val": 7.75,
+    "manga_score_diff": 2.25,
+    "manga_popularity": 472,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 42,
+        "name": "Josei"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/123812/My_Broken_Mariko",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/226196.jpg?s=60ec0fc982b513739eebced1c9b3dd4c",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": "25-04-26",
+    "finish_date_string": "25-04-26",
+    "manga_start_date_string": "16-07-19",
+    "manga_end_date_string": "17-12-19",
+    "days_string": 1,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167678234,
+    "status": 2,
+    "score": 4,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 41,
+    "num_read_volumes": 6,
+    "created_at": 1724633276,
+    "manga_title": "RaW Hero",
+    "manga_english": "RaW Hero",
+    "manga_num_chapters": 41,
+    "manga_num_volumes": 6,
+    "manga_publishing_status": 2,
+    "manga_id": 115688,
+    "manga_magazines": null,
+    "manga_total_members": 18929,
+    "manga_total_scores": 6881,
+    "manga_score_val": 6.24,
+    "manga_score_diff": -2.24,
+    "manga_popularity": 1230,
+    "genres": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 4,
+        "name": "Comedy"
+      },
+      {
+        "id": 9,
+        "name": "Ecchi"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/115688/RaW_Hero",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/215834.jpg?s=0a6e05640800b2e983995160681a880c",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "25-09-18",
+    "manga_end_date_string": "11-08-20",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "Je finis toujours ce que je commence. Mais &ccedil;a, c&#039;&eacute;tait difficile.",
+    "editable_notes": "Je finis toujours ce que je commence. Mais ça, c'était difficile."
+  },
+  {
+    "id": 167677556,
+    "status": 2,
+    "score": 8,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 11,
+    "num_read_volumes": 1,
+    "created_at": 1724632185,
+    "manga_title": "Shino-chan wa Jibun no Namae ga Ienai",
+    "manga_english": "Shino Can't Say Her Name",
+    "manga_num_chapters": 11,
+    "manga_num_volumes": 1,
+    "manga_publishing_status": 2,
+    "manga_id": 49017,
+    "manga_magazines": null,
+    "manga_total_members": 12437,
+    "manga_total_scores": 6708,
+    "manga_score_val": 6.6,
+    "manga_score_diff": 1.4,
+    "manga_popularity": 2033,
+    "genres": [],
+    "demographics": [],
+    "title_localized": null,
+    "manga_url": "/manga/49017/Shino-chan_wa_Jibun_no_Namae_ga_Ienai",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/181384.jpg?s=a47c7927c3fc0b64a3d87c2f83ae2167",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": "01-09-24",
+    "finish_date_string": "01-09-24",
+    "manga_start_date_string": "21-12-11",
+    "manga_end_date_string": "17-10-12",
+    "days_string": 1,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 163460025,
+    "status": 2,
+    "score": 8,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 201,
+    "num_read_volumes": 0,
+    "created_at": 1716574707,
+    "manga_title": "Solo Leveling",
+    "manga_english": "Solo Leveling",
+    "manga_num_chapters": 201,
+    "manga_num_volumes": 15,
+    "manga_publishing_status": 2,
+    "manga_id": 121496,
+    "manga_magazines": null,
+    "manga_total_members": 623162,
+    "manga_total_scores": 371949,
+    "manga_score_val": 8.56,
+    "manga_score_diff": -0.56,
+    "manga_popularity": 5,
+    "genres": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 2,
+        "name": "Adventure"
+      },
+      {
+        "id": 10,
+        "name": "Fantasy"
+      }
+    ],
+    "demographics": [],
+    "title_localized": null,
+    "manga_url": "/manga/121496/Solo_Leveling",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/222295.jpg?s=90fc130b85eb89cb776062bae4c4bfb5",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manhwa",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "04-03-18",
+    "manga_end_date_string": "31-05-23",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 163459894,
+    "status": 2,
+    "score": 10,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 58,
+    "num_read_volumes": 11,
+    "created_at": 1716574505,
+    "manga_title": "Aku no Hana",
+    "manga_english": "The Flowers of Evil",
+    "manga_num_chapters": 58,
+    "manga_num_volumes": 11,
+    "manga_publishing_status": 2,
+    "manga_id": 24705,
+    "manga_magazines": null,
+    "manga_total_members": 187020,
+    "manga_total_scores": 90112,
+    "manga_score_val": 8.21,
+    "manga_score_diff": 1.79,
+    "manga_popularity": 60,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 22,
+        "name": "Romance"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 27,
+        "name": "Shounen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/24705/Aku_no_Hana",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/188918.jpg?s=880eac666664eb41f30d63e72d68f567",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "09-09-09",
+    "manga_end_date_string": "09-05-14",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "Le th&egrave;me que j&#039;ai surtout retenu comme princpal dans cette oeuvre, le d&eacute;sir, est explor&eacute; sous toutes ses formes (avec des formes plus perverses que d&#039;autres... [RIP le jeu de mot]). Encore une fois avec les &oelig;uvres d&#039;Oshimi, le dessin sublime le manga davantage. Moi, &ccedil;a m&#039;a bien plu.",
+    "editable_notes": "Le thème que j'ai surtout retenu comme princpal dans cette oeuvre, le désir, est exploré sous toutes ses formes (avec des formes plus perverses que d'autres... [RIP le jeu de mot]). Encore une fois avec les œuvres d'Oshimi, le dessin sublime le manga davantage. Moi, ça m'a bien plu."
+  },
+  {
+    "id": 167679044,
+    "status": 2,
+    "score": 10,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 222,
+    "num_read_volumes": 0,
+    "created_at": 1724634805,
+    "manga_title": "The Greatest Estate Developer",
+    "manga_english": "The Greatest Estate Developer",
+    "manga_num_chapters": 222,
+    "manga_num_volumes": 0,
+    "manga_publishing_status": 2,
+    "manga_id": 147272,
+    "manga_magazines": null,
+    "manga_total_members": 90416,
+    "manga_total_scores": 43965,
+    "manga_score_val": 9.09,
+    "manga_score_diff": 0.91,
+    "manga_popularity": 199,
+    "genres": [
+      {
+        "id": 2,
+        "name": "Adventure"
+      },
+      {
+        "id": 4,
+        "name": "Comedy"
+      },
+      {
+        "id": 10,
+        "name": "Fantasy"
+      }
+    ],
+    "demographics": [],
+    "title_localized": null,
+    "manga_url": "/manga/147272/The_Greatest_Estate_Developer",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/1/290131.jpg?s=ecb11d53283f5233ddcd0869a51ba15f",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manhwa",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "30-07-21",
+    "manga_end_date_string": "01-01-26",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "Le manhwa le plus dr&ocirc;le que je connaisse tout simplement. Les gens derri&egrave;re ce titre sont des g&eacute;nies.",
+    "editable_notes": "Le manhwa le plus drôle que je connaisse tout simplement. Les gens derrière ce titre sont des génies."
+  },
+  {
+    "id": 163459914,
+    "status": 2,
+    "score": 9,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 21,
+    "num_read_volumes": 3,
+    "created_at": 1716574530,
+    "manga_title": "The Horizon",
+    "manga_english": "The Horizon",
+    "manga_num_chapters": 21,
+    "manga_num_volumes": 3,
+    "manga_publishing_status": 2,
+    "manga_id": 125036,
+    "manga_magazines": null,
+    "manga_total_members": 117416,
+    "manga_total_scores": 53696,
+    "manga_score_val": 8.68,
+    "manga_score_diff": 0.32,
+    "manga_popularity": 133,
+    "genres": [
+      {
+        "id": 2,
+        "name": "Adventure"
+      },
+      {
+        "id": 8,
+        "name": "Drama"
+      }
+    ],
+    "demographics": [],
+    "title_localized": null,
+    "manga_url": "/manga/125036/The_Horizon",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/1/229331.jpg?s=fcf96ca5a2ed40dd0c3ef8051b04b1af",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manhwa",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "30-03-16",
+    "manga_end_date_string": "21-07-16",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167679281,
+    "status": 2,
+    "score": 9,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 130,
+    "num_read_volumes": 26,
+    "created_at": 1724635333,
+    "manga_title": "Tomodachi Game",
+    "manga_english": "Tomodachi Game",
+    "manga_num_chapters": 130,
+    "manga_num_volumes": 26,
+    "manga_publishing_status": 2,
+    "manga_id": 62795,
+    "manga_magazines": null,
+    "manga_total_members": 97544,
+    "manga_total_scores": 39191,
+    "manga_score_val": 8.35,
+    "manga_score_diff": 0.65,
+    "manga_popularity": 177,
+    "genres": [
+      {
+        "id": 45,
+        "name": "Suspense"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 27,
+        "name": "Shounen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/62795/Tomodachi_Game",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/1/302138.jpg?s=9ea7e88b5c2e0f5879fb207c5f3cdc55",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "09-12-13",
+    "manga_end_date_string": "08-08-24",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167677982,
+    "status": 2,
+    "score": 10,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 541,
+    "num_read_volumes": 49,
+    "created_at": 1724632856,
+    "manga_title": "Usogui",
+    "manga_english": "",
+    "manga_num_chapters": 541,
+    "manga_num_volumes": 49,
+    "manga_publishing_status": 2,
+    "manga_id": 9982,
+    "manga_magazines": null,
+    "manga_total_members": 60143,
+    "manga_total_scores": 12299,
+    "manga_score_val": 8.71,
+    "manga_score_diff": 1.29,
+    "manga_popularity": 323,
+    "genres": [
+      {
+        "id": 1,
+        "name": "Action"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/9982/Usogui",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/283743.jpg?s=b388eacdf76dbf606d346a8f357e2dbb",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "11-05-06",
+    "manga_end_date_string": "21-12-17",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 170591252,
+    "status": 2,
+    "score": 9,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 19,
+    "num_read_volumes": 3,
+    "created_at": 1730212717,
+    "manga_title": "Uzumaki",
+    "manga_english": "Uzumaki: Spiral into Horror",
+    "manga_num_chapters": 19,
+    "manga_num_volumes": 3,
+    "manga_publishing_status": 2,
+    "manga_id": 436,
+    "manga_magazines": null,
+    "manga_total_members": 254736,
+    "manga_total_scores": 143666,
+    "manga_score_val": 8.15,
+    "manga_score_diff": 0.85,
+    "manga_popularity": 31,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 14,
+        "name": "Horror"
+      },
+      {
+        "id": 37,
+        "name": "Supernatural"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/436/Uzumaki",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/185972.jpg?s=faddc4286aecf337e6cfe09c99f778bb",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "12-01-98",
+    "manga_end_date_string": "30-08-99",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 163461253,
+    "status": 2,
+    "score": 10,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 327,
+    "num_read_volumes": 37,
+    "created_at": 1716577336,
+    "manga_title": "Vagabond",
+    "manga_english": "Vagabond",
+    "manga_num_chapters": 327,
+    "manga_num_volumes": 37,
+    "manga_publishing_status": 4,
+    "manga_id": 656,
+    "manga_magazines": null,
+    "manga_total_members": 463149,
+    "manga_total_scores": 177489,
+    "manga_score_val": 9.27,
+    "manga_score_diff": 0.73,
+    "manga_popularity": 12,
+    "genres": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 2,
+        "name": "Adventure"
+      },
+      {
+        "id": 46,
+        "name": "Award Winning"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/656/Vagabond",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/1/259070.jpg?s=002db90c5a02f69615253a65aef75a6d",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": "00-00-24",
+    "finish_date_string": "00-00-24",
+    "manga_start_date_string": "03-09-98",
+    "manga_end_date_string": "21-05-15",
+    "days_string": 1,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167678409,
+    "status": 2,
+    "score": 9,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 172,
+    "num_read_volumes": 0,
+    "created_at": 1724633603,
+    "manga_title": "Webtoon Character Na Kang Lim",
+    "manga_english": "",
+    "manga_num_chapters": 172,
+    "manga_num_volumes": 0,
+    "manga_publishing_status": 2,
+    "manga_id": 164926,
+    "manga_magazines": null,
+    "manga_total_members": 19531,
+    "manga_total_scores": 9065,
+    "manga_score_val": 8.54,
+    "manga_score_diff": 0.46,
+    "manga_popularity": 1183,
+    "genres": [
+      {
+        "id": 4,
+        "name": "Comedy"
+      },
+      {
+        "id": 22,
+        "name": "Romance"
+      },
+      {
+        "id": 37,
+        "name": "Supernatural"
+      }
+    ],
+    "demographics": [],
+    "title_localized": null,
+    "manga_url": "/manga/164926/Webtoon_Character_Na_Kang_Lim",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/1/292948.jpg?s=1daeeb60e90b3e609f487a85c45775bc",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manhwa",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "04-05-21",
+    "manga_end_date_string": "09-07-24",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167677468,
+    "status": 2,
+    "score": 6,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 40,
+    "num_read_volumes": 7,
+    "created_at": 1724632080,
+    "manga_title": "Okaeri Alice",
+    "manga_english": "Welcome Back, Alice",
+    "manga_num_chapters": 40,
+    "manga_num_volumes": 7,
+    "manga_publishing_status": 2,
+    "manga_id": 125717,
+    "manga_magazines": null,
+    "manga_total_members": 34826,
+    "manga_total_scores": 14785,
+    "manga_score_val": 7.19,
+    "manga_score_diff": -1.19,
+    "manga_popularity": 602,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 22,
+        "name": "Romance"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 27,
+        "name": "Shounen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/125717/Okaeri_Alice",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/235399.jpg?s=1198a5ce16d46d8a1e20954a03f180d6",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": "22-08-24",
+    "finish_date_string": "22-08-24",
+    "manga_start_date_string": "09-04-20",
+    "manga_end_date_string": "09-08-23",
+    "days_string": 1,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "Le manga &eacute;tait correct, je n&#039;y trouve pas plus d&#039;int&eacute;r&ecirc;t notamment parce que je ne suis pas vraiment d&#039;accord avec la mani&egrave;re (pas le message, la mani&egrave;re hein) dont l&#039;auteur &agrave; travers son personnage principal rejette le fait d&#039;&ecirc;tre un homme.",
+    "editable_notes": "Le manga était correct, je n'y trouve pas plus d'intérêt notamment parce que je ne suis pas vraiment d'accord avec la manière (pas le message, la manière hein) dont l'auteur à travers son personnage principal rejette le fait d'être un homme."
+  },
+  {
+    "id": 157430653,
+    "status": 2,
+    "score": 9,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 4,
+    "created_at": 1705879057,
+    "manga_title": "Witch of Mine",
+    "manga_english": "Witch of Mine",
+    "manga_num_chapters": 0,
+    "manga_num_volumes": 4,
+    "manga_publishing_status": 2,
+    "manga_id": 120318,
+    "manga_magazines": null,
+    "manga_total_members": 9302,
+    "manga_total_scores": 2784,
+    "manga_score_val": 8.14,
+    "manga_score_diff": 0.86,
+    "manga_popularity": 2751,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 10,
+        "name": "Fantasy"
+      },
+      {
+        "id": 22,
+        "name": "Romance"
+      }
+    ],
+    "demographics": [],
+    "title_localized": null,
+    "manga_url": "/manga/120318/Witch_of_Mine",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/228265.jpg?s=70e03b6df4f3c7f5b6a9022cf3b713c2",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manhwa",
+    "start_date_string": "18-01-24",
+    "finish_date_string": "21-01-24",
+    "manga_start_date_string": "25-08-15",
+    "manga_end_date_string": "03-02-18",
+    "days_string": 4,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "Uniquement les 12 premiers chapitres",
+    "editable_notes": "Uniquement les 12 premiers chapitres"
+  },
+  {
+    "id": 134585719,
+    "status": 3,
+    "score": 5,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 35,
+    "num_read_volumes": 0,
+    "created_at": 1666984070,
+    "manga_title": "Komi-san wa, Comyushou desu.",
+    "manga_english": "Komi Can't Communicate",
+    "manga_num_chapters": 500,
+    "manga_num_volumes": 37,
+    "manga_publishing_status": 2,
+    "manga_id": 99007,
+    "manga_magazines": null,
+    "manga_total_members": 277183,
+    "manga_total_scores": 110779,
+    "manga_score_val": 8,
+    "manga_score_diff": -3,
+    "manga_popularity": 29,
+    "genres": [
+      {
+        "id": 46,
+        "name": "Award Winning"
+      },
+      {
+        "id": 4,
+        "name": "Comedy"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 27,
+        "name": "Shounen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/99007/Komi-san_wa_Comyushou_desu",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/188962.jpg?s=45af93199545922eea458ba23c815b48",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": "00-00-23",
+    "finish_date_string": null,
+    "manga_start_date_string": "18-05-16",
+    "manga_end_date_string": "29-01-25",
+    "days_string": 1097,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 201736450,
+    "status": 4,
+    "score": 5,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1779484464,
+    "manga_title": "Dead Tube",
+    "manga_english": "",
+    "manga_num_chapters": 0,
+    "manga_num_volumes": 0,
+    "manga_publishing_status": 1,
+    "manga_id": 78943,
+    "manga_magazines": null,
+    "manga_total_members": 72168,
+    "manga_total_scores": 26968,
+    "manga_score_val": 6.49,
+    "manga_score_diff": -1.49,
+    "manga_popularity": 254,
+    "genres": [
+      {
+        "id": 49,
+        "name": "Erotica"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/78943/Dead_Tube",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/186914.jpg?s=ca5140fb844e1febe7a459d56e513407",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "19-05-14",
+    "manga_end_date_string": null,
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 134585741,
+    "status": 4,
+    "score": 4,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 115,
+    "num_read_volumes": 0,
+    "created_at": 1666984110,
+    "manga_title": "Ijiranaide, Nagatoro-san",
+    "manga_english": "Don't Toy With Me, Miss Nagatoro",
+    "manga_num_chapters": 174,
+    "manga_num_volumes": 20,
+    "manga_publishing_status": 2,
+    "manga_id": 110737,
+    "manga_magazines": null,
+    "manga_total_members": 184972,
+    "manga_total_scores": 86548,
+    "manga_score_val": 7.59,
+    "manga_score_diff": -3.59,
+    "manga_popularity": 65,
+    "genres": [
+      {
+        "id": 4,
+        "name": "Comedy"
+      },
+      {
+        "id": 22,
+        "name": "Romance"
+      }
+    ],
+    "demographics": [],
+    "title_localized": null,
+    "manga_url": "/manga/110737/Ijiranaide_Nagatoro-san",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/1/268387.jpg?s=75168db7f0ff95394db870ca20893066",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "07-11-17",
+    "manga_end_date_string": "23-07-24",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "(C&#039;est faux, je ne finis pas toujours ce que je commence)",
+    "editable_notes": "(C'est faux, je ne finis pas toujours ce que je commence)"
+  },
+  {
+    "id": 168079774,
+    "status": 4,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1725201095,
+    "manga_title": "Hazurewaku no \"Joutai Ijou Skill\" de Saikyou ni Natta Ore ga Subete wo Juurin suru made",
+    "manga_english": "Failure Frame: I Became the Strongest and Annihilated Everything With Low-Level Spells",
+    "manga_num_chapters": 0,
+    "manga_num_volumes": 0,
+    "manga_publishing_status": 1,
+    "manga_id": 122650,
+    "manga_magazines": null,
+    "manga_total_members": 27050,
+    "manga_total_scores": 6797,
+    "manga_score_val": 6.69,
+    "manga_score_diff": -99,
+    "manga_popularity": 818,
+    "genres": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 2,
+        "name": "Adventure"
+      },
+      {
+        "id": 10,
+        "name": "Fantasy"
+      }
+    ],
+    "demographics": [],
+    "title_localized": null,
+    "manga_url": "/manga/122650/Hazurewaku_no_Joutai_Ijou_Skill_de_Saikyou_ni_Natta_Ore_ga_Subete_wo_Juurin_suru_made",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/226075.jpg?s=a3132fdd3b13c7aacce69a7e282a782a",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "26-07-19",
+    "manga_end_date_string": null,
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 134585806,
+    "status": 4,
+    "score": 3,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 256,
+    "num_read_volumes": 0,
+    "created_at": 1666984184,
+    "manga_title": "Kanojo, Okarishimasu",
+    "manga_english": "Rent-A-Girlfriend",
+    "manga_num_chapters": 0,
+    "manga_num_volumes": 0,
+    "manga_publishing_status": 1,
+    "manga_id": 108407,
+    "manga_magazines": null,
+    "manga_total_members": 140226,
+    "manga_total_scores": 68548,
+    "manga_score_val": 6.12,
+    "manga_score_diff": -3.12,
+    "manga_popularity": 103,
+    "genres": [
+      {
+        "id": 4,
+        "name": "Comedy"
+      },
+      {
+        "id": 22,
+        "name": "Romance"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 27,
+        "name": "Shounen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/108407/Kanojo_Okarishimasu",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/270155.jpg?s=8fded75bfd456988733aa7c4f82b1439",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": "00-00-22",
+    "finish_date_string": "00-00-21",
+    "manga_start_date_string": "12-07-17",
+    "manga_end_date_string": null,
+    "days_string": -364,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "&Agrave; fuir, le personnage principal est absolument insupportable. J&#039;avais espoir qu&#039;il finisse par grandir et &eacute;voluer, mais son QI rechute tous les 32 chapitres. L&#039;&oelig;uvre est longue et la plupart des arcs sont insoutenables (h&acirc;te de l&#039;arc nettoyage de vaisselle).",
+    "editable_notes": "À fuir, le personnage principal est absolument insupportable. J'avais espoir qu'il finisse par grandir et évoluer, mais son QI rechute tous les 32 chapitres. L'œuvre est longue et la plupart des arcs sont insoutenables (hâte de l'arc nettoyage de vaisselle)."
+  },
+  {
+    "id": 167677174,
+    "status": 4,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 2,
+    "num_read_volumes": 0,
+    "created_at": 1724631690,
+    "manga_title": "NHK ni Youkoso!",
+    "manga_english": "Welcome to the N.H.K.",
+    "manga_num_chapters": 40,
+    "manga_num_volumes": 8,
+    "manga_publishing_status": 2,
+    "manga_id": 463,
+    "manga_magazines": null,
+    "manga_total_members": 65141,
+    "manga_total_scores": 26950,
+    "manga_score_val": 8.12,
+    "manga_score_diff": -99,
+    "manga_popularity": 290,
+    "genres": [
+      {
+        "id": 4,
+        "name": "Comedy"
+      },
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 22,
+        "name": "Romance"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 27,
+        "name": "Shounen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/463/NHK_ni_Youkoso",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/1/172691.jpg?s=8dd8d16821d34c3a6548191c99c2e2a2",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "26-12-03",
+    "manga_end_date_string": "26-04-07",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 168881044,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1726783862,
+    "manga_title": "Otoyomegatari",
+    "manga_english": "A Bride's Story",
+    "manga_num_chapters": 0,
+    "manga_num_volumes": 0,
+    "manga_publishing_status": 1,
+    "manga_id": 11514,
+    "manga_magazines": null,
+    "manga_total_members": 83125,
+    "manga_total_scores": 18160,
+    "manga_score_val": 8.57,
+    "manga_score_diff": -99,
+    "manga_popularity": 218,
+    "genres": [
+      {
+        "id": 46,
+        "name": "Award Winning"
+      },
+      {
+        "id": 22,
+        "name": "Romance"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/11514/Otoyomegatari",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/188950.jpg?s=2c0121ee752b31dfe38e8a14d4db3cb6",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "14-10-08",
+    "manga_end_date_string": null,
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 200012603,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1777155343,
+    "manga_title": "Kakusan",
+    "manga_english": "A Diffusion Disease",
+    "manga_num_chapters": 7,
+    "manga_num_volumes": 2,
+    "manga_publishing_status": 2,
+    "manga_id": 9752,
+    "manga_magazines": null,
+    "manga_total_members": 3134,
+    "manga_total_scores": 642,
+    "manga_score_val": 6.83,
+    "manga_score_diff": -99,
+    "manga_popularity": 7706,
+    "genres": [
+      {
+        "id": 37,
+        "name": "Supernatural"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/9752/Kakusan",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/1/250725.jpg?s=0b92ebeec82a37dd998734e484dec746",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "25-11-92",
+    "manga_end_date_string": "25-01-98",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 200012676,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1777155459,
+    "manga_title": "Abara",
+    "manga_english": "Abara",
+    "manga_num_chapters": 13,
+    "manga_num_volumes": 2,
+    "manga_publishing_status": 2,
+    "manga_id": 1400,
+    "manga_magazines": null,
+    "manga_total_members": 33377,
+    "manga_total_scores": 13877,
+    "manga_score_val": 6.69,
+    "manga_score_diff": -99,
+    "manga_popularity": 635,
+    "genres": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 24,
+        "name": "Sci-Fi"
+      },
+      {
+        "id": 37,
+        "name": "Supernatural"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/1400/Abara",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/171728.jpg?s=cccbdeb71e2463d14f1f049375aa9703",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "19-05-05",
+    "manga_end_date_string": "18-03-06",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 200011967,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1777154252,
+    "manga_title": "Adabana",
+    "manga_english": "Adabana",
+    "manga_num_chapters": 28,
+    "manga_num_volumes": 3,
+    "manga_publishing_status": 2,
+    "manga_id": 125430,
+    "manga_magazines": null,
+    "manga_total_members": 24038,
+    "manga_total_scores": 8772,
+    "manga_score_val": 7.6,
+    "manga_score_diff": -99,
+    "manga_popularity": 934,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 7,
+        "name": "Mystery"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/125430/Adabana",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/242436.jpg?s=9a91bf4831044c7a6ed92c651cc294db",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "18-03-20",
+    "manga_end_date_string": "16-06-21",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167677756,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1724632522,
+    "manga_title": "Ajin",
+    "manga_english": "Ajin: Demi-Human",
+    "manga_num_chapters": 84,
+    "manga_num_volumes": 17,
+    "manga_publishing_status": 2,
+    "manga_id": 49865,
+    "manga_magazines": null,
+    "manga_total_members": 159057,
+    "manga_total_scores": 55787,
+    "manga_score_val": 8.03,
+    "manga_score_diff": -99,
+    "manga_popularity": 85,
+    "genres": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 14,
+        "name": "Horror"
+      },
+      {
+        "id": 7,
+        "name": "Mystery"
+      },
+      {
+        "id": 37,
+        "name": "Supernatural"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/49865/Ajin",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/307700.jpg?s=855989e4ed4763770647ec4bf3ad0e49",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "06-07-12",
+    "manga_end_date_string": "05-02-21",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167678246,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1724633302,
+    "manga_title": "Asadora!",
+    "manga_english": "Asadora!",
+    "manga_num_chapters": 0,
+    "manga_num_volumes": 0,
+    "manga_publishing_status": 1,
+    "manga_id": 116000,
+    "manga_magazines": null,
+    "manga_total_members": 18243,
+    "manga_total_scores": 3201,
+    "manga_score_val": 7.75,
+    "manga_score_diff": -99,
+    "manga_popularity": 1277,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 7,
+        "name": "Mystery"
+      },
+      {
+        "id": 37,
+        "name": "Supernatural"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/116000/Asadora",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/265880.jpg?s=6d5dc6ecc0d27a7149cacb458b5454d0",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "06-10-18",
+    "manga_end_date_string": null,
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167677684,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1724632384,
+    "manga_title": "Bambino!",
+    "manga_english": "",
+    "manga_num_chapters": 164,
+    "manga_num_volumes": 15,
+    "manga_publishing_status": 2,
+    "manga_id": 11977,
+    "manga_magazines": null,
+    "manga_total_members": 8736,
+    "manga_total_scores": 3076,
+    "manga_score_val": 7.88,
+    "manga_score_diff": -99,
+    "manga_popularity": 2960,
+    "genres": [
+      {
+        "id": 46,
+        "name": "Award Winning"
+      },
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 47,
+        "name": "Gourmet"
+      },
+      {
+        "id": 36,
+        "name": "Slice of Life"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/11977/Bambino",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/5/74977.jpg?s=e3457ff8709b69be853eff61629442ef",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "06-12-04",
+    "manga_end_date_string": "23-02-09",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 168881067,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1726783908,
+    "manga_title": "Yakumo-san wa Ezuke ga Shitai.",
+    "manga_english": "Beauty and the Feast",
+    "manga_num_chapters": 89,
+    "manga_num_volumes": 11,
+    "manga_publishing_status": 2,
+    "manga_id": 102601,
+    "manga_magazines": null,
+    "manga_total_members": 19065,
+    "manga_total_scores": 5891,
+    "manga_score_val": 7.34,
+    "manga_score_diff": -99,
+    "manga_popularity": 1218,
+    "genres": [
+      {
+        "id": 47,
+        "name": "Gourmet"
+      },
+      {
+        "id": 22,
+        "name": "Romance"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/102601/Yakumo-san_wa_Ezuke_ga_Shitai",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/195334.jpg?s=0e1aaf05b59be4adc9220697749342ec",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "04-03-16",
+    "manga_end_date_string": "19-03-21",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 201736510,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1779484649,
+    "manga_title": "Sekai no Owari to Yoakemae",
+    "manga_english": "Before Dawn and the End of the World",
+    "manga_num_chapters": 11,
+    "manga_num_volumes": 1,
+    "manga_publishing_status": 2,
+    "manga_id": 15355,
+    "manga_magazines": null,
+    "manga_total_members": 21805,
+    "manga_total_scores": 8453,
+    "manga_score_val": 7.64,
+    "manga_score_diff": -99,
+    "manga_popularity": 1025,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 36,
+        "name": "Slice of Life"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/15355/Sekai_no_Owari_to_Yoakemae",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/199450.jpg?s=12f80547c8ee05eaa7e9e4e0f8c72eee",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "18-06-05",
+    "manga_end_date_string": "01-09-08",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 200012638,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1777155411,
+    "manga_title": "Blue Heaven",
+    "manga_english": "",
+    "manga_num_chapters": 27,
+    "manga_num_volumes": 3,
+    "manga_publishing_status": 2,
+    "manga_id": 1479,
+    "manga_magazines": null,
+    "manga_total_members": 15695,
+    "manga_total_scores": 5892,
+    "manga_score_val": 6.69,
+    "manga_score_diff": -99,
+    "manga_popularity": 1558,
+    "genres": [
+      {
+        "id": 1,
+        "name": "Action"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/1479/Blue_Heaven",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/264112.jpg?s=f4f79f6ff473e5f9c2602236a63312ef",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "27-06-02",
+    "manga_end_date_string": "12-12-02",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167678852,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1724634450,
+    "manga_title": "Bokurano",
+    "manga_english": "Bokurano: Ours",
+    "manga_num_chapters": 66,
+    "manga_num_volumes": 11,
+    "manga_publishing_status": 2,
+    "manga_id": 670,
+    "manga_magazines": null,
+    "manga_total_members": 37851,
+    "manga_total_scores": 12340,
+    "manga_score_val": 8.04,
+    "manga_score_diff": -99,
+    "manga_popularity": 548,
+    "genres": [
+      {
+        "id": 46,
+        "name": "Award Winning"
+      },
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 24,
+        "name": "Sci-Fi"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/670/Bokurano",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/1/57107.jpg?s=e27f0185072cff90a6198278f5d7b3f2",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "25-11-03",
+    "manga_end_date_string": "25-06-09",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167677582,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1724632221,
+    "manga_title": "Bokutachi ga Yarimashita",
+    "manga_english": "",
+    "manga_num_chapters": 87,
+    "manga_num_volumes": 9,
+    "manga_publishing_status": 2,
+    "manga_id": 94919,
+    "manga_magazines": null,
+    "manga_total_members": 33962,
+    "manga_total_scores": 10871,
+    "manga_score_val": 7.99,
+    "manga_score_diff": -99,
+    "manga_popularity": 622,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/94919/Bokutachi_ga_Yarimashita",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/168953.jpg?s=b9733e90f4e1b27df5060ad31bacb8a4",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "06-04-15",
+    "manga_end_date_string": "23-01-17",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167677970,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1724632842,
+    "manga_title": "Tondemo Skill de Isekai Hourou Meshi",
+    "manga_english": "Campfire Cooking in Another World with My Absurd Skill",
+    "manga_num_chapters": 0,
+    "manga_num_volumes": 0,
+    "manga_publishing_status": 1,
+    "manga_id": 105747,
+    "manga_magazines": null,
+    "manga_total_members": 29948,
+    "manga_total_scores": 8838,
+    "manga_score_val": 7.57,
+    "manga_score_diff": -99,
+    "manga_popularity": 712,
+    "genres": [
+      {
+        "id": 2,
+        "name": "Adventure"
+      },
+      {
+        "id": 4,
+        "name": "Comedy"
+      },
+      {
+        "id": 10,
+        "name": "Fantasy"
+      },
+      {
+        "id": 47,
+        "name": "Gourmet"
+      }
+    ],
+    "demographics": [],
+    "title_localized": null,
+    "manga_url": "/manga/105747/Tondemo_Skill_de_Isekai_Hourou_Meshi",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/1/204823.jpg?s=cd4f25cd207a81f2668e4b3237d2a2f0",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "24-03-17",
+    "manga_end_date_string": null,
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167678218,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1724633249,
+    "manga_title": "Chou Ningen Yousai: Hiroshi Senki",
+    "manga_english": "",
+    "manga_num_chapters": 30,
+    "manga_num_volumes": 4,
+    "manga_publishing_status": 2,
+    "manga_id": 97293,
+    "manga_magazines": null,
+    "manga_total_members": 91,
+    "manga_total_scores": 5,
+    "manga_score_val": 0,
+    "manga_score_diff": -99,
+    "manga_popularity": 57011,
+    "genres": [
+      {
+        "id": 22,
+        "name": "Romance"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/97293/Chou_Ningen_Yousai__Hiroshi_Senki",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/1/181201.jpg?s=d0866bbf41caba2ce4cecc4c80958a6e",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "09-02-16",
+    "manga_end_date_string": "23-05-17",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 200011975,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1777154263,
+    "manga_title": "Daisuki na Tsuma Datta",
+    "manga_english": "",
+    "manga_num_chapters": 1,
+    "manga_num_volumes": 0,
+    "manga_publishing_status": 2,
+    "manga_id": 140506,
+    "manga_magazines": null,
+    "manga_total_members": 6550,
+    "manga_total_scores": 3983,
+    "manga_score_val": 7.77,
+    "manga_score_diff": -99,
+    "manga_popularity": 3941,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 22,
+        "name": "Romance"
+      }
+    ],
+    "demographics": [],
+    "title_localized": null,
+    "manga_url": "/manga/140506/Daisuki_na_Tsuma_Datta",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/250428.jpg?s=f0084ded2f7bc88ed44f731bbfc9277e",
+    "is_added_to_list": false,
+    "manga_media_type_string": "One-shot",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "17-09-21",
+    "manga_end_date_string": "17-09-21",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167677699,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1724632410,
+    "manga_title": "Mystery to Iu nakare",
+    "manga_english": "Don't Call It Mystery",
+    "manga_num_chapters": 0,
+    "manga_num_volumes": 0,
+    "manga_publishing_status": 1,
+    "manga_id": 111229,
+    "manga_magazines": null,
+    "manga_total_members": 14115,
+    "manga_total_scores": 1728,
+    "manga_score_val": 8.19,
+    "manga_score_diff": -99,
+    "manga_popularity": 1756,
+    "genres": [
+      {
+        "id": 46,
+        "name": "Award Winning"
+      },
+      {
+        "id": 7,
+        "name": "Mystery"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 42,
+        "name": "Josei"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/111229/Mystery_to_Iu_nakare",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/206107.jpg?s=1f9f5d80a137f783ed9b9e0e4a7af849",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "28-11-17",
+    "manga_end_date_string": null,
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 200012663,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1777155440,
+    "manga_title": "Reiraku",
+    "manga_english": "Downfall",
+    "manga_num_chapters": 8,
+    "manga_num_volumes": 1,
+    "manga_publishing_status": 2,
+    "manga_id": 104272,
+    "manga_magazines": null,
+    "manga_total_members": 29937,
+    "manga_total_scores": 14939,
+    "manga_score_val": 7.25,
+    "manga_score_diff": -99,
+    "manga_popularity": 713,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/104272/Reiraku",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/1/202532.jpg?s=43840477cb85486688789249a566ab0a",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "10-03-17",
+    "manga_end_date_string": "28-07-17",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 201736439,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1779484449,
+    "manga_title": "Eden: It's an Endless World!",
+    "manga_english": "Eden: It's an Endless World!",
+    "manga_num_chapters": 127,
+    "manga_num_volumes": 18,
+    "manga_publishing_status": 2,
+    "manga_id": 731,
+    "manga_magazines": null,
+    "manga_total_members": 70885,
+    "manga_total_scores": 15336,
+    "manga_score_val": 8.21,
+    "manga_score_diff": -99,
+    "manga_popularity": 264,
+    "genres": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 24,
+        "name": "Sci-Fi"
+      },
+      {
+        "id": 45,
+        "name": "Suspense"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/731/Eden__Its_an_Endless_World",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/63117.jpg?s=ef06f96fb97c63f2c2344cb21f888bcd",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "25-09-97",
+    "manga_end_date_string": "25-06-08",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167677763,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1724632531,
+    "manga_title": "Apocalypse no Toride",
+    "manga_english": "Fort of Apocalypse",
+    "manga_num_chapters": 49,
+    "manga_num_volumes": 10,
+    "manga_publishing_status": 2,
+    "manga_id": 39139,
+    "manga_magazines": null,
+    "manga_total_members": 45236,
+    "manga_total_scores": 18072,
+    "manga_score_val": 7.45,
+    "manga_score_diff": -99,
+    "manga_popularity": 446,
+    "genres": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 14,
+        "name": "Horror"
+      },
+      {
+        "id": 7,
+        "name": "Mystery"
+      },
+      {
+        "id": 24,
+        "name": "Sci-Fi"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 27,
+        "name": "Shounen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/39139/Apocalypse_no_Toride",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/162053.jpg?s=4b6db970dd322aef288e1003314fafa0",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "03-09-11",
+    "manga_end_date_string": "04-08-15",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167678540,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1724633844,
+    "manga_title": "Sousou no Frieren",
+    "manga_english": "Frieren: Beyond Journey's End",
+    "manga_num_chapters": 0,
+    "manga_num_volumes": 0,
+    "manga_publishing_status": 1,
+    "manga_id": 126287,
+    "manga_magazines": null,
+    "manga_total_members": 176088,
+    "manga_total_scores": 58138,
+    "manga_score_val": 8.87,
+    "manga_score_diff": -99,
+    "manga_popularity": 73,
+    "genres": [
+      {
+        "id": 2,
+        "name": "Adventure"
+      },
+      {
+        "id": 46,
+        "name": "Award Winning"
+      },
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 10,
+        "name": "Fantasy"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 27,
+        "name": "Shounen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/126287/Sousou_no_Frieren",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/232121.jpg?s=341106ce633476b936ad1e49ba6a648a",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "28-04-20",
+    "manga_end_date_string": null,
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 200012671,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1777155455,
+    "manga_title": "Koko wa Ima kara Rinri desu.",
+    "manga_english": "From Now On We Begin Ethics.",
+    "manga_num_chapters": 56,
+    "manga_num_volumes": 10,
+    "manga_publishing_status": 2,
+    "manga_id": 106809,
+    "manga_magazines": null,
+    "manga_total_members": 33446,
+    "manga_total_scores": 10204,
+    "manga_score_val": 8.28,
+    "manga_score_diff": -99,
+    "manga_popularity": 634,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/106809/Koko_wa_Ima_kara_Rinri_desu",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/1/286829.jpg?s=2169b54621ddb71c38b1e5116bf95d17",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "26-10-16",
+    "manga_end_date_string": "27-08-25",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 201736429,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1779484423,
+    "manga_title": "Gyo: Ugomeku Bukimi",
+    "manga_english": "Gyo: The Death-Stench Creeps",
+    "manga_num_chapters": 21,
+    "manga_num_volumes": 2,
+    "manga_publishing_status": 2,
+    "manga_id": 909,
+    "manga_magazines": null,
+    "manga_total_members": 82341,
+    "manga_total_scores": 47064,
+    "manga_score_val": 7.19,
+    "manga_score_diff": -99,
+    "manga_popularity": 220,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 14,
+        "name": "Horror"
+      },
+      {
+        "id": 7,
+        "name": "Mystery"
+      },
+      {
+        "id": 24,
+        "name": "Sci-Fi"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/909/Gyo__Ugomeku_Bukimi",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/88711.jpg?s=8275b307f5a6a20765b742f77d073b99",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "12-11-01",
+    "manga_end_date_string": "15-04-02",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167676973,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1724631422,
+    "manga_title": "Heads",
+    "manga_english": "",
+    "manga_num_chapters": 36,
+    "manga_num_volumes": 4,
+    "manga_publishing_status": 2,
+    "manga_id": 2179,
+    "manga_magazines": null,
+    "manga_total_members": 16817,
+    "manga_total_scores": 5498,
+    "manga_score_val": 7.41,
+    "manga_score_diff": -99,
+    "manga_popularity": 1409,
+    "genres": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 7,
+        "name": "Mystery"
+      },
+      {
+        "id": 24,
+        "name": "Sci-Fi"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/2179/Heads",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/1/266962.jpg?s=bb5d31544c9e30c655de71d10af6b393",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "18-07-02",
+    "manga_end_date_string": "24-04-03",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167677017,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1724631482,
+    "manga_title": "Himizu",
+    "manga_english": "",
+    "manga_num_chapters": 43,
+    "manga_num_volumes": 4,
+    "manga_publishing_status": 2,
+    "manga_id": 4553,
+    "manga_magazines": null,
+    "manga_total_members": 18781,
+    "manga_total_scores": 5439,
+    "manga_score_val": 7.4,
+    "manga_score_diff": -99,
+    "manga_popularity": 1241,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/4553/Himizu",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/198203.jpg?s=23ea12f1acf70f31cfd01235ebddc08b",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "29-01-01",
+    "manga_end_date_string": "11-03-02",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167677562,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1724632195,
+    "manga_title": "Homunculus",
+    "manga_english": "Homunculus",
+    "manga_num_chapters": 166,
+    "manga_num_volumes": 15,
+    "manga_publishing_status": 2,
+    "manga_id": 936,
+    "manga_magazines": null,
+    "manga_total_members": 174795,
+    "manga_total_scores": 63741,
+    "manga_score_val": 8.34,
+    "manga_score_diff": -99,
+    "manga_popularity": 75,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 14,
+        "name": "Horror"
+      },
+      {
+        "id": 7,
+        "name": "Mystery"
+      },
+      {
+        "id": 37,
+        "name": "Supernatural"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/936/Homunculus",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/1/318.jpg?s=2701b317dfeaaacd7998fdb07a7cc4eb",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "17-03-03",
+    "manga_end_date_string": "21-02-11",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 168881147,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1726784091,
+    "manga_title": "Kimi no Okaasan wo Boku ni Kudasai!",
+    "manga_english": "I Want Your Mother to Be with Me!",
+    "manga_num_chapters": 33,
+    "manga_num_volumes": 4,
+    "manga_publishing_status": 2,
+    "manga_id": 121740,
+    "manga_magazines": null,
+    "manga_total_members": 13887,
+    "manga_total_scores": 5907,
+    "manga_score_val": 7.66,
+    "manga_score_diff": -99,
+    "manga_popularity": 1797,
+    "genres": [
+      {
+        "id": 4,
+        "name": "Comedy"
+      },
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 22,
+        "name": "Romance"
+      },
+      {
+        "id": 36,
+        "name": "Slice of Life"
+      }
+    ],
+    "demographics": [],
+    "title_localized": null,
+    "manga_url": "/manga/121740/Kimi_no_Okaasan_wo_Boku_ni_Kudasai",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/226254.jpg?s=fe6b93bcd4b91391aa4f3350b220a1f3",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "18-05-18",
+    "manga_end_date_string": "24-06-20",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167678435,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1724633642,
+    "manga_title": "Innocent",
+    "manga_english": "Innocent",
+    "manga_num_chapters": 99,
+    "manga_num_volumes": 9,
+    "manga_publishing_status": 2,
+    "manga_id": 58563,
+    "manga_magazines": null,
+    "manga_total_members": 73160,
+    "manga_total_scores": 19869,
+    "manga_score_val": 8.2,
+    "manga_score_diff": -99,
+    "manga_popularity": 249,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/58563/Innocent",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/1/275351.jpg?s=c103ca3a1c490aafa0dea10c055ae7fd",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "31-01-13",
+    "manga_end_date_string": "16-04-15",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 200012684,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1777155464,
+    "manga_title": "Jisatsutou",
+    "manga_english": "",
+    "manga_num_chapters": 168,
+    "manga_num_volumes": 17,
+    "manga_publishing_status": 2,
+    "manga_id": 11434,
+    "manga_magazines": null,
+    "manga_total_members": 32556,
+    "manga_total_scores": 9110,
+    "manga_score_val": 7.48,
+    "manga_score_diff": -99,
+    "manga_popularity": 659,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 7,
+        "name": "Mystery"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/11434/Jisatsutou",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/182071.jpg?s=4a83541804fbd3a16454b98b8c8d392c",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "14-11-08",
+    "manga_end_date_string": "26-08-16",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 200012003,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1777154303,
+    "manga_title": "MADK",
+    "manga_english": "MADK",
+    "manga_num_chapters": 22,
+    "manga_num_volumes": 3,
+    "manga_publishing_status": 2,
+    "manga_id": 115345,
+    "manga_magazines": null,
+    "manga_total_members": 11463,
+    "manga_total_scores": 3663,
+    "manga_score_val": 8.05,
+    "manga_score_diff": -99,
+    "manga_popularity": 2194,
+    "genres": [
+      {
+        "id": 28,
+        "name": "Boys Love"
+      },
+      {
+        "id": 14,
+        "name": "Horror"
+      },
+      {
+        "id": 37,
+        "name": "Supernatural"
+      },
+      {
+        "id": 49,
+        "name": "Erotica"
+      }
+    ],
+    "demographics": [],
+    "title_localized": null,
+    "manga_url": "/manga/115345/MADK",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/279874.jpg?s=0fd77ada20948651cad25423e9cf2b0a",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "28-08-17",
+    "manga_end_date_string": "30-06-22",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 173045526,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1735577650,
+    "manga_title": "Master Keaton",
+    "manga_english": "Master Keaton",
+    "manga_num_chapters": 144,
+    "manga_num_volumes": 18,
+    "manga_publishing_status": 2,
+    "manga_id": 848,
+    "manga_magazines": null,
+    "manga_total_members": 10413,
+    "manga_total_scores": 1745,
+    "manga_score_val": 7.79,
+    "manga_score_diff": -99,
+    "manga_popularity": 2406,
+    "genres": [
+      {
+        "id": 2,
+        "name": "Adventure"
+      },
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 7,
+        "name": "Mystery"
+      },
+      {
+        "id": 36,
+        "name": "Slice of Life"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/848/Master_Keaton",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/1/200911.jpg?s=eb3d92ebdf0f28227e4ec3b2663a9275",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "00-11-88",
+    "manga_end_date_string": "00-08-94",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 200012644,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1777155419,
+    "manga_title": "Ore to Akuma no Blues",
+    "manga_english": "Me and the Devil Blues: The Unreal Life of Robert Johnson",
+    "manga_num_chapters": 0,
+    "manga_num_volumes": 0,
+    "manga_publishing_status": 1,
+    "manga_id": 1211,
+    "manga_magazines": null,
+    "manga_total_members": 26300,
+    "manga_total_scores": 4034,
+    "manga_score_val": 8.05,
+    "manga_score_diff": -99,
+    "manga_popularity": 842,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 14,
+        "name": "Horror"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/1211/Ore_to_Akuma_no_Blues",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/5/101327.jpg?s=9d6a95805bf269d0e5ad07b4d364fb0f",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "25-11-03",
+    "manga_end_date_string": null,
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 201736484,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1779484575,
+    "manga_title": "Tajuu Jinkaku Tantei Psycho",
+    "manga_english": "MPD Psycho",
+    "manga_num_chapters": 155,
+    "manga_num_volumes": 24,
+    "manga_publishing_status": 2,
+    "manga_id": 740,
+    "manga_magazines": null,
+    "manga_total_members": 32772,
+    "manga_total_scores": 5417,
+    "manga_score_val": 7.61,
+    "manga_score_diff": -99,
+    "manga_popularity": 653,
+    "genres": [
+      {
+        "id": 7,
+        "name": "Mystery"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/740/Tajuu_Jinkaku_Tantei_Psycho",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/143117.jpg?s=b272d92f33785cc4bad5dd03f2ee5ee3",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "26-12-96",
+    "manga_end_date_string": "04-03-16",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167677760,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1724632527,
+    "manga_title": "Mushishi",
+    "manga_english": "Mushishi",
+    "manga_num_chapters": 50,
+    "manga_num_volumes": 10,
+    "manga_publishing_status": 2,
+    "manga_id": 418,
+    "manga_magazines": null,
+    "manga_total_members": 97403,
+    "manga_total_scores": 21948,
+    "manga_score_val": 8.71,
+    "manga_score_diff": -99,
+    "manga_popularity": 178,
+    "genres": [
+      {
+        "id": 46,
+        "name": "Award Winning"
+      },
+      {
+        "id": 10,
+        "name": "Fantasy"
+      },
+      {
+        "id": 7,
+        "name": "Mystery"
+      },
+      {
+        "id": 37,
+        "name": "Supernatural"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/418/Mushishi",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/159514.jpg?s=ad6e81caade73a22ed2d9714ece89d7d",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "08-10-99",
+    "manga_end_date_string": "25-08-08",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167676935,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1724631360,
+    "manga_title": "Shinai naru Boku e Satsui wo Komete",
+    "manga_english": "My Dearest Self With Malice Aforethought",
+    "manga_num_chapters": 98,
+    "manga_num_volumes": 11,
+    "manga_publishing_status": 2,
+    "manga_id": 115746,
+    "manga_magazines": null,
+    "manga_total_members": 58120,
+    "manga_total_scores": 20423,
+    "manga_score_val": 8.21,
+    "manga_score_diff": -99,
+    "manga_popularity": 333,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 7,
+        "name": "Mystery"
+      },
+      {
+        "id": 45,
+        "name": "Suspense"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/115746/Shinai_naru_Boku_e_Satsui_wo_Komete",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/1/211898.jpg?s=e4fea0e4da9ede14092fce9eb44a430d",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "07-05-18",
+    "manga_end_date_string": "07-09-20",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 201736479,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1779484562,
+    "manga_title": "My Home Hero",
+    "manga_english": "My Home Hero",
+    "manga_num_chapters": 224,
+    "manga_num_volumes": 26,
+    "manga_publishing_status": 2,
+    "manga_id": 108032,
+    "manga_magazines": null,
+    "manga_total_members": 34895,
+    "manga_total_scores": 7069,
+    "manga_score_val": 7.92,
+    "manga_score_diff": -99,
+    "manga_popularity": 599,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 45,
+        "name": "Suspense"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/108032/My_Home_Hero",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/1/200302.jpg?s=0f15701b4af0875c60ad56b6550fe9e4",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "29-05-17",
+    "manga_end_date_string": "29-07-24",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167677826,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1724632605,
+    "manga_title": "Sabishisugite Lesbian Fuuzoku ni Ikimashita Report",
+    "manga_english": "My Lesbian Experience with Loneliness",
+    "manga_num_chapters": 6,
+    "manga_num_volumes": 1,
+    "manga_publishing_status": 2,
+    "manga_id": 99969,
+    "manga_magazines": null,
+    "manga_total_members": 59777,
+    "manga_total_scores": 31099,
+    "manga_score_val": 8.12,
+    "manga_score_diff": -99,
+    "manga_popularity": 325,
+    "genres": [
+      {
+        "id": 36,
+        "name": "Slice of Life"
+      }
+    ],
+    "demographics": [],
+    "title_localized": null,
+    "manga_url": "/manga/99969/Sabishisugite_Lesbian_Fuuzoku_ni_Ikimashita_Report",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/180846.jpg?s=37fa5ad42641792c815ec096bc4f7c57",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "17-06-16",
+    "manga_end_date_string": "17-06-16",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 200012649,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1777155425,
+    "manga_title": "Nijigahara Holograph",
+    "manga_english": "Nijigahara Holograph",
+    "manga_num_chapters": 15,
+    "manga_num_volumes": 1,
+    "manga_publishing_status": 2,
+    "manga_id": 1373,
+    "manga_magazines": null,
+    "manga_total_members": 53519,
+    "manga_total_scores": 21531,
+    "manga_score_val": 7.47,
+    "manga_score_diff": -99,
+    "manga_popularity": 358,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      }
+    ],
+    "demographics": [],
+    "title_localized": null,
+    "manga_url": "/manga/1373/Nijigahara_Holograph",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/67543.jpg?s=d6e311fc1ed00ee9d968ba310f474b2a",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "12-11-03",
+    "manga_end_date_string": "10-12-05",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 200012585,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1777155311,
+    "manga_title": "Chi. Chikyuu no Undou ni Tsuite",
+    "manga_english": "Orb: On the Movements of the Earth",
+    "manga_num_chapters": 62,
+    "manga_num_volumes": 8,
+    "manga_publishing_status": 2,
+    "manga_id": 137939,
+    "manga_magazines": null,
+    "manga_total_members": 17576,
+    "manga_total_scores": 4575,
+    "manga_score_val": 8.31,
+    "manga_score_diff": -99,
+    "manga_popularity": 1332,
+    "genres": [
+      {
+        "id": 46,
+        "name": "Award Winning"
+      },
+      {
+        "id": 8,
+        "name": "Drama"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/137939/Chi_Chikyuu_no_Undou_ni_Tsuite",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/246956.jpg?s=370bb3574f057d680495762f4d5553bd",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "14-09-20",
+    "manga_end_date_string": "18-04-22",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167679320,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1724635417,
+    "manga_title": "Jigokusei Remina",
+    "manga_english": "Remina",
+    "manga_num_chapters": 7,
+    "manga_num_volumes": 1,
+    "manga_publishing_status": 2,
+    "manga_id": 3992,
+    "manga_magazines": null,
+    "manga_total_members": 42203,
+    "manga_total_scores": 24143,
+    "manga_score_val": 7.18,
+    "manga_score_diff": -99,
+    "manga_popularity": 486,
+    "genres": [
+      {
+        "id": 14,
+        "name": "Horror"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/3992/Jigokusei_Remina",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/235820.jpg?s=f535c91bf493a2ea4d716699236e6183",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "16-08-04",
+    "manga_end_date_string": "24-06-05",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167678849,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1724634446,
+    "manga_title": "Sanctuary",
+    "manga_english": "Sanctuary",
+    "manga_num_chapters": 108,
+    "manga_num_volumes": 12,
+    "manga_publishing_status": 2,
+    "manga_id": 1461,
+    "manga_magazines": null,
+    "manga_total_members": 39034,
+    "manga_total_scores": 9706,
+    "manga_score_val": 8.23,
+    "manga_score_diff": -99,
+    "manga_popularity": 527,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 45,
+        "name": "Suspense"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/1461/Sanctuary",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/1/170458.jpg?s=7f8d20eb07a3d9503e7208c0b0992917",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "00-00-90",
+    "manga_end_date_string": "00-00-95",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167672217,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1724623436,
+    "manga_title": "Saver",
+    "manga_english": "Saver",
+    "manga_num_chapters": 55,
+    "manga_num_volumes": 17,
+    "manga_publishing_status": 2,
+    "manga_id": 514,
+    "manga_magazines": null,
+    "manga_total_members": 7625,
+    "manga_total_scores": 2210,
+    "manga_score_val": 7.94,
+    "manga_score_diff": -99,
+    "manga_popularity": 3396,
+    "genres": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 2,
+        "name": "Adventure"
+      },
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 10,
+        "name": "Fantasy"
+      },
+      {
+        "id": 22,
+        "name": "Romance"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 25,
+        "name": "Shoujo"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/514/Saver",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/1/150822.jpg?s=c7323bc623ad614b4a6b452d37ea50e8",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manhwa",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "00-00-02",
+    "manga_end_date_string": "00-00-10",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167678378,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1724633542,
+    "manga_title": "Shiosai no Majo",
+    "manga_english": "",
+    "manga_num_chapters": 13,
+    "manga_num_volumes": 2,
+    "manga_publishing_status": 2,
+    "manga_id": 135392,
+    "manga_magazines": null,
+    "manga_total_members": 1534,
+    "manga_total_scores": 446,
+    "manga_score_val": 7.23,
+    "manga_score_diff": -99,
+    "manga_popularity": 13538,
+    "genres": [
+      {
+        "id": 10,
+        "name": "Fantasy"
+      },
+      {
+        "id": 36,
+        "name": "Slice of Life"
+      }
+    ],
+    "demographics": [],
+    "title_localized": null,
+    "manga_url": "/manga/135392/Shiosai_no_Majo",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/1/243152.jpg?s=bc461d8877f721adf7703757e58caee1",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "20-08-18",
+    "manga_end_date_string": "15-02-21",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 134588544,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1666989292,
+    "manga_title": "Skip to Loafer",
+    "manga_english": "Skip and Loafer",
+    "manga_num_chapters": 0,
+    "manga_num_volumes": 0,
+    "manga_publishing_status": 1,
+    "manga_id": 118289,
+    "manga_magazines": null,
+    "manga_total_members": 54111,
+    "manga_total_scores": 13986,
+    "manga_score_val": 8.61,
+    "manga_score_diff": -99,
+    "manga_popularity": 355,
+    "genres": [
+      {
+        "id": 46,
+        "name": "Award Winning"
+      },
+      {
+        "id": 8,
+        "name": "Drama"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/118289/Skip_to_Loafer",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/220669.jpg?s=86c5c967065a7432f500c3ef878e3de6",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "25-08-18",
+    "manga_end_date_string": null,
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167678040,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1724632927,
+    "manga_title": "Solanin",
+    "manga_english": "Solanin",
+    "manga_num_chapters": 28,
+    "manga_num_volumes": 2,
+    "manga_publishing_status": 2,
+    "manga_id": 3731,
+    "manga_magazines": null,
+    "manga_total_members": 137561,
+    "manga_total_scores": 56614,
+    "manga_score_val": 8.21,
+    "manga_score_diff": -99,
+    "manga_popularity": 105,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 36,
+        "name": "Slice of Life"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/3731/Solanin",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/179699.jpg?s=b1b94a7b430ead5fba5ff550e3437bb4",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "30-06-05",
+    "manga_end_date_string": "06-04-06",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167678843,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1724634440,
+    "manga_title": "Summertime Render",
+    "manga_english": "Summertime Rendering",
+    "manga_num_chapters": 139,
+    "manga_num_volumes": 13,
+    "manga_publishing_status": 2,
+    "manga_id": 110031,
+    "manga_magazines": null,
+    "manga_total_members": 62822,
+    "manga_total_scores": 18586,
+    "manga_score_val": 8.24,
+    "manga_score_diff": -99,
+    "manga_popularity": 306,
+    "genres": [
+      {
+        "id": 7,
+        "name": "Mystery"
+      },
+      {
+        "id": 37,
+        "name": "Supernatural"
+      },
+      {
+        "id": 45,
+        "name": "Suspense"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 27,
+        "name": "Shounen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/110031/Summertime_Render",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/261167.jpg?s=a2dad8f28a98554eb3015f9628c1daf9",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "23-10-17",
+    "manga_end_date_string": "01-02-21",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 200012665,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1777155445,
+    "manga_title": "Ase to Sekken",
+    "manga_english": "Sweat and Soap",
+    "manga_num_chapters": 104,
+    "manga_num_volumes": 11,
+    "manga_publishing_status": 2,
+    "manga_id": 117840,
+    "manga_magazines": null,
+    "manga_total_members": 52075,
+    "manga_total_scores": 19041,
+    "manga_score_val": 8.16,
+    "manga_score_diff": -99,
+    "manga_popularity": 378,
+    "genres": [
+      {
+        "id": 4,
+        "name": "Comedy"
+      },
+      {
+        "id": 22,
+        "name": "Romance"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/117840/Ase_to_Sekken",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/271450.jpg?s=8bdc73dff92c3378fcd6bc6d0d0a46f6",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "21-06-18",
+    "manga_end_date_string": "07-01-21",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167679316,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1724635409,
+    "manga_title": "Sousei no Taiga",
+    "manga_english": "Taiga of Genesis",
+    "manga_num_chapters": 0,
+    "manga_num_volumes": 0,
+    "manga_publishing_status": 1,
+    "manga_id": 105390,
+    "manga_magazines": null,
+    "manga_total_members": 8274,
+    "manga_total_scores": 2222,
+    "manga_score_val": 7.38,
+    "manga_score_diff": -99,
+    "manga_popularity": 3126,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/105390/Sousei_no_Taiga",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/1/199770.jpg?s=ed0d63b892d2763ef7f3f7b7e1f4ed89",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "28-03-17",
+    "manga_end_date_string": null,
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167678023,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1724632905,
+    "manga_title": "22-26: Fujimoto Tatsuki Tanpenshuu",
+    "manga_english": "Tatsuki Fujimoto Before Chainsaw Man: 22-26",
+    "manga_num_chapters": 4,
+    "manga_num_volumes": 1,
+    "manga_publishing_status": 2,
+    "manga_id": 141294,
+    "manga_magazines": null,
+    "manga_total_members": 33557,
+    "manga_total_scores": 19359,
+    "manga_score_val": 7.39,
+    "manga_score_diff": -99,
+    "manga_popularity": 630,
+    "genres": [
+      {
+        "id": 4,
+        "name": "Comedy"
+      },
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 37,
+        "name": "Supernatural"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 27,
+        "name": "Shounen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/141294/22-26__Fujimoto_Tatsuki_Tanpenshuu",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/251978.jpg?s=a4ece9e50a147c44b6601391f38e5499",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "19-12-14",
+    "manga_end_date_string": "02-05-18",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 200012667,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1777155450,
+    "manga_title": "Terra Formars",
+    "manga_english": "Terra Formars",
+    "manga_num_chapters": 0,
+    "manga_num_volumes": 0,
+    "manga_publishing_status": 1,
+    "manga_id": 37563,
+    "manga_magazines": null,
+    "manga_total_members": 54114,
+    "manga_total_scores": 16229,
+    "manga_score_val": 7.23,
+    "manga_score_diff": -99,
+    "manga_popularity": 354,
+    "genres": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 14,
+        "name": "Horror"
+      },
+      {
+        "id": 24,
+        "name": "Sci-Fi"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/37563/Terra_Formars",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/311335.jpg?s=9c479b83b40b968651d4422a46192a40",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "13-01-11",
+    "manga_end_date_string": null,
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167678013,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1724632890,
+    "manga_title": "Kokou no Hito",
+    "manga_english": "The Climber",
+    "manga_num_chapters": 170,
+    "manga_num_volumes": 17,
+    "manga_publishing_status": 2,
+    "manga_id": 7375,
+    "manga_magazines": null,
+    "manga_total_members": 157746,
+    "manga_total_scores": 52875,
+    "manga_score_val": 8.84,
+    "manga_score_diff": -99,
+    "manga_popularity": 87,
+    "genres": [
+      {
+        "id": 46,
+        "name": "Award Winning"
+      },
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 30,
+        "name": "Sports"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/7375/Kokou_no_Hito",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/1/324690.jpg?s=1a7b39158156195a38a5c1192b3487ee",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "01-11-07",
+    "manga_end_date_string": "27-10-11",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 200012587,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1777155323,
+    "manga_title": "Shigeshoushi",
+    "manga_english": "The Embalmer",
+    "manga_num_chapters": 42,
+    "manga_num_volumes": 7,
+    "manga_publishing_status": 2,
+    "manga_id": 544,
+    "manga_magazines": null,
+    "manga_total_members": 16284,
+    "manga_total_scores": 3715,
+    "manga_score_val": 8,
+    "manga_score_diff": -99,
+    "manga_popularity": 1473,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 22,
+        "name": "Romance"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 42,
+        "name": "Josei"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/544/Shigeshoushi",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/89003.jpg?s=565bced4acc15a59999550105a2e10ee",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "08-05-02",
+    "manga_end_date_string": "08-04-13",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167678149,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1724633117,
+    "manga_title": "Kage no Jitsuryokusha ni Naritakute!",
+    "manga_english": "The Eminence in Shadow",
+    "manga_num_chapters": 0,
+    "manga_num_volumes": 0,
+    "manga_publishing_status": 1,
+    "manga_id": 119022,
+    "manga_magazines": null,
+    "manga_total_members": 90311,
+    "manga_total_scores": 31493,
+    "manga_score_val": 8.24,
+    "manga_score_diff": -99,
+    "manga_popularity": 200,
+    "genres": [
+      {
+        "id": 1,
+        "name": "Action"
+      },
+      {
+        "id": 4,
+        "name": "Comedy"
+      },
+      {
+        "id": 10,
+        "name": "Fantasy"
+      }
+    ],
+    "demographics": [],
+    "title_localized": null,
+    "manga_url": "/manga/119022/Kage_no_Jitsuryokusha_ni_Naritakute",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/227280.jpg?s=87bc0be6d6420e5af9e6c057b3b9d23f",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "26-12-18",
+    "manga_end_date_string": null,
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167678384,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1724633552,
+    "manga_title": "8-gatsu 31-nichi no Long Summer",
+    "manga_english": "The Long Summer of August 31",
+    "manga_num_chapters": 0,
+    "manga_num_volumes": 0,
+    "manga_publishing_status": 1,
+    "manga_id": 157396,
+    "manga_magazines": null,
+    "manga_total_members": 3270,
+    "manga_total_scores": 569,
+    "manga_score_val": 7.31,
+    "manga_score_diff": -99,
+    "manga_popularity": 7416,
+    "genres": [
+      {
+        "id": 4,
+        "name": "Comedy"
+      },
+      {
+        "id": 22,
+        "name": "Romance"
+      },
+      {
+        "id": 24,
+        "name": "Sci-Fi"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/157396/8-gatsu_31-nichi_no_Long_Summer",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/1/286783.jpg?s=6114d9f5680ecdf0cb1bdd3d23c4fa47",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "30-03-23",
+    "manga_end_date_string": null,
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 200012599,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1777155335,
+    "manga_title": "The World Is Mine",
+    "manga_english": "",
+    "manga_num_chapters": 163,
+    "manga_num_volumes": 14,
+    "manga_publishing_status": 2,
+    "manga_id": 1408,
+    "manga_magazines": null,
+    "manga_total_members": 20678,
+    "manga_total_scores": 3234,
+    "manga_score_val": 7.91,
+    "manga_score_diff": -99,
+    "manga_popularity": 1099,
+    "genres": [],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/1408/The_World_Is_Mine",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/1287.jpg?s=c92ae7a356c9a4705c1b6e3cca84ab58",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "23-01-97",
+    "manga_end_date_string": "15-03-01",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167677542,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1724632168,
+    "manga_title": "Chii-chan",
+    "manga_english": "Toxic Daughter: Chi-chan",
+    "manga_num_chapters": 10,
+    "manga_num_volumes": 1,
+    "manga_publishing_status": 2,
+    "manga_id": 166102,
+    "manga_magazines": null,
+    "manga_total_members": 2119,
+    "manga_total_scores": 997,
+    "manga_score_val": 5.94,
+    "manga_score_diff": -99,
+    "manga_popularity": 10574,
+    "genres": [
+      {
+        "id": 14,
+        "name": "Horror"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/166102/Chii-chan",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/2/300051.jpg?s=c1f179806eb30056acb81f0b72c138b0",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "15-01-24",
+    "manga_end_date_string": "11-03-24",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 200012654,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1777155429,
+    "manga_title": "Ubume no Natsu",
+    "manga_english": "",
+    "manga_num_chapters": 10,
+    "manga_num_volumes": 4,
+    "manga_publishing_status": 2,
+    "manga_id": 70179,
+    "manga_magazines": null,
+    "manga_total_members": 3367,
+    "manga_total_scores": 703,
+    "manga_score_val": 7.59,
+    "manga_score_diff": -99,
+    "manga_popularity": 7224,
+    "genres": [
+      {
+        "id": 7,
+        "name": "Mystery"
+      },
+      {
+        "id": 37,
+        "name": "Supernatural"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/70179/Ubume_no_Natsu",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/1/120947.jpg?s=22c4e6421bd2b31812aee8355fa5895f",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "30-01-13",
+    "manga_end_date_string": "10-12-14",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 200011531,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1777154207,
+    "manga_title": "Utsukushii Mono-tachi",
+    "manga_english": "",
+    "manga_num_chapters": 1,
+    "manga_num_volumes": 0,
+    "manga_publishing_status": 2,
+    "manga_id": 114472,
+    "manga_magazines": null,
+    "manga_total_members": 971,
+    "manga_total_scores": 501,
+    "manga_score_val": 7.1,
+    "manga_score_diff": -99,
+    "manga_popularity": 18667,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 10,
+        "name": "Fantasy"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/114472/Utsukushii_Mono-tachi",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/224272.jpg?s=1ba301e8b6b0fe915fa02f62d4b1a28d",
+    "is_added_to_list": false,
+    "manga_media_type_string": "One-shot",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "25-01-18",
+    "manga_end_date_string": "25-01-18",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 200011954,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1777154235,
+    "manga_title": "Watashitachi no Shiawase na Jikan",
+    "manga_english": "",
+    "manga_num_chapters": 8,
+    "manga_num_volumes": 1,
+    "manga_publishing_status": 2,
+    "manga_id": 11734,
+    "manga_magazines": null,
+    "manga_total_members": 124095,
+    "manga_total_scores": 57490,
+    "manga_score_val": 8.49,
+    "manga_score_diff": -99,
+    "manga_popularity": 123,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 22,
+        "name": "Romance"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/11734/Watashitachi_no_Shiawase_na_Jikan",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/66993.jpg?s=d9f4cfc94c09132d4406a884807c98da",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "28-03-08",
+    "manga_end_date_string": "22-08-08",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 200011958,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1777154243,
+    "manga_title": "Whale Star: The Gyeongseong Mermaid",
+    "manga_english": "",
+    "manga_num_chapters": 109,
+    "manga_num_volumes": 6,
+    "manga_publishing_status": 2,
+    "manga_id": 131338,
+    "manga_magazines": null,
+    "manga_total_members": 5304,
+    "manga_total_scores": 1108,
+    "manga_score_val": 8.44,
+    "manga_score_diff": -99,
+    "manga_popularity": 4842,
+    "genres": [
+      {
+        "id": 8,
+        "name": "Drama"
+      },
+      {
+        "id": 22,
+        "name": "Romance"
+      }
+    ],
+    "demographics": [],
+    "title_localized": null,
+    "manga_url": "/manga/131338/Whale_Star__The_Gyeongseong_Mermaid",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/237965.jpg?s=e809d0333ccba5e33661547cc3ecab93",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manhwa",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "21-06-19",
+    "manga_end_date_string": "09-07-21",
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 201736412,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1779484390,
+    "manga_title": "Tongari Boushi no Atelier",
+    "manga_english": "Witch Hat Atelier",
+    "manga_num_chapters": 0,
+    "manga_num_volumes": 0,
+    "manga_publishing_status": 1,
+    "manga_id": 100035,
+    "manga_magazines": null,
+    "manga_total_members": 147501,
+    "manga_total_scores": 36923,
+    "manga_score_val": 8.75,
+    "manga_score_diff": -99,
+    "manga_popularity": 98,
+    "genres": [
+      {
+        "id": 10,
+        "name": "Fantasy"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/100035/Tongari_Boushi_no_Atelier",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/190005.jpg?s=314fab3e036da092b82b9fe05e023807",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "22-07-16",
+    "manga_end_date_string": null,
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  },
+  {
+    "id": 167677811,
+    "status": 6,
+    "score": 0,
+    "tags": "",
+    "is_rereading": 0,
+    "num_read_chapters": 0,
+    "num_read_volumes": 0,
+    "created_at": 1724632591,
+    "manga_title": "Zatsu Tabi: That's Journey",
+    "manga_english": "Zatsutabi",
+    "manga_num_chapters": 0,
+    "manga_num_volumes": 0,
+    "manga_publishing_status": 1,
+    "manga_id": 123931,
+    "manga_magazines": null,
+    "manga_total_members": 1678,
+    "manga_total_scores": 135,
+    "manga_score_val": 6.84,
+    "manga_score_diff": -99,
+    "manga_popularity": 12717,
+    "genres": [
+      {
+        "id": 2,
+        "name": "Adventure"
+      },
+      {
+        "id": 4,
+        "name": "Comedy"
+      },
+      {
+        "id": 36,
+        "name": "Slice of Life"
+      }
+    ],
+    "demographics": [
+      {
+        "id": 41,
+        "name": "Seinen"
+      }
+    ],
+    "title_localized": null,
+    "manga_url": "/manga/123931/Zatsu_Tabi__Thats_Journey",
+    "manga_image_path": "https://cdn.myanimelist.net/r/192x272/images/manga/3/226320.jpg?s=90dde1c326d41d075aa60c9bd6cf55e2",
+    "is_added_to_list": false,
+    "manga_media_type_string": "Manga",
+    "start_date_string": null,
+    "finish_date_string": null,
+    "manga_start_date_string": "27-03-19",
+    "manga_end_date_string": null,
+    "days_string": null,
+    "retail_string": null,
+    "priority_string": "Low",
+    "notes": "",
+    "editable_notes": ""
+  }
+]
