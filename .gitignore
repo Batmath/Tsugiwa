@@ -7,7 +7,6 @@ htmls/
 htmlcov/
 prof/
 data/*
-!data/dump.sql
 .vscode/
 scraper/__pycache__
 api/__pycache__
@@ -25,4 +24,5 @@ shared/shared.egg-info
 coverage.xml
 junit/
 freeze
+.github
 
