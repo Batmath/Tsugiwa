@@ -111,6 +111,7 @@ def query_users(conn, username=None, gender=None, location=None, min_entries=Non
 
     return (users[0][target] if counting else [dict(u) for u in users]) if users else []
 
+#TODO: Rewrite the query logic for genres
 def query_ratings(conn, username=None, manga_id=None, min_score=None, max_score=None, status=None,
         #join trigerring options
         gender=None, location=None, min_entries=None, max_entries=None, min_birthday=None, max_birthday=None, genres=[],
@@ -118,9 +119,10 @@ def query_ratings(conn, username=None, manga_id=None, min_score=None, max_score=
         limit=None, offset=None,  counting=False, full=False):
 
     # TODO : Expand dynamic query building to add JOIN tables. (ratings from users of a certain location, ratings from users within a certain genres etc.)
-    target = "COUNT(DISTINCT e.username, e.manga_id)" if counting else "*"
+    
+    target = "COUNT(DISTINCT e.user_id, e.manga_id)" if counting else "*"
     if counting : 
-        target = "SELECT COUNT(*) FROM (SELECT DISTINCT e.username, e.manga_id FROM entries e{})"
+        target = "SELECT COUNT(*) FROM (SELECT DISTINCT e.user_id, e.manga_id FROM entries e{})"
     else:
         target = "SELECT * FROM entries e{}"
     query = ""
@@ -129,9 +131,18 @@ def query_ratings(conn, username=None, manga_id=None, min_score=None, max_score=
     joins = []
     constraints = []
     params = []
-    
+    if username is not None:
+        
+        id = conn.execute("SELECT user_id FROM users WHERE username = ?", (username,)).fetchone()[0]
+        if id is not None :
+            #raise error
+            print()
+
+        constraints.append("e.user_id = ?")
+        params.append(id)
+
     if (gender or location or min_entries or max_entries or min_birthday or max_birthday):
-        joins.append("JOIN users u ON u.username = e.username")
+        joins.append("JOIN users u ON u.user_id = e.user_id")
     
     if genres:
         joins.append("JOIN manga_genres mg ON e.manga_id = mg.manga_id")
@@ -143,10 +154,6 @@ def query_ratings(conn, username=None, manga_id=None, min_score=None, max_score=
         joins.append("JOIN manga m ON e.manga_id = m.manga_id")
         genres_fetched = True
     
-    if username is not None:
-        constraints.append("e.username = ?")
-        params.append(username)
-
     if min_score is not None:
         constraints.append("e.score >= ?")
         params.append(min_score)
@@ -211,18 +218,19 @@ def query_ratings(conn, username=None, manga_id=None, min_score=None, max_score=
     req = target.format(query)
     print(req)
     print(constraints)
-    print(params)
+    print(tuple(params))
 
     ratings = conn.execute(req, tuple(params)).fetchall()
 
+    print(ratings)
     if joins:
         if genres_fetched:
             grouped_data = defaultdict(list)
             for rating in ratings:
-                grouped_data[(rating['username'], rating['manga_id'])].append(dict(rating))
+                grouped_data[(rating['user_id'], rating['manga_id'])].append(dict(rating))
             
             genre_map = {genre['genre_id'] : genre['genre_name'] for genre in query_genres(conn)}
-            res = [{'username' : key[0], 
+            res = [{'user_id' : key[0], 
                     'manga_id' : key[1],
                     'genres' : [{'genre_id' : rating['genre_id'],'genre' : genre_map[rating['genre_id']]} for rating in val],
                     'status' : val[0]['status'],
@@ -230,11 +238,11 @@ def query_ratings(conn, username=None, manga_id=None, min_score=None, max_score=
                     'score' :  val[0]['score'],  'start_date_string' :  val[0]['start_date_string'],'end_date_string' :  val[0]['end_date_string'], 'status' : val[0]['status'] } for key, val in grouped_data.items()]
             if full:
                 for entry in res :
-                    matching_entries = grouped_data[(entry['username'], entry['manga_id'])]
+                    matching_entries = grouped_data[(entry['user_id'], entry['manga_id'])]
                     entry['manga'] = {
                         'manga_id' : entry['manga_id'], 
                         'title' : matching_entries[0]['title'], 
-                        'title_japanese' : matching_entries[0]['title_japanese'],
+                        'title_other' : matching_entries[0]['title_other'],
                         'media_type' : matching_entries[0]['media_type'],
                         'genres' : entry.pop('genres'),
                         'demographics' : matching_entries[0]['demographics'],
@@ -249,7 +257,6 @@ def query_ratings(conn, username=None, manga_id=None, min_score=None, max_score=
                         'published_to' : matching_entries[0]['published_to'],
                         'chapters' : matching_entries[0]['chapters'],
                         'volumes' : matching_entries[0]['volumes'],
-                        'authors' : matching_entries[0]['authors'],
                         'url_img' : matching_entries[0]['url_img'],
                         'synopsis' : matching_entries[0]['synopsis']
                     }
@@ -297,7 +304,7 @@ def query_manga(conn, manga_id, media_type, status, min_mean, max_mean,
 
     if manga_id is not None:
         constraints.append("m.manga_id = ?")
-        params.append(username)
+        params.append(manga_id)
 
     if media_type is not None:
         constraints.append("m.media = ?")
@@ -307,7 +314,7 @@ def query_manga(conn, manga_id, media_type, status, min_mean, max_mean,
         constraints.append("m.status = ?")
         params.append(status)
 
-    if min_entries is not None:
+    if min_mean is not None:
         constraints.append("m.mean >= ?")
         params.append(min_mean)
     
