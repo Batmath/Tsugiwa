@@ -598948,4 +598948,6 @@ CREATE INDEX user_id_entries ON entries (user_id);
 CREATE INDEX manga_id_entries ON entries (manga_id);
 CREATE INDEX manga_id_genre ON manga_genres (manga_id);
 CREATE INDEX genre_id_manga ON manga_genres (genre_id);
+CREATE INDEX username ON users (username);
+CREATE INDEX title_manga ON manga (title);
 COMMIT;

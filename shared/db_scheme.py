@@ -112,7 +112,9 @@ def init_db(path):
         cursor.execute("""CREATE INDEX IF NOT EXISTS manga_id_entries ON entries (manga_id);""")
         cursor.execute("""CREATE INDEX IF NOT EXISTS manga_id_genre ON manga_genres (manga_id);""")
         cursor.execute("""CREATE INDEX IF NOT EXISTS genre_id_manga ON manga_genres (genre_id);""")
-        
+        # TODO : add INDEXES ON PROD DB
+        cursor.execute("""CREATE INDEX IF NOT EXISTS username ON users (username);""")
+        cursor.execute("""CREATE INDEX IF NOT EXISTS title_manga ON manga (title);""")
         conn.commit()
 
 def populate_manga_tables(csv_path, db_path) -> None:
@@ -232,8 +234,6 @@ def dump_db_to_sql(db_path, output_path) -> None:
     
 
 def build_db_from_dump(dump_path: pathlib.Path, target_path: pathlib.Path) -> None:
-    if target_path.exists():
-        target_path.unlink() # delete if exists
     conn = sqlite3.connect(target_path)
     with closing(conn):
         with open(dump_path, "r") as f:
@@ -241,8 +241,4 @@ def build_db_from_dump(dump_path: pathlib.Path, target_path: pathlib.Path) -> No
         conn.commit()
 
 if __name__ == "__main__":
-    generate_anonymized_data("./data/datav2.db", "./data/test2.db", 10, 42)
-    dump_db_to_sql("./data/test.db", "./data/dump.sql")
     build_db_from_dump(pathlib.Path("./data/dump.sql"), pathlib.Path("./data/db_rebuilt.db"))
-
-    
