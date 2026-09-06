@@ -45,9 +45,7 @@ class ParametersAPI(BaseSettings):
         
     @model_validator(mode='after')
     def ensure_db_init_from_dump(self):
-        print(self.DB_PATH.stat().st_size)
         if self.DB_PATH.stat().st_size == 0:
-            dbs.init_db(self.DB_PATH)
             dbs.build_db_from_dump(self.DUMP_PATH, self.DB_PATH)
         return self
 
