@@ -2,20 +2,20 @@ import sqlite3
 import os
 from contextlib import closing
 from collections import defaultdict
-
-# Here the relative path depends on the name of the directory and the name of the database, find a way to make it "global"
+from api.settings import ParametersAPI
 
 class InvalidParametersException(Exception):
     pass
 
-DB_PATH = os.environ.get("DB_PATH", "data/scraped_data.db")
+param = ParametersAPI().model_dump()
 
 def get_db():
-    print(DB_PATH)
-    conn = sqlite3.connect("file:{}?mode=ro".format(DB_PATH), uri=True)
+    conn = sqlite3.connect("file:{}?mode=ro".format(param["DB_PATH"]), uri=True)
     conn.row_factory = sqlite3.Row
-    return conn
-
+    try:
+        yield conn
+    finally:
+        conn.close()
 # TODO : Harmonize queries, keep one per table handling joins in each of them.
 # TODO : Add manga queries
 
