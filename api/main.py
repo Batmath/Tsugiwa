@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Depends, HTTPException
 import sqlite3
 import os
-from api.routes import users, entries, genres
+from api.routes import users, entries, genres, manga
 from api.database import *
 import uvicorn
 
@@ -11,6 +11,7 @@ app = FastAPI()
 app.include_router(users.router)
 app.include_router(entries.router)
 app.include_router(genres.router)
+app.include_router(manga.router)
 
 @app.get("/progress")
 def get_progress(conn: sqlite3.Connection = Depends(get_db)):

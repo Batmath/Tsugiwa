@@ -21,24 +21,3 @@ def get_search_user(q:str = "", limit:int = 15, conn: sqlite3.Connection = Depen
 def get_user(username:str, conn: sqlite3.Connection = Depends(get_db)):
         user = query_users(conn, username=username)
     return {"data" : user[0] if user else []}
-
-@router.get("/{username}/entries")
-def get_user_ratings(username: str, min_score=None, max_score=None, limit=None, offset=None, status=None, counting=False,
-                     genres=[]):
-
-    conn = get_db()
-    with closing(conn):
-        genres_list = list(map(lambda x: int(x), genres.split(","))) if genres else []
-        ratings = query_ratings(conn, username=username, min_score=min_score, max_score=max_score, limit=limit, offset=offset, status=status, counting=counting,
-                                genres=genres_list)
-    return {"data" : ratings}
-
-@router.get("/{username}/entries/full")
-def get_full_user_ratings(username: str, min_score=None, max_score=None, limit=None, offset=None, status=None, genres=[]):
-    # What if username is search ???
-    conn = get_db()
-    with closing(conn):
-        genres_list = list(map(lambda x: int(x), genres.split(","))) if genres else []
-        ratings = query_ratings(conn, username=username, min_score=min_score, max_score=max_score, limit=limit, offset=offset, status=status,
-                                genres=genres_list, full=True)
-    return {"data" : ratings}
