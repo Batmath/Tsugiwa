@@ -370,30 +370,139 @@ def query_genres(conn, genre_id:int|None=None, counting:bool=False) -> list | in
     else:
         raise GenreNotFoundException
 
-def query_manga(conn, manga_id, media_type, status, min_mean, max_mean,
+def query_manga(conn, manga_id:int|None=None, media_type:str|None=None, status:str|None=None, min_mean:int|None=None, max_mean:int|None=None,
                 #filter triggering
-                genres, full=False,
+                genres:list=[], full:bool=False,
                 #data manip
-                limit=None, offset=None, counting = True
-                ):
-    target = "COUNT(DISTINCT m.manga_id)" if counting else "DISTINCT m.*"
-    query = """SELECT {} FROM manga m""".format(target)
+                limit:int|None=None, offset:int|None=None, counting:bool=False) -> None:
+
+    """
+        Method to query for a manga rows from the database.
+
+        :param manga_id: id of the manga searched
+        :type manga_id: int | None
+
+        :param media_type: type of the media(s) queried
+        :type media_type: int | None
+
+        :param status: publishing status of the manga queried
+        :type status: str | None
+
+        :param min_mean: minimum mean thereshold applied to the query
+        :type min_mean: int | None
+
+        :param min_mean: maximum mean thereshold applied to the query
+        :type min_mean: int | None
+
+        :param genres: list of genres that the manga(s) should possess (This query imply a join between the manga and manga_genres tables)
+        :type genres: list
+
+        :param full: boolean variable to indicate if every information from every tables should be fetched.
+        :type full: bool
+
+        :param counting: boolean variable to indicate if the query should return the count of result or not
+        :type genres: bool
+
+        :param limit: numerical limit for the likely answers
+        :type limit: int
+    
+        :return: List of the manga(s) queried or count
+        :rtype: list | int
+    """
+    target = "COUNT(DISTINCT m.manga_id)" if counting else "*"
+    query = """SELECT {} FROM manga m """.format(target)
 
     joins = []
     constraints = []
     params = []
+    genres_fetched = False
 
-    if genres:
-        joins.append("JOIN manga_genres mg ON m.manga_id = mg.manga_id")        
+    if genres != [] or full:
+        joins.append("JOIN manga_genres mg ON m.manga_id = mg.manga_id ")
+        genres_fetched = True
 
-    if manga_id is not None:
-        constraints.append("m.manga_id = ?")
-        params.append(manga_id)
+    constraints = Where()
+    constraints.add("m.status = ?", status)
+    constraints.add("m.manga_id = ?", manga_id)
+    constraints.add("m.media = ?", media_type)
+    constraints.add("m.status = ?", status)
+    constraints.add("m.mean_score >= ?", min_mean)
+    constraints.add("m.mean_score <= ?", max_mean)
+    constraints.add("({})".format(" OR ".join(["m.genre_id = ?" for i in range (len(genres))])), genres)
 
-    if media_type is not None:
-        constraints.append("m.media = ?")
-        params.append(media_type)
+    if joins:
+        query += " " + " ".join(joins)
+    
+    if not(constraints.empty()):
+        query += constraints.sql()
+    
+    if not counting:
+        if limit is not None:
+            query += " LIMIT ?"
+            constraints.params.append(limit)
+        
+        if offset is not None:
+            query += " OFFSET ?"
+            constraints.params.append(offset)
 
+    mangas = conn.execute(query, tuple(constraints.params)).fetchall()
+
+    if mangas == []:
+        raise  MangaNotFoundException
+
+    if counting:
+        res = list(dict(mangas[0]).values())[0] # There's only one var in the table in that case
+        return res
+
+    if genres_fetched:
+        grouped_data = defaultdict(list)
+        for manga in mangas:
+            grouped_data[manga['manga_id']].append(dict(manga))
+
+        genre_map = {genre['genre_id'] : genre['genre_name'] for genre in query_genres(conn)}
+        
+        key = list(grouped_data.keys())
+        manga_vars = list(grouped_data[key[0]][0].keys()) # Collect the list of variables for the first manga found (among those that have been found)
+        manga_vars.remove('genre_id')
+        res = []
+        for id, manga_list in grouped_data.items():
+            unified_manga_entry = {var : manga_list[0][var] for var in manga_vars}
+            unified_manga_entry['genres'] = [{"genre_id" : manga["genre_id"], "genre_name" : genre_map[manga["genre_id"]]} for manga in manga_list]
+            mangas.append(unified_manga_entry)
+        return res
+    
+    return [dict(manga) for manga in mangas] 
+
+def search_manga(conn, string:str, limit:int=15):
+    """
+    Method to query for a manga title. The search query is currently really naïve.
+    
+    The search manga currently uses a naïve search (assuming that the string isn't complete and in the middle of the string searched.)
+
+    :param string: string of characters inputed to search for a manga
+    :type string: str
+
+    :param limit: numerical limit for the likely answers
+    :type limit: int
+
+    :return: List of the n most likely answers (n=limit)
+    :rtype: list
+    """
+    escaped = string.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_")
+    params = (f"%{escaped}%", limit)
+    req = "SELECT manga_id, title FROM manga WHERE title LIKE ? ESCAPE '\\' LIMIT ?"
+    for title_type in ["title", "title_english", "title_other"]:
+        req = f"SELECT manga_id, title FROM manga WHERE {title_type} LIKE ? ESCAPE '\\' LIMIT ?"
+        
+        try:
+            output = conn.execute(req, params).fetchall()
+        except sqlite3.Error as e:
+                raise e
+        
+        if output != []:
+            return [{'title' : manga[1], 'manga_id' : manga[0]} for manga in output]
+    return []
+    
 def search_user(conn, string:str, limit:int=15):
     """
     Method to query for a manga title. The search query is currently really naïve.
@@ -418,4 +527,7 @@ def search_user(conn, string:str, limit:int=15):
     return [row[0] for row in rows]
 
 if __name__ == "__main__":
-    print("")
+    conn = sqlite3.connect("file:{}?mode=ro".format(param["DB_PATH"]), uri=True)
+    conn.row_factory = sqlite3.Row
+    print(query_manga(conn, counting=True))
+    conn.close()
