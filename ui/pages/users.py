@@ -16,6 +16,7 @@ import numpy as np
 #(x + 10% max score -> Rated Similarly, x + 30% max_score -> Favoured/Hated by the user, x + >30% max score -> Strongly hated/favoured by the user)
 # TODO : [plot_scatter & plot_camembert] Find ways to resize plots
 # TODO : [scatter_plot_card] Add color filters according to filters chosen (+ DEFINE filters)
+# TODO : Distribution graph overall (for number of entries per user/number )
 
 def page_ui():
     return ui.page_sidebar(
@@ -129,7 +130,7 @@ def server(input: Inputs, output: Outputs, session: Session):
             fig = go.Figure()
             return fig
         else:
-            req = param["API_URL"] + "/users/{}/entries/full".format(user)
+            req = param["API_URL"] + "/entries/user/{}/full".format(user)
             response = requests.get(req)
             df = pd.DataFrame(response.json()['data'])
 
@@ -167,7 +168,7 @@ def server(input: Inputs, output: Outputs, session: Session):
             fig = go.Figure()
             return go.Figure()
         else:
-            req = param["API_URL"] + "/users/{}/entries/full".format(user)
+            req = param["API_URL"] + "/entries/user/{}/full".format(user)
             print(req)
             response = requests.get(req)
             df = pd.DataFrame(response.json()['data'])
