@@ -20,6 +20,8 @@ def get_progress(conn: sqlite3.Connection = Depends(get_db)):
 
 @app.get("/health")
 def get_health(conn: sqlite3.Connection = Depends(get_db)):
+    conn.execute("SELECT 1")
+    return {"status": "ok"}
 
 if __name__ == "__main__":
     uvicorn.run("api.main:app", host=param["HOST_IP_ADDRESS"], port=param["API_PORT"])
