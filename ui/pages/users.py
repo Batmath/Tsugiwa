@@ -1,19 +1,21 @@
 from ui.pages.config import * 
 from shiny import ui, Inputs, Outputs, Session, reactive, render
 import pandas as pd
-import plotly.graph_objects as go
-import plotly.express as px
+
 from shinywidgets import render_widget, output_widget
 import numpy as np
 
-# TODO: search a better way to make the search query (Or create my own Shiny widget !)
+from ui.api.client import *
+from ui.plots.figure import *
+from ui.data.transform import *
+
 # TODO : Graph for reading/completed/on-hold manga
 # TODO : Graph for note per genra
 # TODO : List of entries
 # TODO : Scatter plot, mean_score vs user score (comparing how the user is rating vs how people are rating (if there is such a thing.))
 # TODO : Add palette to each pie filter : Media Genres, Reading Status, Media Type, Publication Status, Demography
 # TODO : [plot_scatter] Add lines and corresponding areas (Rated similarly, Favoured by the user, Hated by the user).  
-#(x + 10% max score -> Rated Similarly, x + 30% max_score -> Favoured/Hated by the user, x + >30% max score -> Strongly hated/favoured by the user)
+#(x + 10% max_score score -> Rated Similarly, x + 30% max_score -> Favoured/Hated by the user, x + >30% max_score score -> Strongly hated/favoured by the user)
 # TODO : [plot_scatter & plot_camembert] Find ways to resize plots
 # TODO : [scatter_plot_card] Add color filters according to filters chosen (+ DEFINE filters)
 # TODO : Distribution graph overall (for number of entries per user/number )
@@ -21,183 +23,118 @@ import numpy as np
 def page_ui():
     return ui.page_sidebar(
         ui.sidebar(
-            ui.input_text("search_query", "Search for a user", placeholder="Search for a username"), 
-            ui.output_data_frame("searched_user")),
+            ui.input_text("search_query", "Search username"),
+            ui.input_select("selected_user", "Matches", choices=[], size=8, selectize=False)
+        ),
         ui.card(
             ui.card_header(
                 "Distribution Pie Chart",
                 ui.toolbar(
-                    ui.toolbar_input_select(
-                        id="pie_filter",
-                        label="Filtre",
-                        choices=["Genres", "Reading Status", "Media Type", "Publication Status", "Demography"],
-                        selected="Genres"
-                    )
+                    ui.toolbar_input_select(id="pie_filter",label="Filtre",choices=["Genres", "Reading Status", "Media Type", "Publication Status", "Demography"],selected="Genres")
                 )
             ),
             output_widget("plot_camembert"),
             full_screen=True,
         ),
         
-        
         ui.card(
-             ui.card_header(
-                "Scatter Plot mean score/user score",
-            ),
+            ui.card_header("Scatter Plot mean score/user score",),
             output_widget("plot_scatter"),
+            full_screen=True,
+        ),
+
+        ui.card(
+            ui.card_header("Score Distribution",),
+            output_widget("plot_histogram"),
             full_screen=True,
         ),
     )
 
 def server(input: Inputs, output: Outputs, session: Session):
 
-    @render.data_frame
-    def searched_user():
-        user_df = username_search()
-        return render.DataGrid(user_df, selection_mode="row")
-
     @reactive.calc
     def username_search():
         q = input.search_query()
         if not q or len(q) < 2:
-            return pd.DataFrame([], columns=["Usernames found"])
-        response = requests.get(param["API_URL"] + "/users/search?q={}&limit=10".format(q))
-        user_df = pd.DataFrame(response.json()['data'], columns=["Usernames found"])
-        print(response.json()['data'])
-        return user_df
-    
+            return []
+        return search_username(q)
+
+    @reactive.effect
+    def update_user_choices():
+        ui.update_select("selected_user", choices=username_search())
+
     @reactive.calc
     def compute_user_data():
-        rows = searched_user.cell_selection()["rows"]
-        row = rows[0] if rows else None #For now, either the first one selected or none.
-
-        if row is None :
-            return None
-        df = username_search()
-        exact_username = df.iloc[row]["Usernames found"]
-        return exact_username
+        return input.selected_user() or None
     
     @output
     @render_widget
     def plot_camembert():
-
-        def search_genre_count_entries(df):
-            genres = {}
-            for row_dict in df.to_dict(orient="records"):
-                for genre in row_dict['manga']['genres']:
-
-                    genre_name = genre['genre']
-                    genres[genre_name] = genres.get(genre_name, 0) + 1
-
-            genres = dict(sorted(genres.items(), key=lambda item: item[1]))
-
-            return genres
-
-        def search_filter_count_entries(df, filter_option="Genres"):
-            if filter_option=="Genres":
-                return search_genre_count_entries(df)
-            else :
-                res = {}
-                filter_option_target = {"Reading Status" : ["status"], "Media Type" : ["manga", "media_type"], "Publication Status" : ["manga", "publishing"], "Demography" : ["manga", "demographics"]}
-                d = filter_option_target[filter_option] 
-                
-                for row_dict in df.to_dict(orient="records"):
-                    
-                    targets = row_dict
-                    for path in d:
-                        targets = targets[path]
-
-                    if targets is None:
-                        continue
-
-                    if type(targets) == str:
-                        targets = targets.split(",") #Some have 2 demography separated by commas. 
-                        for target in targets:
-                            res[target] = res.get(target, 0) + 1
-                    
-                    if type(targets) == int:
-                        if filter_option == "Publication Status":
-                            target_str = "Publishing" if targets else "Publication finished"
-                            res[target_str] = res.get(target_str, 0) + 1
-                        else:
-                            res[target_str] = res.get(target_str, 0) + 1 #Correspond to nothing but avoid failing silently
-
-                sorted_res = dict(sorted(res.items(), key=lambda item: item[1]))
-                return res
-
         user = compute_user_data()
         if not user :
-            fig = go.Figure()
-            return fig
+            return ScatterPlot().figure()
         else:
-            req = param["API_URL"] + "/entries/user/{}/full".format(user)
-            response = requests.get(req)
-            df = pd.DataFrame(response.json()['data'])
-
+            df = pd.DataFrame(get_user_entries(user))
             plot_vars = search_filter_count_entries(df, filter_option=input.pie_filter())
             labels = list(plot_vars.keys())
             vals = list(plot_vars.values())
-
-            nb_labels = len(labels)
-            label_hide=None
-            if nb_labels >= 11:
-                label_hide = labels[:nb_labels-10]
-            
-
-            fig = go.FigureWidget(data=[
-                go.Pie(
-                    labels=labels, 
-                    values=vals, 
-                    hole=.3,
-                    textinfo='none'
-                )
-            ])
-
-            fig.update_layout(
-                margin=dict(t=20, b=20, l=20, r=20),
-                hiddenlabels=label_hide
-            )
-            
-            return fig
+            return PiePlot(vals, labels, max_visible=10).figure()
     
     @output
     @render_widget
     def plot_scatter():
         user = compute_user_data()
         if not user :
-            fig = go.Figure()
-            return go.Figure()
+            return ScatterPlot().figure()
         else:
-            req = param["API_URL"] + "/entries/user/{}/full".format(user)
-            print(req)
-            response = requests.get(req)
-            df = pd.DataFrame(response.json()['data'])
+            df = pd.DataFrame(get_user_entries(user))
             df = df[df['score'].notna()]
-
-            data = {'manga_title' : [], 'entry_score' : [], 'manga_score' : []}
+            data = {'title' : [], 'y' : [], 'x' : []}
 
             for row_dict in df.to_dict(orient="records"):
                 if row_dict['manga']['score'] is not None:
-                    data['manga_title'].append(row_dict['manga']['title'])
-                    data['entry_score'].append(row_dict['score'])
-                    data['manga_score'].append(row_dict['manga']['score'])
+                    data['title'].append(row_dict['manga']['title'])
+                    data['x'].append(row_dict['score'])
+                    data['y'].append(row_dict['manga']['score'])
 
-            fig = px.scatter(data, x='manga_score', y='entry_score', hover_data=['manga_title'],
-                labels=dict(manga_score="Manga Score (mean across users)", entry_score="User Manga Score")
-            )
-            
-            
-            """min_entry = np.min(data['entry_score'])
+            fig =  ScatterPlot(x=data['x'], y=data['y'], labelx="User ratings", labely="Manga score (mean)", hover_name="Manga Title", 
+                               hover=data['title'], title="User score vs mean score", xrange=[-0.2,10.2], yrange=[-0.2,10.2]).figure()
+            max_score = 10
+            threshold1, threshold2, outer_val = 0.1 * max_score, 0.3 * max_score, 3 * max_score
+
+            zones = [
+                (-outer_val,-threshold2,"rgba(0,150,60,0.25)"),# strongly favoured
+                (-threshold2,-threshold1,"rgba(90,200,120,0.18)"),# favoured
+                (-threshold1,threshold1,"rgba(160,160,160,0.15)"),# rated similarly
+                (threshold1,threshold2,"rgba(255,150,50,0.18)"),# hated
+                (threshold2,outer_val,"rgba(220,40,40,0.25)"),# strongly hated
+            ]
+
+            for low, upper, color in zones:
+                path = (f"M {-max_score},{-max_score + low} L {2 * max_score},{2 * max_score + low} " 
+                        f"L {2 * max_score},{2 * max_score + upper} L {-max_score},{-max_score + upper} Z")
+                fig.add_shape(type="path", path=path, fillcolor=color, line_width=0, layer="below")
+
+            fig.update_xaxes(range=[-0.2, max_score + 0.2], fixedrange=True)
+            fig.update_yaxes(range=[-0.2, max_score + 0.2], fixedrange=True)
+            return fig
+
+    
+    pass
+
+""""""
+
+"""min_entry = np.min(data['entry_score'])
             min_manga = int(np.floor(np.min(data['manga_score'])))
 
             print("entry : {}, manga : {}".format(min_entry, min_manga))
             min_val = int(min(min_entry, min_manga))
 
-            max_entry = np.max(data['entry_score'])
-            max_manga = int(np.ceil(np.max(data['manga_score'])))
+            max_entry = np.max_score(data['entry_score'])
+            max_manga = int(np.ceil(np.max_score(data['manga_score'])))
             print("entry : {}, manga : {}".format(max_entry, max_manga))
 
-            max_val = int(max(max_entry, max_manga))
+            max_val = int(max_score(max_entry, max_manga))
 
             fig.add_trace(go.Scatter(
                 x=[i for i in range(min_val, max_val+1)], y=[i for i in range(min_val, max_val+1)],
@@ -206,6 +143,3 @@ def server(input: Inputs, output: Outputs, session: Session):
                 name='Ideal',
                 stackgroup='one',
             ))"""
-
-            return fig
-    pass
