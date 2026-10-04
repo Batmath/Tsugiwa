@@ -3,7 +3,6 @@ from api.database import *
 
 router = APIRouter(prefix="/mangas", tags=["mangas"])
 
-
 @router.get("/")
 def get_manga(min_mean=None, max_mean=None, genres=[], status=None, media_type= None, counting=False, offset=0,
               conn: sqlite3.Connection = Depends(get_db)):
@@ -36,3 +35,11 @@ def get_manga_full_per_id(counting=False, conn: sqlite3.Connection = Depends(get
     except sqlite3.Error:
         return HTTPException(status_code=500, content="Server error encountered, try again")
     return {"data" : mangas}
+
+@router.get("/search")
+def get_search_manga(q:str = "", limit:int = 15, conn: sqlite3.Connection = Depends(get_db)):
+    try:
+        manga_names = search_manga(conn, q, limit)
+    except sqlite3.Error:
+        return HTTPException(status_code=500, content="Server error encountered, try again")
+    return {'data' : manga_names}
