@@ -8,17 +8,12 @@ import numpy as np
 from ui.api.client import *
 from ui.plots.figure import *
 from ui.data.transform import *
+from ui.pages.config import GENRE_COLORS
 
-# TODO : Graph for reading/completed/on-hold manga
-# TODO : Graph for note per genra
 # TODO : List of entries
-# TODO : Scatter plot, mean_score vs user score (comparing how the user is rating vs how people are rating (if there is such a thing.))
 # TODO : Add palette to each pie filter : Media Genres, Reading Status, Media Type, Publication Status, Demography
-# TODO : [plot_scatter] Add lines and corresponding areas (Rated similarly, Favoured by the user, Hated by the user).  
-#(x + 10% max_score score -> Rated Similarly, x + 30% max_score -> Favoured/Hated by the user, x + >30% max_score score -> Strongly hated/favoured by the user)
-# TODO : [plot_scatter & plot_camembert] Find ways to resize plots
-# TODO : [scatter_plot_card] Add color filters according to filters chosen (+ DEFINE filters)
-# TODO : Distribution graph overall (for number of entries per user/number )
+# TODO : [scatter_plot_card] Add color filters according to filters chosen
+# TODO : Fix hover for histogram (have the value instead of a range which means nothing.)
 
 def page_ui():
     return ui.page_sidebar(
@@ -38,16 +33,22 @@ def page_ui():
         ),
         
         ui.card(
-            ui.card_header("Scatter Plot mean score/user score",),
+            ui.card_header("Scatter Plot mean score/user score"),
             output_widget("plot_scatter"),
             full_screen=True,
         ),
 
         ui.card(
-            ui.card_header("Score Distribution",),
+            ui.card_header(
+                "Score Distribution",
+                ui.toolbar(
+                    ui.toolbar_input_select(id="hist_genre_filter",label="Filtre",choices=["None"], selected=None)
+                )
+            ),
             output_widget("plot_histogram"),
             full_screen=True,
         ),
+
     )
 
 def server(input: Inputs, output: Outputs, session: Session):
@@ -65,33 +66,39 @@ def server(input: Inputs, output: Outputs, session: Session):
 
     @reactive.calc
     def compute_user_data():
-        return input.selected_user() or None
+        user = input.selected_user()
+        if user is not None:
+            user_df = pd.DataFrame(get_user_entries(user))
+            genres = get_genres_entries(user_df)
+            ui.update_select("hist_genre_filter", choices=["None"] + genres)
+            return user_df
+        return None
     
     @output
     @render_widget
     def plot_camembert():
         user = compute_user_data()
-        if not user :
+        if user is None:
             return ScatterPlot().figure()
         else:
-            df = pd.DataFrame(get_user_entries(user))
-            plot_vars = search_filter_count_entries(df, filter_option=input.pie_filter())
+            plot_vars = search_filter_count_entries(user, filter_option=input.pie_filter())
             labels = list(plot_vars.keys())
             vals = list(plot_vars.values())
-            return PiePlot(vals, labels, max_visible=10).figure()
+            fig =  PiePlot(vals, labels, max_visible=10, color_map=GENRE_COLORS).figure()
+            fig.update_traces(marker=dict(colors=[GENRE_COLORS.get(l, "#888888") for l in labels]))
+            return fig
     
     @output
     @render_widget
     def plot_scatter():
         user = compute_user_data()
-        if not user :
+        if user is None:
             return ScatterPlot().figure()
         else:
-            df = pd.DataFrame(get_user_entries(user))
-            df = df[df['score'].notna()]
+            user = user[user['score'].notna()]
             data = {'title' : [], 'y' : [], 'x' : []}
 
-            for row_dict in df.to_dict(orient="records"):
+            for row_dict in user.to_dict(orient="records"):
                 if row_dict['manga']['score'] is not None:
                     data['title'].append(row_dict['manga']['title'])
                     data['x'].append(row_dict['score'])
@@ -119,27 +126,25 @@ def server(input: Inputs, output: Outputs, session: Session):
             fig.update_yaxes(range=[-0.2, max_score + 0.2], fixedrange=True)
             return fig
 
-    
+    @output
+    @render_widget
+    def plot_histogram():
+        user = compute_user_data()
+        if user is None:
+            return ScatterPlot().figure()
+        else:
+            user = user[user['score'].notna()]
+
+            user = filter_entries_genre(user, genre=input.hist_genre_filter())
+            data = []
+
+            for row_dict in user.to_dict(orient="records"):
+                if row_dict['manga']['score'] is not None:
+                    data.append(row_dict['manga']['score'])
+
+            fig = HistoPlot(x=data, nbins=10).figure()
+            fig.update_traces(xbins=dict(start=-0.5, end=10.5, size=1), hovertemplate="%{x}<br>%{y}<extra></extra>")
+            fig.update_xaxes(range=[-0.5, 10.5], dtick=1)
+            
+            return fig
     pass
-
-""""""
-
-"""min_entry = np.min(data['entry_score'])
-            min_manga = int(np.floor(np.min(data['manga_score'])))
-
-            print("entry : {}, manga : {}".format(min_entry, min_manga))
-            min_val = int(min(min_entry, min_manga))
-
-            max_entry = np.max_score(data['entry_score'])
-            max_manga = int(np.ceil(np.max_score(data['manga_score'])))
-            print("entry : {}, manga : {}".format(max_entry, max_manga))
-
-            max_val = int(max_score(max_entry, max_manga))
-
-            fig.add_trace(go.Scatter(
-                x=[i for i in range(min_val, max_val+1)], y=[i for i in range(min_val, max_val+1)],
-                mode='lines',
-                line=dict(width=0.5, color='rgb(184, 247, 212)'),
-                name='Ideal',
-                stackgroup='one',
-            ))"""
