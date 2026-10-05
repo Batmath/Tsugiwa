@@ -187,7 +187,7 @@ class Scraper():
         manga_stats = soup.find("div", class_="stats manga")
         friends_info = soup.find("div", class_="user-friends")
 
-        if not(profile_info or manga_stats or manga_status or friends_info):
+        if profile_info is None or manga_stats is None or manga_status is None or friends_info is None:
             raise HTMLParsingException("Error while parsing the HTML file, one of the target class wasn't found")
         
         #Checking if the list is private
@@ -401,9 +401,9 @@ class Scraper():
                     return
 
             except sqlite3.IntegrityError as e:
-                logging.error(f"[THREAD B] : Database integrity violation on user {name}, aborting program : \n \t{e}")
+                logging.error(f"[THREAD B] : Database integrity violation on user {name}, aborting user integration : \n \t{e}")
                 self.conn.rollback()
-                raise e
+                return
 
             except requests.exceptions.HTTPError as e:
                 if (e.response.status_code == 429 or e.response.status_code == 403):
@@ -411,9 +411,9 @@ class Scraper():
                     time.sleep(self.params['RATE_LIMIT_SLEEP'])
                     self.conn.rollback()
                 else:
-                    logging.error(f"[THREAD B] : Uncharacterised HTTP Error ({e.response.status_code}) Abort integration")
+                    logging.error(f"[THREAD B] : Uncharacterised HTTP Error ({e.response.status_code}) Abort user integration")
                     self.conn.rollback()
-                    raise e
+                    return
 
             except Exception as e:
                 logging.error(f"[THREAD B] : Uncharacterised Error ({e}) Abort integration")
@@ -551,4 +551,4 @@ class Scraper():
 
 if __name__ == "__main__":
     scraper_instance = Scraper()
-    scraper_instance.run()
+    scraper_instance.fetch_manga_profile(name="BlazingDevil")
