@@ -11,7 +11,6 @@ from ui.data.transform import *
 from ui.pages.config import GENRE_COLORS
 
 # TODO : List of entries
-# TODO : Add palette to each pie filter : Media Genres, Reading Status, Media Type, Publication Status, Demography
 # TODO : [scatter_plot_card] Add color filters according to filters chosen
 # TODO : Fix hover for histogram (have the value instead of a range which means nothing.)
 

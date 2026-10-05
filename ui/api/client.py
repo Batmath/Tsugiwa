@@ -10,9 +10,24 @@ def search_username(string: str, limit=10) -> list:
 def search_manga(string: str, limit=10) -> list:
     response = requests.get(f"{param["API_URL"]}/mangas/search?q={string}&limit={limit}")
     response.raise_for_status()
-    return response.json()['data']
+    return response.json()["data"]
+
+def get_manga_entries(manga_id:int) -> list[dict]:
+    nentries = requests.get(f"{param["API_URL"]}/entries/manga/{manga_id}/?counting=true", timeout=10).json()["data"]
+    offset = nentries//200
+    res = []
+    for i in range(0,offset):
+        response = requests.get(f"{param["API_URL"]}/entries/manga/{manga_id}/?offset={i}", timeout=10)
+        response.raise_for_status()
+        res += response.json()["data"]
+    return res
 
 def get_user_entries(username: str) -> list[dict]:
-    r = requests.get(f"{param["API_URL"]}/entries/user/{username}/full", timeout=10)
-    r.raise_for_status()
-    return r.json()["data"]
+    response = requests.get(f"{param["API_URL"]}/entries/user/{username}/full", timeout=10)
+    response.raise_for_status()
+    return response.json()["data"]
+
+def query_api(url) -> list[dict]:
+    response =  requests.get(url, timeout=10)
+    response.raise_for_status()
+    return response.json()["data"]

@@ -68,3 +68,12 @@ def get_genres_entries(df):
             if genre_name not in genres:
                 genres.add(genre_name)
     return list(genres)
+
+def search_manga_count_entries(df):
+    categories = {}
+    for row_dict in df.to_dict(orient="records"):
+        category_name = row_dict['status']
+        categories[category_name] = categories.get(category_name, 0) + 1
+
+    categories = dict(sorted(categories.items(), key=lambda item: item[1]))
+    return categories

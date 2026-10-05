@@ -72,3 +72,29 @@ class HistoPlot(DataPlot):
 
     def _build(self):
         return px.histogram(x=self.x, nbins=self.nbins)
+
+class ImagePlot(DataPlot):
+
+    def __init__(self, width: int, height: int, scale_factor: float = 1.0, source=None, title: str | None = None):
+        super().__init__(title)
+        self.width, self.height = width, height
+        self.scale_factor = scale_factor
+        self.source = source
+
+    def empty(self) -> bool:
+        return self.source is None
+
+    def _build(self) -> go.Figure:
+        w = self.width * self.scale_factor
+        h = self.height * self.scale_factor
+
+        fig = go.Figure()
+
+        fig.add_trace(go.Scatter(x=[0, w], y=[0, h], mode="markers", marker_opacity=0, hoverinfo="skip"))
+        fig.update_xaxes(visible=False, range=[0, w])
+        fig.update_yaxes(visible=False, range=[0, h], scaleanchor="x")
+        fig.add_layout_image(dict(source=self.source, x=0, y=h, sizex=w, sizey=h, xref="x", yref="y", opacity=1.0, layer="below", sizing="stretch"))
+
+        fig.update_layout(width=w, height=h, margin=dict(l=0, r=0, t=0, b=0))
+
+        return fig
