@@ -379,7 +379,6 @@ class Scraper():
                                 friend_id = self.cursor.execute("""SELECT user_id FROM users WHERE username = ?""", (friend,)).fetchone()[0]
                                 left_user = min(user_id, friend_id)
                                 right_user = max(user_id, friend_id)
-                                logging.debug(f"Friend in db detected, relationship is being created : ({left_user}, {right_user})")
                                 self.cursor.execute("""INSERT INTO relationships (user_id_left, user_id_right) values (?, ?)""", (left_user, right_user)) #Add every relationship between user and friends that have already been added
                             elif friend not in self.seen:
                                 self.seen.add(friend)
@@ -487,14 +486,10 @@ class Scraper():
                     logging.error(f"[THREAD B] : Queue has been empty for {self.params["QUEUE_TIMEOUT"]}s, aborting linking")
                     break
 
-                logging.debug(f"Current user : {name}")
-
                 with self.lock:
                     q_size = self.name_queue.qsize()
                     n_added = len(self.added)
-                    logging.debug(f"[THREAD B] : Added total {n_added}")
                     self.user_page_sleep = self.compute_dynamic_sleep(q_size, n_added - n_loaded)
-                    logging.debug("[THREAD B] : Current user page fetch time sleep : {}\n \t Number of currently fetched users : {}\n \t Number of currently added users {}\n \t(Previously loaded : {})".format(self.user_page_sleep, q_size, n_added - n_loaded, n_loaded))
 
                 if name is self.SENTINEL or len(self.added) > self.params['MAX_USERS'] + n_loaded:
                     self.name_queue.task_done()
@@ -526,7 +521,6 @@ class Scraper():
             - Thread B : Collects (when applicable) the data (profile data & manga entries data) for the user. Adds friends name to the queue.
         """
         n_loaded = self.load_from_previous_session()
-        logging.info("Currently loaded : {}".format(n_loaded)) 
         self.load_pending()
         
         signal.signal(signal.SIGTERM, self.handle_sigterm)
@@ -551,4 +545,4 @@ class Scraper():
 
 if __name__ == "__main__":
     scraper_instance = Scraper()
-    scraper_instance.fetch_manga_profile(name="BlazingDevil")
+    scraper_instance.run()
