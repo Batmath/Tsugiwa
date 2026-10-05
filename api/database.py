@@ -110,7 +110,7 @@ def query_users(conn, username:str|None =None, gender:str|None=None, location:st
     """
 
     # TODO : Expand dynamic query building to add JOIN tables. (users having completed or read certain mangas | users h)
-    target = "COUNT(DISTINCT u.username)" if counting else "DISTINCT u.*"
+    target = "COUNT(DISTINCT u.user_id)" if counting else "DISTINCT u.*"
     query = """SELECT {} FROM users u """.format(target)
 
     joins = []
@@ -118,12 +118,12 @@ def query_users(conn, username:str|None =None, gender:str|None=None, location:st
     params = []
 
     if (manga_id or status or max_score or min_score):
-        joins.append("JOIN entries e ON u.username = e.username")
+        joins.append("JOIN entries e ON u.user_id = e.user_id ")
 
     if genres:
         if not(manga_id or status or max_score or min_score):
-            joins.append("JOIN entries e ON u.username = e.username")
-        joins.append("JOIN manga_genres m ON e.manga_id = m.manga_id")
+            joins.append("JOIN entries e ON u.user_id = e.user_id ")
+        joins.append("JOIN manga_genres m ON e.manga_id = m.manga_id ")
 
     constraints = Where()
     constraints.add("u.username = ?", username)

@@ -16,8 +16,16 @@ def get_manga(min_mean=None, max_mean=None, genres=[], status=None, media_type= 
         return HTTPException(status_code=500, content="Server error encountered, try again")
     return {"data" : mangas}
 
+@router.get("/search")
+def get_search_manga(q:str = "", limit:int = 15, conn: sqlite3.Connection = Depends(get_db)):
+    try:
+        manga_names = search_manga(conn, q, limit)
+    except sqlite3.Error:
+        return HTTPException(status_code=500, content="Server error encountered, try again")
+    return {'data' : manga_names}
+
 @router.get("/{manga_id}")
-def get_manga_per_id(counting=False, conn: sqlite3.Connection = Depends(get_db)):
+def get_manga_per_id(manga_id : int, counting=False, conn: sqlite3.Connection = Depends(get_db)):
     try:
         mangas = query_manga(conn, manga_id=manga_id, counting=counting)
     except MangaNotFoundException:
@@ -27,7 +35,7 @@ def get_manga_per_id(counting=False, conn: sqlite3.Connection = Depends(get_db))
     return {"data" : mangas}
 
 @router.get("/{manga_id}/full")
-def get_manga_full_per_id(counting=False, conn: sqlite3.Connection = Depends(get_db)):
+def get_manga_full_per_id(manga_id : int, counting=False, conn: sqlite3.Connection = Depends(get_db)):
     try:
         mangas = query_manga(conn, manga_id=manga_id, counting=counting, full=True)
     except MangaNotFoundException:
@@ -36,10 +44,3 @@ def get_manga_full_per_id(counting=False, conn: sqlite3.Connection = Depends(get
         return HTTPException(status_code=500, content="Server error encountered, try again")
     return {"data" : mangas}
 
-@router.get("/search")
-def get_search_manga(q:str = "", limit:int = 15, conn: sqlite3.Connection = Depends(get_db)):
-    try:
-        manga_names = search_manga(conn, q, limit)
-    except sqlite3.Error:
-        return HTTPException(status_code=500, content="Server error encountered, try again")
-    return {'data' : manga_names}
