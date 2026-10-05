@@ -400,9 +400,9 @@ class Scraper():
                     return
 
             except sqlite3.IntegrityError as e:
-                logging.error(f"[THREAD B] : Database integrity violation on user {name}, aborting user integration : \n \t{e}")
+                logging.error(f"[THREAD B] : Database integrity violation on user {name}, aborting integration : \n \t{e}")
                 self.conn.rollback()
-                return
+                raise e
 
             except requests.exceptions.HTTPError as e:
                 if (e.response.status_code == 429 or e.response.status_code == 403):
@@ -412,7 +412,7 @@ class Scraper():
                 else:
                     logging.error(f"[THREAD B] : Uncharacterised HTTP Error ({e.response.status_code}) Abort user integration")
                     self.conn.rollback()
-                    return
+                    raise e
 
             except Exception as e:
                 logging.error(f"[THREAD B] : Uncharacterised Error ({e}) Abort integration")
