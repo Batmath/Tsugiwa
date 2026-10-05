@@ -409,6 +409,10 @@ class Scraper():
                     logging.error("[THREAD B] : Too Many Requests : Waiting before trying again...")
                     time.sleep(self.params['RATE_LIMIT_SLEEP'])
                     self.conn.rollback()
+                elif (e.response.status_code == 404):
+                    logging.error("[THREAD B] : Page not found : Skipping user")
+                    self.conn.rollback()
+                    return
                 else:
                     logging.error(f"[THREAD B] : Uncharacterised HTTP Error ({e.response.status_code}) Abort user integration")
                     self.conn.rollback()

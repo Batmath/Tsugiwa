@@ -356,7 +356,7 @@ class TestScraperDBInterraction:
         assert (new_nb_entries - nb_entries == 127)
         assert (new_nb_relationships - nb_relationships == 1)
     
-    @pytest.mark.parametrize("error", [scp.HTMLParsingException, scp.ScarceDataException, scp.PrivateListException, TypeError,MemoryError, make_http_error(404), sqlite3.IntegrityError])
+    @pytest.mark.parametrize("error", [scp.HTMLParsingException, scp.ScarceDataException, scp.PrivateListException, TypeError,MemoryError, make_http_error(405), sqlite3.IntegrityError])
     def test_abort_skip_error_integrate_user(self, error, scp_db):
         call_count = 0
         
