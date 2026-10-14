@@ -1,20 +1,24 @@
-import requests, time, json
-import pandas as pd
-import re #regex
-import threading, queue
-import cProfile, pstats
-import sqlite3
-from bs4 import BeautifulSoup
-import os
-from contextlib import closing
+import cProfile
 import logging
-from shared.db_scheme import *
-import scraper.settings as settings
+import queue
+import re  #regex
 import signal
-import sys
+import sqlite3
+import threading
+import time
+
+import requests
+from bs4 import BeautifulSoup
+
+from scraper import settings
+from shared.db_scheme import *
+
 logger = logging.getLogger(__name__)
 
 class PrivateListException(Exception):
+    pass
+
+class UserPageException(Exception):
     pass
 
 class HTMLParsingException(Exception):
@@ -26,15 +30,12 @@ class ScarceDataException(Exception):
 class ThreadError(Exception):
     pass
 
-# TODO : add comments
-# TODO : Create a docker image to run the code on the server
 # TODO : Setup tests (API + Scraper)
-# TODO : Commenter le code
-# TODO : Review logs : Look at what is really important in logs and modify them accordingly.abs
 # TODO : Add rule enforcement on values such as SLEEP Times, Users etc (non negative) -> Change impact Tests (make sure each variable checked is then chekced in the tests)
+# TODO : yaml file pre-commit that check ruff for errors.
 
-class Scraper():
-    
+class Scraper:
+
     def __init__(self, params : settings.ParametersScraper | None = None, session : requests.Session | None = None, conn : sqlite3.Connection | None = None):
         """Constructor method
         """
@@ -76,12 +77,9 @@ class Scraper():
         :return: Body of the response in string fromat (raw)
         :rtype: str
         """
-        try :
-            response = self.session.get(url,timeout=10, params=params)
-            response.raise_for_status()
-            return response.text
-        except requests.exceptions.RequestException as e:
-            raise e
+        response = self.session.get(url,timeout=10, params=params)
+        response.raise_for_status()
+        return response.text
 
     def fetch_json(self, url:str, params=None):
         """
@@ -98,12 +96,9 @@ class Scraper():
         :return: Body of the response in string fromat (raw)
         :rtype: json
         """
-        try :
-            response = self.session.get(url,timeout=10, params=params)
-            response.raise_for_status()
-            return response.json()
-        except requests.exceptions.RequestException as e:
-            raise e
+        response = self.session.get(url,timeout=10, params=params)
+        response.raise_for_status()
+        return response.json()
 
     def fetch_user_page(self, sleep_time:float=0.5):
         """
@@ -119,14 +114,17 @@ class Scraper():
             """Parsing filter that target only hyperrefs without images containing the /profile string in it (corresponds to link to users pages)
             """
             return tag.has_attr('href') and not tag.find('img') and re.compile("/profile").search(tag['href'])
-        
+
         time.sleep(sleep_time)
         target_page = "https://myanimelist.net/users.php"
 
         page_text = self.fetch_html(target_page)
         soup = BeautifulSoup(page_text, "html.parser")
-        user_block = soup.find("div", class_="normal_header").next_sibling.next_sibling
-        users = list(map(lambda x : x.text, user_block.find_all(is_user_href)))
+        try:
+            user_block = soup.find("div", class_="normal_header").next_sibling.next_sibling
+        except AttributeError:
+            raise UserPageException("[fetch_user_page] : User block was found empty. Either MAL user page is empty or try to update user_block_ref")
+        users = [x.text for x in user_block.find_all(is_user_href)]
         return users
 
     def find_friends(self, name:str, sleep_time:float=0.5):
@@ -146,11 +144,11 @@ class Scraper():
             return tag.has_attr('href') and tag.parent.has_attr('class') and "title" in tag.parent['class'] and re.compile("https://myanimelist.net/profile/").search(tag['href'])
 
         time.sleep(sleep_time)
-        target_page = "https://myanimelist.net/profile/{}/friends".format(name)
-        
+        target_page = f"https://myanimelist.net/profile/{name}/friends"
+
         page_text = self.fetch_html(target_page)
         soup = BeautifulSoup(page_text, "html.parser")
-        friends_name = list(map(lambda x : x.text, soup.find_all(is_friend_name)))
+        friends_name = [x.text for x in soup.find_all(is_friend_name)]
         return friends_name
 
     def fetch_manga_profile(self, name:str, sleep_time=0.5):
@@ -177,9 +175,9 @@ class Scraper():
         :rtype: dict
         """
         time.sleep(sleep_time)
-        target_page = "https://myanimelist.net/profile/{}".format(name)
-        
-        page_text = self.fetch_html(target_page) 
+        target_page = f"https://myanimelist.net/profile/{name}"
+
+        page_text = self.fetch_html(target_page)
         soup = BeautifulSoup(page_text, "html.parser")
 
         profile_info = soup.find("ul", class_="user-status")
@@ -189,16 +187,16 @@ class Scraper():
 
         if profile_info is None or manga_stats is None or manga_status is None or friends_info is None:
             raise HTMLParsingException("Error while parsing the HTML file, one of the target class wasn't found")
-        
+
         #Checking if the list is private
         is_private = manga_status.find(string=re.compile("Access to this list has been restricted by the owner.")) is not None
         if is_private:
             raise PrivateListException("[fetch_manga_profile] : The User's Manga List is marked as private, unable to fetch manga data")
-        
+
         # Check number of entries and to avoid scarce data & prepare offsets
         n_entry = -1
         entry_text = manga_stats.find(string=re.compile("Total Entries"))
-        if entry_text :
+        if entry_text is not None:
             n_entry = int(entry_text.parent.next_sibling.text.replace(",", ""))
 
         if n_entry < self.params["MIN_ENTRIES"]:
@@ -208,25 +206,25 @@ class Scraper():
         # These informations inside the user-status element are presented as two span element siblings (One has the type of category and the other, the value)
         gender = None
         has_gender = profile_info.find(string=re.compile("Gender"))
-        if has_gender:
+        if has_gender is not None:
             gender = has_gender.parent.next_sibling.text
-        
+
         birthday = None
         has_birthday = profile_info.find(string=re.compile("Birthday"))
-        if has_birthday:
+        if has_birthday is not None:
             match = re.search("[0-9]{4}", has_birthday.parent.next_sibling.text)
             birthday = int(match.group()) if match else None
-        
+
         location = None
         has_location = profile_info.find(string=re.compile("Location"))
-        if has_location:
+        if has_location is not None:
             location = has_location.parent.next_sibling.text
 
         friends = None
         has_no_friends = friends_info.find(string=re.compile("No friend yet."))
         if has_no_friends is None:
             friends = self.find_friends(name)
-        
+
         return {"username" : name, "gender" : gender, "birthday" : birthday, "location" : location, "entries" : n_entry, "friends" : friends}
 
     def create_manga_interraction_entries(self, data, userid):
@@ -242,7 +240,7 @@ class Scraper():
 
         :return: None
         """
-        # json is structured as such : 
+        # json is structured as such :
         if not data: # Empty => Bad offset or other issue ?
             return
 
@@ -253,19 +251,19 @@ class Scraper():
                             VALUES (?, ?, ?, ?, ?, ?, ?)""", (userid, manga['manga_id'],self. MANGA_STATUS_CODE[manga['status']], manga['num_read_chapters'], manga['score'] if manga['score'] != 0 else None, manga['start_date_string'], manga['finish_date_string']))
 
     def collect_manga_data(self, name, n_entry, sleep_time=0.5):
-        data_list = [] 
+        data_list = []
         if n_entry < 1:
             raise ScarceDataException("[fetch_manga_list] : Attempted to fetch a manga_list with no entry")
 
         n_offsets = n_entry//self.MANGA_DISPLAY_LIMIT
-        for i in range(0, n_offsets+1):
+        for i in range(n_offsets+1):
             time.sleep(sleep_time)
-            target_page = "https://myanimelist.net/mangalist/{}/load.json".format(name)
+            target_page = f"https://myanimelist.net/mangalist/{name}/load.json"
             req_json = self.fetch_json(target_page, params={"offset": i*self.MANGA_DISPLAY_LIMIT})
             data_list.append(req_json)
-        
+
         return data_list
-    
+
     def fetch_manga_list(self, name:str, userid:int, n_entry:int, sleep_time=0.5):
         """
         Method to fetch and insert entries from the manga list of user `name` into the database
@@ -306,7 +304,7 @@ class Scraper():
         if remaining_user_needed <=0:
             return self.params["MAX_SLEEP"]
 
-        ratio = min(q_size/remaining_user_needed,1) 
+        ratio = min(q_size/remaining_user_needed,1)
 
         sleep_time = self.params["MIN_SLEEP"] + (ratio**exp_factor * (self.params["MAX_SLEEP"] - self.params["MIN_SLEEP"]))
         return round(sleep_time, 1)
@@ -330,18 +328,15 @@ class Scraper():
         """
         Method to load pending usernames from previous scraper runs (usernames that were discovered and but not treated)
         """
-        try:
-            self.cursor.execute("""SELECT username FROM pending_recovery""")
-            users = self.cursor.fetchall()
-            usernames = [user[0] for user in users]
-            for u in usernames:
-                self.name_queue.put(u)
-                self.seen.add(u)
-            self.cursor.execute("""DELETE FROM pending_recovery""")
-            self.conn.commit()
-        except Exception as e:
-            raise e
-    
+        self.cursor.execute("""SELECT username FROM pending_recovery""")
+        users = self.cursor.fetchall()
+        usernames = [user[0] for user in users]
+        for u in usernames:
+            self.name_queue.put(u)
+            self.seen.add(u)
+        self.cursor.execute("""DELETE FROM pending_recovery""")
+        self.conn.commit()
+
     def dump_pending(self):
         """
         Method to dump pending usernames from previous scraper runs (usernames that were discovered and added to the dataset)
@@ -356,10 +351,10 @@ class Scraper():
             self.cursor.executemany("INSERT OR IGNORE INTO pending_recovery (username) VALUES (?);", pending_users)
             self.conn.commit()
         except Exception as e:
-            logging.error("dump_pending : error while converting pending names : {}".format(e))
+            logger.error(f"dump_pending : error while converting pending names : {e}")
             self.conn.rollback()
-            raise e
-    
+            raise
+
     def integrate_user(self, name, sleep_time=1):
         success = False
         while not success:
@@ -385,44 +380,44 @@ class Scraper():
                                 self.name_queue.put(friend)
                 with self.lock:
                     self.added.add(name)
-                
+
                 self.conn.commit()
                 success = True
-            
+
             except (requests.exceptions.ConnectionError, requests.exceptions.Timeout) as e:
-                logging.error(f"[THREAD B] : Connection Error : {e} | Waiting for Connection...")
+                logger.error(f"[THREAD B] : Connection Error : {e} | Waiting for Connection...")
                 time.sleep(self.params['CONNECTION_ISSUES_SLEEP'])
                 self.conn.rollback()
 
             except (HTMLParsingException, ScarceDataException, PrivateListException) as e:
-                    logging.error(f"[THREAD B] : Skiping user {name}, cause : \n \t{e}")
+                    logger.error(f"[THREAD B] : Skiping user {name}, cause : \n \t{e}")
                     self.conn.rollback()
                     return
 
             except sqlite3.IntegrityError as e:
-                logging.error(f"[THREAD B] : Database integrity violation on user {name}, aborting integration : \n \t{e}")
+                logger.error(f"[THREAD B] : Database integrity violation on user {name}, aborting integration : \n \t{e}")
                 self.conn.rollback()
-                raise e
+                raise
 
             except requests.exceptions.HTTPError as e:
                 if (e.response.status_code == 429 or e.response.status_code == 403):
-                    logging.error("[THREAD B] : Too Many Requests : Waiting before trying again...")
+                    logger.error("[THREAD B] : Too Many Requests : Waiting before trying again...")
                     time.sleep(self.params['RATE_LIMIT_SLEEP'])
                     self.conn.rollback()
                 elif (e.response.status_code == 404):
-                    logging.error("[THREAD B] : Page not found : Skipping user")
+                    logger.error("[THREAD B] : Page not found : Skipping user")
                     self.conn.rollback()
                     return
                 else:
-                    logging.error(f"[THREAD B] : Uncharacterised HTTP Error ({e.response.status_code}) Abort user integration")
+                    logger.error(f"[THREAD B] : Uncharacterised HTTP Error ({e.response.status_code}) Abort user integration")
                     self.conn.rollback()
-                    raise e
+                    raise
 
             except Exception as e:
-                logging.error(f"[THREAD B] : Uncharacterised Error ({e}) Abort integration")
+                logger.error(f"[THREAD B] : Uncharacterised Error ({e}) Abort integration")
                 self.conn.rollback()
-                raise e
-                
+                raise
+
     def create_users(self, n_loaded):
             """
             Method that collects usernames from MAL user page to add them to the scraper name queue.
@@ -435,7 +430,7 @@ class Scraper():
                 if len(self.added) >= self.params['MAX_USERS'] + n_loaded:
                     break
                 try:
-                    logging.debug(f"[THREAD A] : Current sleep time : {self.user_page_sleep}")
+                    logger.debug(f"[THREAD A] : Current sleep time : {self.user_page_sleep}")
                     names = self.fetch_user_page(sleep_time=self.user_page_sleep)
                     for name in names:
                         with self.lock:
@@ -444,32 +439,29 @@ class Scraper():
                                 self.name_queue.put(name)
 
                 except requests.exceptions.ConnectionError:
-                    logging.error("[THREAD A] : Connection Error : Waiting for Connection...")
-                    time.sleep(self.params['CONNECTION_ISSUES_SLEEP']) 
+                    logger.error("[THREAD A] : Connection Error : Waiting for Connection...")
+                    time.sleep(self.params['CONNECTION_ISSUES_SLEEP'])
 
                 except requests.exceptions.Timeout:
-                    logging.error("[THREAD A] : Timeout Error : Waiting before trying again...")
+                    logger.error("[THREAD A] : Timeout Error : Waiting before trying again...")
                     time.sleep(self.params['CONNECTION_ISSUES_SLEEP'])
 
                 except requests.exceptions.HTTPError as e:
-                    if e.response.status_code == 429 :
-                        logging.error("[THREAD A] : Too Many Requests : Waiting before trying again...")
-                        time.sleep(self.params['RATE_LIMIT_SLEEP'])
-                    elif e.response.status_code == 403 :
-                        logging.error("[THREAD A] : Too Many Requests : Waiting before trying again...")
+                    if e.response.status_code == 429  or e.response.status_code == 403:
+                        logger.error("[THREAD A] : Too Many Requests : Waiting before trying again...")
                         time.sleep(self.params['RATE_LIMIT_SLEEP'])
                     else:
-                        logging.error(f"[THREAD A] : Unhandled HTTP error ({e.response.status_code} -> {e}) : Stopping Thread A")
+                        logger.error(f"[THREAD A] : Unhandled HTTP error ({e.response.status_code} -> {e}) : Stopping Thread A")
                         self.name_queue.put(self.SENTINEL)
-                        raise e
+                        raise
 
                 except Exception as ue:
-                    logging.error(f"[THREAD A] Unknown error : {ue} aborting scraping, thread A has been stopped.")
+                    logger.error(f"[THREAD A] Unknown error : {ue} aborting scraping, thread A has been stopped.")
                     self.name_queue.put(self.SENTINEL)
-                    raise ue
-                
+                    raise
+
             self.name_queue.put(self.SENTINEL)
-    
+
     def link_user_data(self, n_loaded):
             """
             Method that collect user's profile data and manga entries. Adds discovered friends name back to the scraper name queue
@@ -486,8 +478,8 @@ class Scraper():
                 try:
                     name = self.name_queue.get(timeout=self.params["QUEUE_TIMEOUT"])
 
-                except (queue.Empty) as e:
-                    logging.error(f"[THREAD B] : Queue has been empty for {self.params["QUEUE_TIMEOUT"]}s, aborting linking")
+                except (queue.Empty):
+                    logger.error(f"[THREAD B] : Queue has been empty for {self.params["QUEUE_TIMEOUT"]}s, aborting linking")
                     break
 
                 with self.lock:
@@ -504,14 +496,14 @@ class Scraper():
                     self.integrate_user(name)
 
                 except Exception as ue:
-                    logging.error(f"[THREAD B] : Unexpected error; Abort scraping : \n \t {ue}")
+                    logger.error(f"[THREAD B] : Unexpected error; Abort scraping : \n \t {ue}")
                     self.conn.rollback()
                     self.user_page_sleep = self.params["MIN_SLEEP"]
                     self.thread_A_stop_signal.set()
                     self.name_queue.task_done()
                     self.dump_pending()
-                    raise ue
-            
+                    raise
+
             self.thread_A_stop_signal.set()
 
     def handle_sigterm(self, signum, frame):
@@ -526,9 +518,9 @@ class Scraper():
         """
         n_loaded = self.load_from_previous_session()
         self.load_pending()
-        
+
         signal.signal(signal.SIGTERM, self.handle_sigterm)
-        
+
         user_name_thread = threading.Thread(target=self.create_users, args=(n_loaded,))
         rating_thread = threading.Thread(target=self.link_user_data, args=(n_loaded,))
 
@@ -542,7 +534,7 @@ class Scraper():
 
     def run(self, profiler = True):
         if profiler :
-            logging.basicConfig(filename=self.params["LOG_PATH"], level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+            logging.basicConfig(filename=self.params["LOG_PATH"], level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s (%(threadName)s)')
             cProfile.runctx("self.create_user_review_database()", globals=globals(), locals=locals(), filename=self.params["PROFILER_PATH"])
         else:
             self.create_user_review_database()
