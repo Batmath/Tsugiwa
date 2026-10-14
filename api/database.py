@@ -1,8 +1,8 @@
 import sqlite3
-import os
-from contextlib import closing
 from collections import defaultdict
+
 from api.settings import ParametersAPI
+
 
 class InvalidParametersException(Exception):
     pass
@@ -29,7 +29,7 @@ def get_db():
     finally:
         conn.close()
 
-class Where():
+class Where:
     def __init__(self):
         self.clauses = []
         self.params = []
@@ -43,17 +43,17 @@ class Where():
         return self.clauses == []
 
     def sql(self):
-        return "WHERE " + " AND ".join(self.clauses) 
+        return "WHERE " + " AND ".join(self.clauses)
 
     def parameters(self):
         return self.params
-        
+
 # TODO : Harmonize queries, keep one per table handling joins in each of them.
 # TODO : Add manga queries
 
 def query_users(conn, username:str|None =None, gender:str|None=None, location:str|None=None, min_entries:int|None=None, max_entries:int|None=None, min_birthday:int|None=None, max_birthday:int|None=None,
     #filtering options
-    manga_id:int|None=None, min_score:int|None=None, max_score:int|None=None, status:str|None=None, genres:list=[],
+    manga_id:int|None=None, min_score:int|None=None, max_score:int|None=None, status:str|None=None, genres:list | None=None,
     # data manip
     limit:int|None=None, offset:int|None=None, counting:bool=False) -> list | int:
 
@@ -110,12 +110,13 @@ def query_users(conn, username:str|None =None, gender:str|None=None, location:st
     """
 
     # TODO : Expand dynamic query building to add JOIN tables. (users having completed or read certain mangas | users h)
+    if genres is None:
+        genres = []
     target = "COUNT(DISTINCT u.user_id)" if counting else "DISTINCT u.*"
-    query = """SELECT {} FROM users u """.format(target)
+    query = f"""SELECT {target} FROM users u """
 
     joins = []
     constraints = []
-    params = []
 
     if (manga_id or status or max_score or min_score):
         joins.append("JOIN entries e ON u.user_id = e.user_id ")
@@ -150,14 +151,14 @@ def query_users(conn, username:str|None =None, gender:str|None=None, location:st
         if limit is not None:
             query += " LIMIT ?"
             constraints.params.append(limit)
-        
+
         if offset is not None:
             query += " OFFSET ?"
             constraints.params.append(offset)
 
     users = conn.execute(query, tuple(constraints.params)).fetchall()
 
-    if users is not None: 
+    if users is not None:
         return (users[0][target] if counting else [dict(u) for u in users])
     else:
         raise UserNotFoundException
@@ -165,7 +166,7 @@ def query_users(conn, username:str|None =None, gender:str|None=None, location:st
 #TODO: Rewrite the query logic for genres
 def query_ratings(conn, username:str|None=None, manga_id:int|None=None, min_score:int|None=None, max_score:int|None=None, status=None,
         #join trigerring options
-        gender:str|None=None, location:str|None=None, min_entries:int|None=None, max_entries:int|None=None, min_birthday:int|None=None, max_birthday:int|None=None, genres=[],
+        gender:str|None=None, location:str|None=None, min_entries:int|None=None, max_entries:int|None=None, min_birthday:int|None=None, max_birthday:int|None=None, genres=None,
         #data manip
         min_mean:int|None=None, max_mean:int|None=None, media_type:str|None=None, publishing_status:str|None=None,
 
@@ -234,6 +235,8 @@ def query_ratings(conn, username:str|None=None, manga_id:int|None=None, min_scor
         :return: List of the manga(s) queried or count
         :rtype: list | int
     """
+    if genres is None:
+        genres = []
     query = "SELECT COUNT(*) FROM entries e " if counting else "SELECT * FROM entries e "
 
     constraints = Where()
@@ -249,7 +252,7 @@ def query_ratings(conn, username:str|None=None, manga_id:int|None=None, min_scor
 
     if (username or gender or location or min_entries or max_entries or min_birthday or max_birthday or full):
         joins.append("JOIN users u ON u.user_id = e.user_id ")
-    
+
     if genres != [] or full:
         joins.append("JOIN manga_genres mg ON e.manga_id = mg.manga_id ")
         genres_fetched = True
@@ -283,7 +286,7 @@ def query_ratings(conn, username:str|None=None, manga_id:int|None=None, min_scor
         if limit is not None:
             query += " LIMIT ?"
             constraints.params.append(limit)
-        
+
         if offset is not None:
             query += " OFFSET ?"
             constraints.params.append(offset)
@@ -295,24 +298,24 @@ def query_ratings(conn, username:str|None=None, manga_id:int|None=None, min_scor
             grouped_data = defaultdict(list)
             for rating in ratings:
                 grouped_data[(rating['user_id'], rating['manga_id'])].append(dict(rating))
-            
+
             genre_map = {genre['genre_id'] : genre['genre_name'] for genre in query_genres(conn)}
-            
-            res = [{'user_id' : key[0], 
+
+            res = [{'user_id' : key[0],
                     'manga_id' : key[1],
                     'genres' : [{'genre_id' : rating['genre_id'],'genre' : genre_map[rating['genre_id']]} for rating in val],
                     'status' : val[0]['status'],
                     'read_chapters' : val[0]['read_chapters'],
-                    'score' :  val[0]['score'],  'start_date_string' :  val[0]['start_date_string'],'end_date_string' :  val[0]['end_date_string'], 'status' : val[0]['status']
+                    'score' :  val[0]['score'],  'start_date_string' :  val[0]['start_date_string'],'end_date_string' :  val[0]['end_date_string']
                     }
                     for key, val in grouped_data.items()]
-            
+
             if full:
                 for entry in res :
                     matching_entries = grouped_data[(entry['user_id'], entry['manga_id'])]
                     entry['manga'] = {
-                        'manga_id' : entry['manga_id'], 
-                        'title' : matching_entries[0]['title'], 
+                        'manga_id' : entry['manga_id'],
+                        'title' : matching_entries[0]['title'],
                         'title_other' : matching_entries[0]['title_other'],
                         'media_type' : matching_entries[0]['media_type'],
                         'genres' : entry.pop('genres'),
@@ -332,9 +335,9 @@ def query_ratings(conn, username:str|None=None, manga_id:int|None=None, min_scor
                         'synopsis' : matching_entries[0]['synopsis']
                     }
                     entry.pop('manga_id')
-                    
+
         else:
-           res = [dict(r) for r in ratings] 
+           res = [dict(r) for r in ratings]
     else:
         res = [dict(r) for r in ratings]
 
@@ -355,14 +358,14 @@ def query_genres(conn, genre_id:int|None=None, counting:bool=False) -> list | in
     """
 
     target = "COUNT(*)" if counting else "*"
-    query = "SELECT {} FROM genres".format(target)
+    query = f"SELECT {target} FROM genres"
 
     constraints = Where()
     constraints.add("genre_id = ?",genre_id)
-    
+
     if not(constraints.empty()):
         query += constraints.sql()
-    
+
     genres = conn.execute(query, tuple(constraints.params)).fetchall()
 
     if genres is not None :
@@ -372,7 +375,7 @@ def query_genres(conn, genre_id:int|None=None, counting:bool=False) -> list | in
 
 def query_manga(conn, manga_id:int|None=None, media_type:str|None=None, status:str|None=None, min_mean:int|None=None, max_mean:int|None=None,
                 #filter triggering
-                genres:list=[], full:bool=False,
+                genres:list | None=None, full:bool=False,
                 #data manip
                 limit:int|None=None, offset:int|None=None, counting:bool=False) -> None:
 
@@ -409,12 +412,13 @@ def query_manga(conn, manga_id:int|None=None, media_type:str|None=None, status:s
         :return: List of the manga(s) queried or count
         :rtype: list | int
     """
+    if genres is None:
+        genres = []
     target = "COUNT(DISTINCT m.manga_id)" if counting else "*"
-    query = """SELECT {} FROM manga m """.format(target)
+    query = f"""SELECT {target} FROM manga m """
 
     joins = []
     constraints = []
-    params = []
     genres_fetched = False
 
     if genres != [] or full:
@@ -432,15 +436,15 @@ def query_manga(conn, manga_id:int|None=None, media_type:str|None=None, status:s
 
     if joins:
         query += " " + " ".join(joins)
-    
+
     if not(constraints.empty()):
         query += constraints.sql()
-    
+
     if not counting:
         if limit is not None:
             query += " LIMIT ?"
             constraints.params.append(limit)
-        
+
         if offset is not None:
             query += " OFFSET ?"
             constraints.params.append(offset)
@@ -451,7 +455,7 @@ def query_manga(conn, manga_id:int|None=None, media_type:str|None=None, status:s
         raise  MangaNotFoundException
 
     if counting:
-        res = list(dict(mangas[0]).values())[0] # There's only one var in the table in that case
+        res = next(iter(dict(mangas[0]).values())) # There's only one var in the table in that case
         return res
 
     if genres_fetched:
@@ -460,18 +464,18 @@ def query_manga(conn, manga_id:int|None=None, media_type:str|None=None, status:s
             grouped_data[manga['manga_id']].append(dict(manga))
 
         genre_map = {genre['genre_id'] : genre['genre_name'] for genre in query_genres(conn)}
-        
+
         key = list(grouped_data.keys())
         manga_vars = list(grouped_data[key[0]][0].keys()) # Collect the list of variables for the first manga found (among those that have been found)
         manga_vars.remove('genre_id')
         res = []
-        for id, manga_list in grouped_data.items():
+        for manga_list in grouped_data.values():
             unified_manga_entry = {var : manga_list[0][var] for var in manga_vars}
             unified_manga_entry['genres'] = [{"genre_id" : manga["genre_id"], "genre_name" : genre_map[manga["genre_id"]]} for manga in manga_list]
             mangas.append(unified_manga_entry)
         return res
-    
-    return [dict(manga) for manga in mangas] 
+
+    return [dict(manga) for manga in mangas]
 
 def search_manga(conn, string:str, limit:int=15):
     """
@@ -493,16 +497,12 @@ def search_manga(conn, string:str, limit:int=15):
     req = "SELECT manga_id, title FROM manga WHERE title LIKE ? ESCAPE '\\' LIMIT ?"
     for title_type in ["title", "title_english", "title_other"]:
         req = f"SELECT manga_id, title FROM manga WHERE {title_type} LIKE ? ESCAPE '\\' LIMIT ?"
-        
-        try:
-            output = conn.execute(req, params).fetchall()
-        except sqlite3.Error as e:
-                raise e
-        
+        output = conn.execute(req, params).fetchall()
+
         if output != []:
             return [{'title' : manga[1], 'manga_id' : manga[0]} for manga in output]
     return []
-    
+
 def search_user(conn, string:str, limit:int=15):
     """
     Method to query for a manga title. The search query is currently really naïve.
