@@ -33,7 +33,7 @@ def get_user_ratings(username: str, min_score=None, max_score=None, limit=None, 
         ratings = query_ratings(conn, username=username, min_score=min_score, max_score=max_score, limit=limit, offset=offset, status=status, counting=counting,
                                 genres=genres_list)
     except UserNotFoundException:
-        return HTTPException(status_code=404, detail="Error when fetching entries : User couldn't be found.")
+        raise HTTPException(status_code=404, detail="Error when fetching entries : User couldn't be found.")
     return {"data" : ratings}
 
 @router.get("/user/{username}/full")
@@ -44,5 +44,5 @@ def get_full_user_ratings(username: str, min_score=None, max_score=None, limit=N
         ratings = query_ratings(conn, username=username, min_score=min_score, max_score=max_score, limit=limit, offset=offset, status=status,
                                 genres=genres_list, full=True)
     except UserNotFoundException:
-        return HTTPException(status_code=404, detail="Error when fetching entries : User couldn't be found.")
+        raise HTTPException(status_code=404, detail="Error when fetching entries : User couldn't be found.")
     return {"data" : ratings}

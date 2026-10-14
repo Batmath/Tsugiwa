@@ -8,7 +8,7 @@ def get_genres(counting=False, conn: sqlite3.Connection = Depends(get_db)):
     try:
         genres = query_genres(conn, counting)
     except sqlite3.Error:
-        return HTTPException(status_code=500, content="Server error encountered, try again")
+        raise HTTPException(status_code=500, detail="Server error encountered, try again")
     return {"data" : genres}
 
 @router.get("/{genre_id}")
@@ -16,7 +16,7 @@ def get_genre(genre_id :int, counting=False, conn: sqlite3.Connection = Depends(
     try:
         genres = query_genres(conn, genre_id, counting)
     except GenreNotFoundException:
-        return HTTPException(status_code=404, content="Error when fetching genre : genre id couldn't be found.")
+        raise HTTPException(status_code=404, detail="Error when fetching genre : genre id couldn't be found.")
     except sqlite3.Error:
-        return HTTPException(status_code=500, content="Server error encountered, try again")
+        raise HTTPException(status_code=500, detail="Server error encountered, try again")
     return {"data" : genres}

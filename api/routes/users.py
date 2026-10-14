@@ -17,7 +17,7 @@ def get_search_user(q:str = "", limit:int = 15, conn: sqlite3.Connection = Depen
     try:
         usernames = search_user(conn, q, limit)
     except sqlite3.Error:
-        return HTTPException(status_code=500, content="Server error encountered, try again")
+        raise HTTPException(status_code=500, detail="Server error encountered, try again")
     return {'data' : usernames}
 
 @router.get("/{username}")
@@ -25,7 +25,7 @@ def get_user(username:str, conn: sqlite3.Connection = Depends(get_db)):
     try:
         user = query_users(conn, username=username)
     except UserNotFoundException:
-        return HTTPException(status_code=404, detail="Error when fetching user : username not found.")
+        raise HTTPException(status_code=404, detail="Error when fetching user : username not found.")
     except sqlite3.Error:
-        return HTTPException(status_code=500, content="Server error encountered, try again")
+        raise HTTPException(status_code=500, detail="Server error encountered, try again")
     return {"data" : user[0] if user else []}

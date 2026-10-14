@@ -11,9 +11,9 @@ def get_manga(min_mean=None, max_mean=None, genres=[], status=None, media_type= 
     try:
         mangas = query_manga(conn, min_mean=min_mean, max_mean=max_mean, genres=genres_list, status=status, media_type=media_type, counting=counting, offset=offset, limit=200)
     except MangaNotFoundException:
-        return HTTPException(status_code=404, content="Error: Mangas couldn't be found")
+        raise HTTPException(status_code=404, detail="Error: Mangas couldn't be found")
     except sqlite3.Error:
-        return HTTPException(status_code=500, content="Server error encountered, try again")
+        raise HTTPException(status_code=500, detail="Server error encountered, try again")
     return {"data" : mangas}
 
 @router.get("/search")
@@ -21,7 +21,7 @@ def get_search_manga(q:str = "", limit:int = 15, conn: sqlite3.Connection = Depe
     try:
         manga_names = search_manga(conn, q, limit)
     except sqlite3.Error:
-        return HTTPException(status_code=500, content="Server error encountered, try again")
+        raise HTTPException(status_code=500, detail="Server error encountered, try again")
     return {'data' : manga_names}
 
 @router.get("/{manga_id}")
@@ -29,9 +29,9 @@ def get_manga_per_id(manga_id : int, counting=False, conn: sqlite3.Connection = 
     try:
         mangas = query_manga(conn, manga_id=manga_id, counting=counting)
     except MangaNotFoundException:
-        return HTTPException(status_code=404, content="Manga id could not be found")
+        raise HTTPException(status_code=404, detail="Manga id could not be found")
     except sqlite3.Error:
-        return HTTPException(status_code=500, content="Server error encountered, try again")
+        raise HTTPException(status_code=500, detail="Server error encountered, try again")
     return {"data" : mangas}
 
 @router.get("/{manga_id}/full")
@@ -39,8 +39,8 @@ def get_manga_full_per_id(manga_id : int, counting=False, conn: sqlite3.Connecti
     try:
         mangas = query_manga(conn, manga_id=manga_id, counting=counting, full=True)
     except MangaNotFoundException:
-        return HTTPException(status_code=404, content="Manga id could not be found")
+        raise HTTPException(status_code=404, detail="Manga id could not be found")
     except sqlite3.Error:
-        return HTTPException(status_code=500, content="Server error encountered, try again")
+        raise HTTPException(status_code=500, detail="Server error encountered, try again")
     return {"data" : mangas}
 
