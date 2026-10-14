@@ -67,12 +67,12 @@ def server(input: Inputs, output: Outputs, session: Session):
     def compute_user_data():
         user = input.selected_user()
         if user is not None:
-            user_df = pd.DataFrame(get_user_entries(user))
+            user_df = pd.DataFrame(query_api(f"{param["API_URL"]}/entries/user/{user}/full"))
             genres = get_genres_entries(user_df)
             ui.update_select("hist_genre_filter", choices=["None"] + genres)
             return user_df
         return None
-    
+
     @output
     @render_widget
     def plot_camembert():

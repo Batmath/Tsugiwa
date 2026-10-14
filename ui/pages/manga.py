@@ -44,7 +44,7 @@ def server(input: Inputs, output: Outputs, session: Session):
         q = input.search_manga_query()
         if not q or len(q) < 2:
             return []
-        return search_manga(q)
+        return query_api(f"{param["API_URL"]}/mangas/search?q={q}&limit={15}")
 
     @reactive.effect
     def update_manga_choices():
