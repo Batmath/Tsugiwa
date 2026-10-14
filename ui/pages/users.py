@@ -1,14 +1,12 @@
-from ui.pages.config import * 
-from shiny import ui, Inputs, Outputs, Session, reactive, render
 import pandas as pd
-
-from shinywidgets import render_widget, output_widget
-import numpy as np
+from shiny import Inputs, Outputs, Session, reactive, ui
+from shinywidgets import output_widget, render_widget
 
 from ui.api.client import *
-from ui.plots.figure import *
 from ui.data.transform import *
+from ui.pages.config import *
 from ui.pages.config import GENRE_COLORS
+from ui.plots.figure import *
 
 # TODO : List of entries
 # TODO : [scatter_plot_card] Add color filters according to filters chosen
@@ -30,7 +28,7 @@ def page_ui():
             output_widget("plot_camembert"),
             full_screen=True,
         ),
-        
+
         ui.card(
             ui.card_header("Scatter Plot mean score/user score"),
             output_widget("plot_scatter"),
@@ -57,7 +55,7 @@ def server(input: Inputs, output: Outputs, session: Session):
         q = input.search_query()
         if not q or len(q) < 2:
             return []
-        return search_username(q)
+        return query_api(f"{param["API_URL"]}/users/search?q={q}&limit={15}")
 
     @reactive.effect
     def update_user_choices():
@@ -84,9 +82,9 @@ def server(input: Inputs, output: Outputs, session: Session):
             labels = list(plot_vars.keys())
             vals = list(plot_vars.values())
             fig =  PiePlot(vals, labels, max_visible=10, color_map=GENRE_COLORS).figure()
-            fig.update_traces(marker=dict(colors=[GENRE_COLORS.get(l, "#888888") for l in labels]))
+            fig.update_traces(marker={"colors": [GENRE_COLORS.get(l, "#888888") for l in labels]})
             return fig
-    
+
     @output
     @render_widget
     def plot_scatter():
@@ -103,7 +101,7 @@ def server(input: Inputs, output: Outputs, session: Session):
                     data['x'].append(row_dict['score'])
                     data['y'].append(row_dict['manga']['score'])
 
-            fig =  ScatterPlot(x=data['x'], y=data['y'], labelx="User ratings", labely="Manga score (mean)", hover_name="Manga Title", 
+            fig =  ScatterPlot(x=data['x'], y=data['y'], labelx="User ratings", labely="Manga score (mean)", hover_name="Manga Title",
                                hover=data['title'], title="User score vs mean score", xrange=[-0.2,10.2], yrange=[-0.2,10.2]).figure()
             max_score = 10
             threshold1, threshold2, outer_val = 0.1 * max_score, 0.3 * max_score, 3 * max_score
@@ -117,7 +115,7 @@ def server(input: Inputs, output: Outputs, session: Session):
             ]
 
             for low, upper, color in zones:
-                path = (f"M {-max_score},{-max_score + low} L {2 * max_score},{2 * max_score + low} " 
+                path = (f"M {-max_score},{-max_score + low} L {2 * max_score},{2 * max_score + low} "
                         f"L {2 * max_score},{2 * max_score + upper} L {-max_score},{-max_score + upper} Z")
                 fig.add_shape(type="path", path=path, fillcolor=color, line_width=0, layer="below")
 
@@ -142,8 +140,7 @@ def server(input: Inputs, output: Outputs, session: Session):
                     data.append(row_dict['manga']['score'])
 
             fig = HistoPlot(x=data, nbins=10).figure()
-            fig.update_traces(xbins=dict(start=-0.5, end=10.5, size=1), hovertemplate="%{x}<br>%{y}<extra></extra>")
+            fig.update_traces(xbins={"start": -0.5, "end": 10.5, "size": 1}, hovertemplate="%{x}<br>%{y}<extra></extra>")
             fig.update_xaxes(range=[-0.5, 10.5], dtick=1)
-            
+
             return fig
-    pass

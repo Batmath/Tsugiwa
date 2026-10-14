@@ -1,11 +1,12 @@
-from shiny import ui, Inputs, Outputs, Session, reactive, render
-from ui.api.client import * 
+import pandas as pd
+from shiny import Inputs, Outputs, Session, reactive, render, ui
+from shinywidgets import output_widget, render_widget
+
+from ui.api.client import *
+from ui.data.transform import *
 from ui.pages.config import *
 from ui.plots.figure import *
-from ui.data.transform import *
 
-from shinywidgets import render_widget, output_widget
-import pandas as pd
 
 def page_ui():
     return ui.page_sidebar(
@@ -49,7 +50,7 @@ def server(input: Inputs, output: Outputs, session: Session):
     @reactive.effect
     def update_manga_choices():
         res = manga_search()
-        list_manga = list(map(lambda x : x['title'], res))
+        list_manga = [x['title'] for x in res]
         list_potential_manga.set({manga['title'] : manga['manga_id'] for manga in res})
         ui.update_select("selected_manga", choices=list_manga)
 
@@ -59,7 +60,7 @@ def server(input: Inputs, output: Outputs, session: Session):
         if manga is not None:
             try:
                 manga_id.set(list_potential_manga()[f'{manga}'])
-            except KeyError as e:
+            except KeyError:
                 return None
             manga_data.set(query_api(f"{param["API_URL"]}/mangas/{manga_id()}")[0]) # returns the row associated with the manga id so we take the only element in data [{..}]
             manga_df = pd.DataFrame(get_manga_entries(manga_id()))
@@ -82,7 +83,7 @@ def server(input: Inputs, output: Outputs, session: Session):
             count = query_api(f"{param["API_URL"]}/users/?manga_id={manga_id()}&counting=true")
             return count
         return None
-        
+
     @render.ui
     def entries_manga_display():
         if manga_id() is not None:
@@ -102,7 +103,7 @@ def server(input: Inputs, output: Outputs, session: Session):
             vals = list(plot_vars.values())
             fig =  PiePlot(vals, labels, max_visible=10).figure()
             return fig
-            
+
     @output
     @render_widget
     def plot_score_hist():
@@ -111,7 +112,7 @@ def server(input: Inputs, output: Outputs, session: Session):
             return ImagePlot(0,0).figure()
         else:
             manga = manga[manga['score'].notna()]
-            
+
             #user = filter_entries_genre(user, genre=input.hist_genre_filter())
             data = []
             for row_dict in manga.to_dict(orient="records"):
@@ -119,8 +120,7 @@ def server(input: Inputs, output: Outputs, session: Session):
                     data.append(row_dict['score'])
 
             fig = HistoPlot(x=data, nbins=10).figure()
-            fig.update_traces(xbins=dict(start=-0.5, end=10.5, size=1))
+            fig.update_traces(xbins={"start": -0.5, "end": 10.5, "size": 1})
             fig.update_xaxes(range=[-0.5, 10.5], dtick=1)
-            
+
             return fig
-    pass

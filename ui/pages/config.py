@@ -1,8 +1,9 @@
-import requests
-import faicons as fa
-import ui.settings as settings
 import json
 from pathlib import Path
+
+import faicons as fa
+
+from ui import settings
 
 ICONS = {
     "user": fa.icon_svg("user", "regular"),
