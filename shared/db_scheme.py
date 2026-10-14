@@ -1,9 +1,10 @@
+import pathlib
+import random
 import sqlite3
 from contextlib import closing
+
 import pandas as pd
-import numpy as np
-import random
-import pathlib
+
 
 def init_db(path):
     conn = sqlite3.connect(path)
@@ -37,7 +38,7 @@ def init_db(path):
                 scraped_at DATETIME DEFAULT CURRENT_TIMESTAMP,
                 PRIMARY KEY (user_id, manga_id)
             );""")
-        
+
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS relationships(
                 user_id_left INTEGER REFERENCES users(user_id),
@@ -121,7 +122,7 @@ def populate_manga_tables(csv_path, db_path) -> None:
     init_db(db_path)
     manga = pd.read_csv(csv_path, index_col=0)
     genres = pd.read_csv("./genres.csv", index_col=0)
-    
+
     manga_genres = manga[['genres','themes']]
     conn = sqlite3.connect(db_path)
     manga_genres['authors'] = manga['authors']
@@ -156,12 +157,12 @@ def populate_manga_tables(csv_path, db_path) -> None:
                     full_authors.append(authors[i-1])
                 elif i == n-1 :
                     full_authors.append(authors[i])
-            
+
             for author in full_authors:
                 cursor.execute("""INSERT OR IGNORE INTO author (author_name) VALUES (?)""", (author,))
                 author_id = cursor.execute("""SELECT author_id FROM author WHERE author_name = ?""", (author,)).fetchone()[0]
                 cursor.execute("""INSERT OR IGNORE INTO manga_author VALUES (?, ?)""", (author_id, id))
-            
+
             #Genre Extraction
             row = list(row)
             if type(row[0]) != str and type(row[1]) != str:
@@ -172,27 +173,30 @@ def populate_manga_tables(csv_path, db_path) -> None:
                 m_genres = row[0].split(',')
             else :
                 m_genres = (row[0] + ',' + row[1]).split(',')
-            
+
             for genre in m_genres:
                 genre_id = genres[genres['genre_name'] == genre].index.values[0]
-                
+
                 print((id, int(genre_id)))
                 cursor.execute("""INSERT OR REPLACE INTO manga_genres VALUES (?,?)""", (id, int(genre_id)))
             conn.commit()
-        
-def transfer_db(ref_db_path, new_db_path, exclude=[]) -> None:
+
+def transfer_db(ref_db_path, new_db_path, exclude=None) -> None:
+    if exclude is None:
+        exclude = []
+
     init_db(new_db_path)
     conn_ref = sqlite3.connect(ref_db_path)
     conn_new = sqlite3.connect(new_db_path)
     with closing(conn_ref):
         cursor = conn_ref.cursor()
         cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
-        tables = list(map(lambda x : x[0], cursor.fetchall()))
+        tables = [x[0] for x in cursor.fetchall()]
         for tab in exclude:
             tables.remove(tab)
         with closing(conn_new):
             for tab in tables:
-                pd.read_sql("SELECT * FROM {}".format(tab), conn_ref).to_sql(tab, conn_new, if_exists="delete_rows", index=False)
+                pd.read_sql(f"SELECT * FROM {tab}", conn_ref).to_sql(tab, conn_new, if_exists="delete_rows", index=False)
 
 def generate_anonymized_data(db_path, new_db_path, n, seed=42) -> None:
     random.seed(seed)
@@ -204,21 +208,20 @@ def generate_anonymized_data(db_path, new_db_path, n, seed=42) -> None:
         sample = random.sample(users, n)
         userids = [row[0] for row in sample]
         entries = []
-        relationships = []
         for i in range(len(userids)):
             user_i = list(sample[i])
             print(sample[i])
             user_entries = cursor.execute("""SELECT * FROM entries WHERE user_id = ?""", (userids[i],)).fetchall()
             entries += user_entries
-            user_i[1] = "User{}".format(i)
+            user_i[1] = f"User{i}"
             user_i[2] = random.choice(["Male", "Female"])
             user_i[3] = random.randint(1970, 2018)
             user_i[4] = None
             sample[i] = tuple(user_i)
-    
+
     transfer_db(db_path, new_db_path, exclude=["users", "entries", "relationships", "pending_recovery"])
     conn2 = sqlite3.connect(new_db_path)
-    print(entries)
+
     with closing(conn2):
         cursor = conn2.cursor()
         cursor.executemany("""INSERT OR IGNORE INTO users VALUES (?{})""".format(", ? " * (len(users[0]) - 1)), sample)
@@ -227,16 +230,14 @@ def generate_anonymized_data(db_path, new_db_path, n, seed=42) -> None:
 
 def dump_db_to_sql(db_path, output_path) -> None:
     conn = sqlite3.connect(db_path)
-    with closing(conn):
-        with open(output_path, "w") as f:
-            for line in conn.iterdump():
-                f.write(f"{line}\n")
-    
+    with closing(conn), open(output_path, "w") as f:
+            f.writelines(f"{line}\n" for line in conn.iterdump())
+
 
 def build_db_from_dump(dump_path: pathlib.Path, target_path: pathlib.Path) -> None:
     conn = sqlite3.connect(target_path)
     with closing(conn):
-        with open(dump_path, "r") as f:
+        with open(dump_path) as f:
             conn.executescript(f.read())
         conn.commit()
 
