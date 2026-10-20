@@ -3,8 +3,6 @@ import random
 import sqlite3
 from contextlib import closing
 
-import pandas as pd
-
 
 def init_db(path):
     conn = sqlite3.connect(path)
@@ -29,7 +27,7 @@ def init_db(path):
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS entries(
                 user_id INTEGER REFERENCES users(user_id),
-                manga_id INTEGER,
+                manga_id INTEGER REFERENCES manga(manga_id),
                 status TEXT,
                 read_chapters INTEGER,
                 score INTEGER,
@@ -113,12 +111,12 @@ def init_db(path):
         cursor.execute("""CREATE INDEX IF NOT EXISTS manga_id_entries ON entries (manga_id);""")
         cursor.execute("""CREATE INDEX IF NOT EXISTS manga_id_genre ON manga_genres (manga_id);""")
         cursor.execute("""CREATE INDEX IF NOT EXISTS genre_id_manga ON manga_genres (genre_id);""")
-        # TODO : add INDEXES ON PROD DB
         cursor.execute("""CREATE INDEX IF NOT EXISTS username ON users (username);""")
         cursor.execute("""CREATE INDEX IF NOT EXISTS title_manga ON manga (title);""")
         conn.commit()
 
 def populate_manga_tables(csv_path, db_path) -> None:
+    import pandas as pd
     init_db(db_path)
     manga = pd.read_csv(csv_path, index_col=0)
     genres = pd.read_csv("./genres.csv", index_col=0)
@@ -182,6 +180,7 @@ def populate_manga_tables(csv_path, db_path) -> None:
             conn.commit()
 
 def transfer_db(ref_db_path, new_db_path, exclude=None) -> None:
+    import pandas as pd
     if exclude is None:
         exclude = []
 
