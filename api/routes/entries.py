@@ -10,16 +10,20 @@ router = APIRouter(prefix="/entries", tags=["entries"])
 
 
 @router.get("/manga/{manga_id}")
-def get_manga_entries(manga_id:int, conn:Conn, min_score: int|None=None, max_score: int|None=None, limit: int|None=200, offset: int|None=None, status: str|None=None, counting:bool=False,
-                    gender: str|None=None, location: str|None=None, min_entries:int|None=None, max_entries:int|None=None, min_birthday:int|None=None, max_birthday:int|None=None):
+def get_manga_entries(manga_id:int, conn:Conn, min_score: int|None=None, max_score: int|None=None, limit: int|None=200, 
+                      offset: int|None=None, status: str|None=None, counting:bool=False, gender: str|None=None, 
+                      location: str|None=None, min_entries:int|None=None, max_entries:int|None=None, min_birthday:int|None=None, 
+                      max_birthday:int|None=None) -> dict:
 
     entries = query_ratings(conn, manga_id=manga_id, min_score=min_score, max_score=max_score, limit=limit, offset=offset, status=status, counting=counting,
                             gender=gender,location=location, min_entries=min_entries, max_entries=max_entries, min_birthday=min_birthday, max_birthday=max_birthday)
     return {"data" : entries}
 
 @router.get("/")
-def get_entries(conn:Conn, min_score:int|None=None, max_score: int|None=None, limit: int|None=200, offset: int|None=None, status:str|None=None, counting:bool=False,
-                gender: str|None=None, location: str|None=None, min_entries: int|None=None, max_entries: int|None=None, min_birthday: int|None=None, max_birthday: int|None=None, genres: str|None=None):
+def get_entries(conn:Conn, min_score:int|None=None, max_score: int|None=None, limit: int|None=200, 
+                offset: int|None=None, status:str|None=None, counting:bool=False, gender: str|None=None, 
+                location: str|None=None, min_entries: int|None=None, max_entries: int|None=None, 
+                min_birthday: int|None=None, max_birthday: int|None=None, genres: str|None=None):
 
     genres_list = [int(x) for x in genres.split(",")] if genres is not None else []
 
