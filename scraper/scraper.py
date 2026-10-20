@@ -355,7 +355,7 @@ class Scraper:
             self.conn.rollback()
             raise
 
-    def integrate_user(self, name, sleep_time=1):
+    def integrate_user(self, name, add_friends=True, sleep_time=1):
         success = False
         while not success:
             try:
@@ -367,7 +367,7 @@ class Scraper:
                 user_id = self.cursor.execute("""SELECT user_id FROM users WHERE username = ?""", (user_info["username"],)).fetchone()[0]
                 self.fetch_manga_list(name, user_id, user_info["entries"],  sleep_time=sleep_time) # we fecth after trying to insert the user, if it's already in the db (from previous runs), fails and no need to fetch ! (saving requests)
 
-                if friends is not None:
+                if friends is not None and add_friends:
                     for friend in friends:
                         with self.lock:
                             if friend in self.added: #name not in added because INSERT INTO users didn't fail.
