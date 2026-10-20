@@ -9,10 +9,9 @@ app_ui = ui.page_navbar(
             ui.nav_panel("Dashboard", dashboard.page_ui()),
             ui.nav_panel("Users", users.page_ui()),
             ui.nav_panel("Manga", manga.page_ui()),
-            ui.nav_control(ui.input_dark_mode()),
+            header=ui.head_content(ui.tags.script("document.documentElement.setAttribute('data-bs-theme', 'dark');")),
             title="次は"
         )
-
 def server(input, output, session):
     dashboard.server(input, output, session)
     users.server(input, output, session)
