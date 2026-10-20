@@ -119,8 +119,9 @@ def server(input: Inputs, output: Outputs, session: Session):
                 if row_dict['score'] is not None:
                     data.append(row_dict['score'])
 
-            fig = HistoPlot(x=data, nbins=10).figure()
-            fig.update_traces(xbins={"start": -0.5, "end": 10.5, "size": 1})
-            fig.update_xaxes(range=[-0.5, 10.5], dtick=1)
+            fig = HistoPlot(x=data, nbins=10, hovertemplate="Score %{x:.0f}<br>%{y} entries<extra></extra>").figure()
 
+            mean = manga_data()['mean_score']
+            if mean is not None:
+                fig.add_vline(x=mean, line={"color": "red", "width": 2}, annotation_text=f"Mean {mean:.2f}", annotation_position="top")
             return fig
