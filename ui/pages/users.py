@@ -50,6 +50,8 @@ def page_ui():
 
 def server(input: Inputs, output: Outputs, session: Session):
 
+    user_df = reactive.value(None)
+
     @reactive.calc
     def username_search():
         q = input.search_query()
@@ -61,34 +63,41 @@ def server(input: Inputs, output: Outputs, session: Session):
     def update_user_choices():
         ui.update_select("selected_user", choices=username_search())
 
-    @reactive.calc
-    def compute_user_data():
+    @reactive.effect
+    @reactive.event(input.selected_user)
+    def load_user():
         user = input.selected_user()
-        if user is not None:
-            user_df = pd.DataFrame(query_api(f"{param["API_URL"]}/entries/user/{user}/full"))
-            genres = get_genres_entries(user_df)
-            ui.update_select("hist_genre_filter", choices=["None"] + genres)
-            return user_df
-        return None
+        if not user: 
+            user_df.set(None)
+            return
+        df = pd.DataFrame(query_api(f"{param['API_URL']}/entries/user/{user}/full"))
+        user_df.set(df if not df.empty else None)
+
+    @reactive.effect
+    def update_genre_choices():
+        df = user_df()
+        ui.update_select("hist_genre_filter", choices=["None"] + (get_genres_entries(df) if df is not None else []))
 
     @output
     @render_widget
     def plot_camembert():
-        user = compute_user_data()
+        user = user_df()
         if user is None:
             return ScatterPlot().figure()
         else:
             plot_vars = search_filter_count_entries(user, filter_option=input.pie_filter())
             labels = list(plot_vars.keys())
             vals = list(plot_vars.values())
-            fig =  PiePlot(vals, labels, max_visible=10, color_map=GENRE_COLORS).figure()
-            fig.update_traces(marker={"colors": [GENRE_COLORS.get(l, "#888888") for l in labels]})
+            color_map= GENRE_COLORS if input.pie_filter() == "Genres" else None
+            fig =  PiePlot(vals, labels, max_visible=10, color_map=color_map).figure()
+            if color_map is not None:
+                fig.update_traces(marker={"colors": [GENRE_COLORS.get(l, "#888888") for l in labels]})
             return fig
 
     @output
     @render_widget
     def plot_scatter():
-        user = compute_user_data()
+        user = user_df()
         if user is None:
             return ScatterPlot().figure()
         else:
@@ -119,28 +128,24 @@ def server(input: Inputs, output: Outputs, session: Session):
                         f"L {2 * max_score},{2 * max_score + upper} L {-max_score},{-max_score + upper} Z")
                 fig.add_shape(type="path", path=path, fillcolor=color, line_width=0, layer="below")
 
-            fig.update_xaxes(range=[-0.2, max_score + 0.2], fixedrange=True)
-            fig.update_yaxes(range=[-0.2, max_score + 0.2], fixedrange=True)
+            fig.update_xaxes(range=[-0.2, max_score + 0.2])
+            fig.update_yaxes(range=[-0.2, max_score + 0.2])
             return fig
 
     @output
     @render_widget
     def plot_histogram():
-        user = compute_user_data()
+        user = user_df()
         if user is None:
             return ScatterPlot().figure()
         else:
             user = user[user['score'].notna()]
-
             user = filter_entries_genre(user, genre=input.hist_genre_filter())
-            data = []
+            data=[]
 
             for row_dict in user.to_dict(orient="records"):
-                if row_dict['manga']['score'] is not None:
-                    data.append(row_dict['manga']['score'])
+                if row_dict['score'] is not None :
+                    data.append(row_dict['score'])
 
-            fig = HistoPlot(x=data, nbins=10).figure()
-            fig.update_traces(xbins={"start": -0.5, "end": 10.5, "size": 1}, hovertemplate="%{x}<br>%{y}<extra></extra>")
-            fig.update_xaxes(range=[-0.5, 10.5], dtick=1)
-
+            fig = HistoPlot(x=data, nbins=10, hovertemplate="Score %{x:.0f}<br>%{y} entries<extra></extra>").figure()
             return fig

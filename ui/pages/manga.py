@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 from shiny import Inputs, Outputs, Session, reactive, render, ui
 from shinywidgets import output_widget, render_widget
 
@@ -39,6 +40,7 @@ def server(input: Inputs, output: Outputs, session: Session):
     list_potential_manga = reactive.value(None)
     manga_id = reactive.value(None)
     manga_data = reactive.value(None)
+    manga_df = reactive.value(None)
 
     @reactive.calc
     def manga_search():
@@ -54,23 +56,26 @@ def server(input: Inputs, output: Outputs, session: Session):
         list_potential_manga.set({manga['title'] : manga['manga_id'] for manga in res})
         ui.update_select("selected_manga", choices=list_manga)
 
-    @reactive.calc
+    @reactive.effect
+    @reactive.event(input.selected_manga)
     def compute_manga_data():
         manga = input.selected_manga()
-        if manga is not None:
-            try:
-                manga_id.set(list_potential_manga()[f'{manga}'])
-            except KeyError:
-                return None
-            manga_data.set(query_api(f"{param["API_URL"]}/mangas/{manga_id()}")[0]) # returns the row associated with the manga id so we take the only element in data [{..}]
-            manga_df = pd.DataFrame(get_manga_entries(manga_id()))
-            return manga_df
-        return None
+        if not manga:
+            manga_df.set(None)
+            return
+        
+        try:
+            manga_id.set(list_potential_manga()[f'{manga}'])
+        except KeyError:
+            manga_df.set(None)
+            return
+        manga_data.set(query_api(f"{param["API_URL"]}/mangas/{manga_id()}")[0]) # returns the row associated with the manga id so we take the only element in data [{..}]
+        manga_df.set(pd.DataFrame(get_manga_entries(manga_id())))
 
     @output
     @render_widget
     def plot_manga():
-        manga = compute_manga_data()
+        manga = manga_df()
         if manga is None:
             return ImagePlot(0,0).figure()
         else:
@@ -94,7 +99,7 @@ def server(input: Inputs, output: Outputs, session: Session):
     @output
     @render_widget
     def plot_manga_camembert():
-        manga = compute_manga_data()
+        manga = manga_df()
         if manga is None:
             return ScatterPlot().figure()
         else:
@@ -107,7 +112,7 @@ def server(input: Inputs, output: Outputs, session: Session):
     @output
     @render_widget
     def plot_score_hist():
-        manga = compute_manga_data()
+        manga = manga_df()
         if manga is None:
             return ImagePlot(0,0).figure()
         else:

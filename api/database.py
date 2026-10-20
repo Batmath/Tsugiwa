@@ -55,7 +55,7 @@ def query_users(conn, username:str|None =None, gender:str|None=None, location:st
     #filtering options
     manga_id:int|None=None, min_score:int|None=None, max_score:int|None=None, status:str|None=None, genres:list | None=None,
     # data manip
-    limit:int|None=None, offset:int|None=None, counting:bool=False) -> list | int:
+    order_by_rating:bool=False, limit:int|None=None, offset:int|None=None, counting:bool=False) -> list | int:
 
     """
         Method to query for ratings rows from the database.
@@ -155,6 +155,10 @@ def query_users(conn, username:str|None =None, gender:str|None=None, location:st
         if offset is not None:
             query += " OFFSET ?"
             constraints.params.append(offset)
+
+    if order_by_rating:
+        query += "ORDER BY "
+        constraints.param.append("u.entries DESC ")
 
     users = conn.execute(query, tuple(constraints.params)).fetchall()
 
