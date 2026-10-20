@@ -1,0 +1,285 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2040" height="670" viewBox="0 90 2040 670" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, 'DejaVu Sans', sans-serif">
+<path d="M380,171.0 L340,171.0" stroke="#64748b" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+<path d="M340,171.0 L340,171.0 L300,171.0" stroke="#64748b" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+<path d="M340,171.0 L340,197.0 L300,197.0" stroke="#64748b" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+<line x1="372" y1="164.0" x2="372" y2="178.0" stroke="#64748b" stroke-width="1.6"/>
+<line x1="366" y1="164.0" x2="366" y2="178.0" stroke="#64748b" stroke-width="1.6"/>
+<line x1="314" y1="171.0" x2="300" y2="163.0" stroke="#64748b" stroke-width="1.6"/>
+<line x1="314" y1="171.0" x2="300" y2="171.0" stroke="#64748b" stroke-width="1.6"/>
+<line x1="314" y1="171.0" x2="300" y2="179.0" stroke="#64748b" stroke-width="1.6"/>
+<circle cx="321" cy="171.0" r="5" fill="#ffffff" stroke="#64748b" stroke-width="1.6"/>
+<line x1="314" y1="197.0" x2="300" y2="189.0" stroke="#64748b" stroke-width="1.6"/>
+<line x1="314" y1="197.0" x2="300" y2="197.0" stroke="#64748b" stroke-width="1.6"/>
+<line x1="314" y1="197.0" x2="300" y2="205.0" stroke="#64748b" stroke-width="1.6"/>
+<circle cx="321" cy="197.0" r="5" fill="#ffffff" stroke="#64748b" stroke-width="1.6"/>
+<path d="M640,171.0 L720,171.0" stroke="#64748b" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+<line x1="648" y1="164.0" x2="648" y2="178.0" stroke="#64748b" stroke-width="1.6"/>
+<line x1="654" y1="164.0" x2="654" y2="178.0" stroke="#64748b" stroke-width="1.6"/>
+<line x1="706" y1="171.0" x2="720" y2="163.0" stroke="#64748b" stroke-width="1.6"/>
+<line x1="706" y1="171.0" x2="720" y2="171.0" stroke="#64748b" stroke-width="1.6"/>
+<line x1="706" y1="171.0" x2="720" y2="179.0" stroke="#64748b" stroke-width="1.6"/>
+<circle cx="699" cy="171.0" r="5" fill="#ffffff" stroke="#64748b" stroke-width="1.6"/>
+<path d="M980,197.0 L1020,197.0 L1020,171.0 L1060,171.0" stroke="#64748b" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+<line x1="994" y1="197.0" x2="980" y2="189.0" stroke="#64748b" stroke-width="1.6"/>
+<line x1="994" y1="197.0" x2="980" y2="197.0" stroke="#64748b" stroke-width="1.6"/>
+<line x1="994" y1="197.0" x2="980" y2="205.0" stroke="#64748b" stroke-width="1.6"/>
+<circle cx="1001" cy="197.0" r="5" fill="#ffffff" stroke="#64748b" stroke-width="1.6"/>
+<line x1="1052" y1="164.0" x2="1052" y2="178.0" stroke="#64748b" stroke-width="1.6"/>
+<line x1="1046" y1="164.0" x2="1046" y2="178.0" stroke="#64748b" stroke-width="1.6"/>
+<path d="M1320,171.0 L1360,171.0" stroke="#64748b" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+<path d="M1360,171.0 L1400,171.0" stroke="#64748b" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+<path d="M1360,171.0 L1360,497.0 L1400,497.0" stroke="#64748b" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+<line x1="1328" y1="164.0" x2="1328" y2="178.0" stroke="#64748b" stroke-width="1.6"/>
+<line x1="1334" y1="164.0" x2="1334" y2="178.0" stroke="#64748b" stroke-width="1.6"/>
+<line x1="1386" y1="171.0" x2="1400" y2="163.0" stroke="#64748b" stroke-width="1.6"/>
+<line x1="1386" y1="171.0" x2="1400" y2="171.0" stroke="#64748b" stroke-width="1.6"/>
+<line x1="1386" y1="171.0" x2="1400" y2="179.0" stroke="#64748b" stroke-width="1.6"/>
+<circle cx="1379" cy="171.0" r="5" fill="#ffffff" stroke="#64748b" stroke-width="1.6"/>
+<line x1="1386" y1="497.0" x2="1400" y2="489.0" stroke="#64748b" stroke-width="1.6"/>
+<line x1="1386" y1="497.0" x2="1400" y2="497.0" stroke="#64748b" stroke-width="1.6"/>
+<line x1="1386" y1="497.0" x2="1400" y2="505.0" stroke="#64748b" stroke-width="1.6"/>
+<circle cx="1379" cy="497.0" r="5" fill="#ffffff" stroke="#64748b" stroke-width="1.6"/>
+<path d="M1660,197.0 L1700,197.0 L1700,171.0 L1740,171.0" stroke="#64748b" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+<line x1="1674" y1="197.0" x2="1660" y2="189.0" stroke="#64748b" stroke-width="1.6"/>
+<line x1="1674" y1="197.0" x2="1660" y2="197.0" stroke="#64748b" stroke-width="1.6"/>
+<line x1="1674" y1="197.0" x2="1660" y2="205.0" stroke="#64748b" stroke-width="1.6"/>
+<circle cx="1681" cy="197.0" r="5" fill="#ffffff" stroke="#64748b" stroke-width="1.6"/>
+<line x1="1732" y1="164.0" x2="1732" y2="178.0" stroke="#64748b" stroke-width="1.6"/>
+<line x1="1726" y1="164.0" x2="1726" y2="178.0" stroke="#64748b" stroke-width="1.6"/>
+<path d="M1660,471.0 L1740,471.0" stroke="#64748b" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+<line x1="1674" y1="471.0" x2="1660" y2="463.0" stroke="#64748b" stroke-width="1.6"/>
+<line x1="1674" y1="471.0" x2="1660" y2="471.0" stroke="#64748b" stroke-width="1.6"/>
+<line x1="1674" y1="471.0" x2="1660" y2="479.0" stroke="#64748b" stroke-width="1.6"/>
+<circle cx="1681" cy="471.0" r="5" fill="#ffffff" stroke="#64748b" stroke-width="1.6"/>
+<line x1="1732" y1="464.0" x2="1732" y2="478.0" stroke="#64748b" stroke-width="1.6"/>
+<line x1="1726" y1="464.0" x2="1726" y2="478.0" stroke="#64748b" stroke-width="1.6"/>
+<rect x="40" y="120" width="260" height="116" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+<path d="M40,158 V128 Q40,120 48,120 H292 Q300,120 300,128 V158 Z" fill="#334155"/>
+<text x="56" y="145" font-size="15" font-weight="700" fill="#ffffff">relationships</text>
+<rect x="52" y="163.0" width="24" height="16" rx="4" fill="#fef3c7"/>
+<text x="64" y="175.0" font-size="9.5" font-weight="700" fill="#92400e" text-anchor="middle">PK</text>
+<rect x="80" y="163.0" width="24" height="16" rx="4" fill="#e0e7ff"/>
+<text x="92" y="175.0" font-size="9.5" font-weight="700" fill="#3730a3" text-anchor="middle">FK</text>
+<text x="114" y="175.5" font-size="13" font-weight="600" fill="#0f172a">user_id_left</text>
+<text x="288" y="175.5" font-size="12" fill="#94a3b8" text-anchor="end">int</text>
+<line x1="52" y1="184" x2="288" y2="184" stroke="#f1f5f9"/>
+<rect x="52" y="189.0" width="24" height="16" rx="4" fill="#fef3c7"/>
+<text x="64" y="201.0" font-size="9.5" font-weight="700" fill="#92400e" text-anchor="middle">PK</text>
+<rect x="80" y="189.0" width="24" height="16" rx="4" fill="#e0e7ff"/>
+<text x="92" y="201.0" font-size="9.5" font-weight="700" fill="#3730a3" text-anchor="middle">FK</text>
+<text x="114" y="201.5" font-size="13" font-weight="600" fill="#0f172a">user_id_right</text>
+<text x="288" y="201.5" font-size="12" fill="#94a3b8" text-anchor="end">int</text>
+<line x1="52" y1="210" x2="288" y2="210" stroke="#f1f5f9"/>
+<text x="114" y="227.5" font-size="13" font-weight="400" fill="#0f172a">created_at</text>
+<text x="288" y="227.5" font-size="12" fill="#94a3b8" text-anchor="end">datetime</text>
+<rect x="40" y="420" width="260" height="64" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+<path d="M40,458 V428 Q40,420 48,420 H292 Q300,420 300,428 V458 Z" fill="#334155"/>
+<text x="56" y="445" font-size="15" font-weight="700" fill="#ffffff">pending_recovery</text>
+<rect x="52" y="463.0" width="24" height="16" rx="4" fill="#fef3c7"/>
+<text x="64" y="475.0" font-size="9.5" font-weight="700" fill="#92400e" text-anchor="middle">PK</text>
+<text x="86" y="475.5" font-size="13" font-weight="600" fill="#0f172a">username</text>
+<text x="288" y="475.5" font-size="12" fill="#94a3b8" text-anchor="end">string</text>
+<rect x="380" y="120" width="260" height="220" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+<path d="M380,158 V128 Q380,120 388,120 H632 Q640,120 640,128 V158 Z" fill="#334155"/>
+<text x="396" y="145" font-size="15" font-weight="700" fill="#ffffff">users</text>
+<rect x="392" y="163.0" width="24" height="16" rx="4" fill="#fef3c7"/>
+<text x="404" y="175.0" font-size="9.5" font-weight="700" fill="#92400e" text-anchor="middle">PK</text>
+<text x="454" y="175.5" font-size="13" font-weight="600" fill="#0f172a">user_id</text>
+<text x="628" y="175.5" font-size="12" fill="#94a3b8" text-anchor="end">int</text>
+<line x1="392" y1="184" x2="628" y2="184" stroke="#f1f5f9"/>
+<rect x="392" y="189.0" width="24" height="16" rx="4" fill="#dcfce7"/>
+<text x="404" y="201.0" font-size="9.5" font-weight="700" fill="#166534" text-anchor="middle">UK</text>
+<rect x="420" y="189.0" width="24" height="16" rx="4" fill="#fee2e2"/>
+<text x="432" y="201.0" font-size="9.5" font-weight="700" fill="#991b1b" text-anchor="middle">NN</text>
+<text x="454" y="201.5" font-size="13" font-weight="400" fill="#0f172a">username</text>
+<text x="628" y="201.5" font-size="12" fill="#94a3b8" text-anchor="end">string</text>
+<line x1="392" y1="210" x2="628" y2="210" stroke="#f1f5f9"/>
+<text x="454" y="227.5" font-size="13" font-weight="400" fill="#0f172a">gender</text>
+<text x="628" y="227.5" font-size="12" fill="#94a3b8" text-anchor="end">string</text>
+<line x1="392" y1="236" x2="628" y2="236" stroke="#f1f5f9"/>
+<text x="454" y="253.5" font-size="13" font-weight="400" fill="#0f172a">birthday</text>
+<text x="628" y="253.5" font-size="12" fill="#94a3b8" text-anchor="end">int</text>
+<line x1="392" y1="262" x2="628" y2="262" stroke="#f1f5f9"/>
+<text x="454" y="279.5" font-size="13" font-weight="400" fill="#0f172a">location</text>
+<text x="628" y="279.5" font-size="12" fill="#94a3b8" text-anchor="end">string</text>
+<line x1="392" y1="288" x2="628" y2="288" stroke="#f1f5f9"/>
+<text x="454" y="305.5" font-size="13" font-weight="400" fill="#0f172a">entries</text>
+<text x="628" y="305.5" font-size="12" fill="#94a3b8" text-anchor="end">int</text>
+<line x1="392" y1="314" x2="628" y2="314" stroke="#f1f5f9"/>
+<text x="454" y="331.5" font-size="13" font-weight="400" fill="#0f172a">scraped_at</text>
+<text x="628" y="331.5" font-size="12" fill="#94a3b8" text-anchor="end">datetime</text>
+<rect x="720" y="120" width="260" height="246" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+<path d="M720,158 V128 Q720,120 728,120 H972 Q980,120 980,128 V158 Z" fill="#334155"/>
+<text x="736" y="145" font-size="15" font-weight="700" fill="#ffffff">entries</text>
+<rect x="732" y="163.0" width="24" height="16" rx="4" fill="#fef3c7"/>
+<text x="744" y="175.0" font-size="9.5" font-weight="700" fill="#92400e" text-anchor="middle">PK</text>
+<rect x="760" y="163.0" width="24" height="16" rx="4" fill="#e0e7ff"/>
+<text x="772" y="175.0" font-size="9.5" font-weight="700" fill="#3730a3" text-anchor="middle">FK</text>
+<text x="794" y="175.5" font-size="13" font-weight="600" fill="#0f172a">user_id</text>
+<text x="968" y="175.5" font-size="12" fill="#94a3b8" text-anchor="end">int</text>
+<line x1="732" y1="184" x2="968" y2="184" stroke="#f1f5f9"/>
+<rect x="732" y="189.0" width="24" height="16" rx="4" fill="#fef3c7"/>
+<text x="744" y="201.0" font-size="9.5" font-weight="700" fill="#92400e" text-anchor="middle">PK</text>
+<rect x="760" y="189.0" width="24" height="16" rx="4" fill="#e0e7ff"/>
+<text x="772" y="201.0" font-size="9.5" font-weight="700" fill="#3730a3" text-anchor="middle">FK</text>
+<text x="794" y="201.5" font-size="13" font-weight="600" fill="#0f172a">manga_id</text>
+<text x="968" y="201.5" font-size="12" fill="#94a3b8" text-anchor="end">int</text>
+<line x1="732" y1="210" x2="968" y2="210" stroke="#f1f5f9"/>
+<text x="794" y="227.5" font-size="13" font-weight="400" fill="#0f172a">status</text>
+<text x="968" y="227.5" font-size="12" fill="#94a3b8" text-anchor="end">string</text>
+<line x1="732" y1="236" x2="968" y2="236" stroke="#f1f5f9"/>
+<text x="794" y="253.5" font-size="13" font-weight="400" fill="#0f172a">read_chapters</text>
+<text x="968" y="253.5" font-size="12" fill="#94a3b8" text-anchor="end">int</text>
+<line x1="732" y1="262" x2="968" y2="262" stroke="#f1f5f9"/>
+<text x="794" y="279.5" font-size="13" font-weight="400" fill="#0f172a">score</text>
+<text x="968" y="279.5" font-size="12" fill="#94a3b8" text-anchor="end">int</text>
+<line x1="732" y1="288" x2="968" y2="288" stroke="#f1f5f9"/>
+<text x="794" y="305.5" font-size="13" font-weight="400" fill="#0f172a">start_date_string</text>
+<text x="968" y="305.5" font-size="12" fill="#94a3b8" text-anchor="end">string</text>
+<line x1="732" y1="314" x2="968" y2="314" stroke="#f1f5f9"/>
+<text x="794" y="331.5" font-size="13" font-weight="400" fill="#0f172a">end_date_string</text>
+<text x="968" y="331.5" font-size="12" fill="#94a3b8" text-anchor="end">string</text>
+<line x1="732" y1="340" x2="968" y2="340" stroke="#f1f5f9"/>
+<text x="794" y="357.5" font-size="13" font-weight="400" fill="#0f172a">scraped_at</text>
+<text x="968" y="357.5" font-size="12" fill="#94a3b8" text-anchor="end">datetime</text>
+<rect x="1060" y="120" width="260" height="558" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+<path d="M1060,158 V128 Q1060,120 1068,120 H1312 Q1320,120 1320,128 V158 Z" fill="#334155"/>
+<text x="1076" y="145" font-size="15" font-weight="700" fill="#ffffff">manga</text>
+<rect x="1072" y="163.0" width="24" height="16" rx="4" fill="#fef3c7"/>
+<text x="1084" y="175.0" font-size="9.5" font-weight="700" fill="#92400e" text-anchor="middle">PK</text>
+<text x="1106" y="175.5" font-size="13" font-weight="600" fill="#0f172a">manga_id</text>
+<text x="1308" y="175.5" font-size="12" fill="#94a3b8" text-anchor="end">int</text>
+<line x1="1072" y1="184" x2="1308" y2="184" stroke="#f1f5f9"/>
+<text x="1106" y="201.5" font-size="13" font-weight="400" fill="#0f172a">title</text>
+<text x="1308" y="201.5" font-size="12" fill="#94a3b8" text-anchor="end">string</text>
+<line x1="1072" y1="210" x2="1308" y2="210" stroke="#f1f5f9"/>
+<text x="1106" y="227.5" font-size="13" font-weight="400" fill="#0f172a">title_english</text>
+<text x="1308" y="227.5" font-size="12" fill="#94a3b8" text-anchor="end">string</text>
+<line x1="1072" y1="236" x2="1308" y2="236" stroke="#f1f5f9"/>
+<text x="1106" y="253.5" font-size="13" font-weight="400" fill="#0f172a">title_other</text>
+<text x="1308" y="253.5" font-size="12" fill="#94a3b8" text-anchor="end">string</text>
+<line x1="1072" y1="262" x2="1308" y2="262" stroke="#f1f5f9"/>
+<text x="1106" y="279.5" font-size="13" font-weight="400" fill="#0f172a">media_type</text>
+<text x="1308" y="279.5" font-size="12" fill="#94a3b8" text-anchor="end">string</text>
+<line x1="1072" y1="288" x2="1308" y2="288" stroke="#f1f5f9"/>
+<text x="1106" y="305.5" font-size="13" font-weight="400" fill="#0f172a">demographics</text>
+<text x="1308" y="305.5" font-size="12" fill="#94a3b8" text-anchor="end">string</text>
+<line x1="1072" y1="314" x2="1308" y2="314" stroke="#f1f5f9"/>
+<text x="1106" y="331.5" font-size="13" font-weight="400" fill="#0f172a">mean_score</text>
+<text x="1308" y="331.5" font-size="12" fill="#94a3b8" text-anchor="end">float</text>
+<line x1="1072" y1="340" x2="1308" y2="340" stroke="#f1f5f9"/>
+<text x="1106" y="357.5" font-size="13" font-weight="400" fill="#0f172a">scored_by</text>
+<text x="1308" y="357.5" font-size="12" fill="#94a3b8" text-anchor="end">int</text>
+<line x1="1072" y1="366" x2="1308" y2="366" stroke="#f1f5f9"/>
+<text x="1106" y="383.5" font-size="13" font-weight="400" fill="#0f172a">rank</text>
+<text x="1308" y="383.5" font-size="12" fill="#94a3b8" text-anchor="end">int</text>
+<line x1="1072" y1="392" x2="1308" y2="392" stroke="#f1f5f9"/>
+<text x="1106" y="409.5" font-size="13" font-weight="400" fill="#0f172a">popularity_rank</text>
+<text x="1308" y="409.5" font-size="12" fill="#94a3b8" text-anchor="end">int</text>
+<line x1="1072" y1="418" x2="1308" y2="418" stroke="#f1f5f9"/>
+<text x="1106" y="435.5" font-size="13" font-weight="400" fill="#0f172a">members</text>
+<text x="1308" y="435.5" font-size="12" fill="#94a3b8" text-anchor="end">int</text>
+<line x1="1072" y1="444" x2="1308" y2="444" stroke="#f1f5f9"/>
+<text x="1106" y="461.5" font-size="13" font-weight="400" fill="#0f172a">favorites</text>
+<text x="1308" y="461.5" font-size="12" fill="#94a3b8" text-anchor="end">int</text>
+<line x1="1072" y1="470" x2="1308" y2="470" stroke="#f1f5f9"/>
+<text x="1106" y="487.5" font-size="13" font-weight="400" fill="#0f172a">status</text>
+<text x="1308" y="487.5" font-size="12" fill="#94a3b8" text-anchor="end">string</text>
+<line x1="1072" y1="496" x2="1308" y2="496" stroke="#f1f5f9"/>
+<text x="1106" y="513.5" font-size="13" font-weight="400" fill="#0f172a">publishing</text>
+<text x="1308" y="513.5" font-size="12" fill="#94a3b8" text-anchor="end">boolean</text>
+<line x1="1072" y1="522" x2="1308" y2="522" stroke="#f1f5f9"/>
+<text x="1106" y="539.5" font-size="13" font-weight="400" fill="#0f172a">published_from</text>
+<text x="1308" y="539.5" font-size="12" fill="#94a3b8" text-anchor="end">string</text>
+<line x1="1072" y1="548" x2="1308" y2="548" stroke="#f1f5f9"/>
+<text x="1106" y="565.5" font-size="13" font-weight="400" fill="#0f172a">published_to</text>
+<text x="1308" y="565.5" font-size="12" fill="#94a3b8" text-anchor="end">string</text>
+<line x1="1072" y1="574" x2="1308" y2="574" stroke="#f1f5f9"/>
+<text x="1106" y="591.5" font-size="13" font-weight="400" fill="#0f172a">chapters</text>
+<text x="1308" y="591.5" font-size="12" fill="#94a3b8" text-anchor="end">int</text>
+<line x1="1072" y1="600" x2="1308" y2="600" stroke="#f1f5f9"/>
+<text x="1106" y="617.5" font-size="13" font-weight="400" fill="#0f172a">volumes</text>
+<text x="1308" y="617.5" font-size="12" fill="#94a3b8" text-anchor="end">int</text>
+<line x1="1072" y1="626" x2="1308" y2="626" stroke="#f1f5f9"/>
+<text x="1106" y="643.5" font-size="13" font-weight="400" fill="#0f172a">url_img</text>
+<text x="1308" y="643.5" font-size="12" fill="#94a3b8" text-anchor="end">string</text>
+<line x1="1072" y1="652" x2="1308" y2="652" stroke="#f1f5f9"/>
+<text x="1106" y="669.5" font-size="13" font-weight="400" fill="#0f172a">synopsis</text>
+<text x="1308" y="669.5" font-size="12" fill="#94a3b8" text-anchor="end">string</text>
+<rect x="1400" y="120" width="260" height="90" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+<path d="M1400,158 V128 Q1400,120 1408,120 H1652 Q1660,120 1660,128 V158 Z" fill="#334155"/>
+<text x="1416" y="145" font-size="15" font-weight="700" fill="#ffffff">manga_genres</text>
+<rect x="1412" y="163.0" width="24" height="16" rx="4" fill="#fef3c7"/>
+<text x="1424" y="175.0" font-size="9.5" font-weight="700" fill="#92400e" text-anchor="middle">PK</text>
+<rect x="1440" y="163.0" width="24" height="16" rx="4" fill="#e0e7ff"/>
+<text x="1452" y="175.0" font-size="9.5" font-weight="700" fill="#3730a3" text-anchor="middle">FK</text>
+<text x="1474" y="175.5" font-size="13" font-weight="600" fill="#0f172a">manga_id</text>
+<text x="1648" y="175.5" font-size="12" fill="#94a3b8" text-anchor="end">int</text>
+<line x1="1412" y1="184" x2="1648" y2="184" stroke="#f1f5f9"/>
+<rect x="1412" y="189.0" width="24" height="16" rx="4" fill="#fef3c7"/>
+<text x="1424" y="201.0" font-size="9.5" font-weight="700" fill="#92400e" text-anchor="middle">PK</text>
+<rect x="1440" y="189.0" width="24" height="16" rx="4" fill="#e0e7ff"/>
+<text x="1452" y="201.0" font-size="9.5" font-weight="700" fill="#3730a3" text-anchor="middle">FK</text>
+<text x="1474" y="201.5" font-size="13" font-weight="600" fill="#0f172a">genre_id</text>
+<text x="1648" y="201.5" font-size="12" fill="#94a3b8" text-anchor="end">int</text>
+<rect x="1740" y="120" width="260" height="90" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+<path d="M1740,158 V128 Q1740,120 1748,120 H1992 Q2000,120 2000,128 V158 Z" fill="#334155"/>
+<text x="1756" y="145" font-size="15" font-weight="700" fill="#ffffff">genres</text>
+<rect x="1752" y="163.0" width="24" height="16" rx="4" fill="#fef3c7"/>
+<text x="1764" y="175.0" font-size="9.5" font-weight="700" fill="#92400e" text-anchor="middle">PK</text>
+<text x="1786" y="175.5" font-size="13" font-weight="600" fill="#0f172a">genre_id</text>
+<text x="1988" y="175.5" font-size="12" fill="#94a3b8" text-anchor="end">int</text>
+<line x1="1752" y1="184" x2="1988" y2="184" stroke="#f1f5f9"/>
+<text x="1786" y="201.5" font-size="13" font-weight="400" fill="#0f172a">genre_name</text>
+<text x="1988" y="201.5" font-size="12" fill="#94a3b8" text-anchor="end">string</text>
+<rect x="1400" y="420" width="260" height="90" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+<path d="M1400,458 V428 Q1400,420 1408,420 H1652 Q1660,420 1660,428 V458 Z" fill="#334155"/>
+<text x="1416" y="445" font-size="15" font-weight="700" fill="#ffffff">manga_author</text>
+<rect x="1412" y="463.0" width="24" height="16" rx="4" fill="#fef3c7"/>
+<text x="1424" y="475.0" font-size="9.5" font-weight="700" fill="#92400e" text-anchor="middle">PK</text>
+<rect x="1440" y="463.0" width="24" height="16" rx="4" fill="#e0e7ff"/>
+<text x="1452" y="475.0" font-size="9.5" font-weight="700" fill="#3730a3" text-anchor="middle">FK</text>
+<text x="1474" y="475.5" font-size="13" font-weight="600" fill="#0f172a">author_id</text>
+<text x="1648" y="475.5" font-size="12" fill="#94a3b8" text-anchor="end">int</text>
+<line x1="1412" y1="484" x2="1648" y2="484" stroke="#f1f5f9"/>
+<rect x="1412" y="489.0" width="24" height="16" rx="4" fill="#fef3c7"/>
+<text x="1424" y="501.0" font-size="9.5" font-weight="700" fill="#92400e" text-anchor="middle">PK</text>
+<rect x="1440" y="489.0" width="24" height="16" rx="4" fill="#e0e7ff"/>
+<text x="1452" y="501.0" font-size="9.5" font-weight="700" fill="#3730a3" text-anchor="middle">FK</text>
+<text x="1474" y="501.5" font-size="13" font-weight="600" fill="#0f172a">manga_id</text>
+<text x="1648" y="501.5" font-size="12" fill="#94a3b8" text-anchor="end">int</text>
+<rect x="1740" y="420" width="260" height="90" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+<path d="M1740,458 V428 Q1740,420 1748,420 H1992 Q2000,420 2000,428 V458 Z" fill="#334155"/>
+<text x="1756" y="445" font-size="15" font-weight="700" fill="#ffffff">author</text>
+<rect x="1752" y="463.0" width="24" height="16" rx="4" fill="#fef3c7"/>
+<text x="1764" y="475.0" font-size="9.5" font-weight="700" fill="#92400e" text-anchor="middle">PK</text>
+<text x="1786" y="475.5" font-size="13" font-weight="600" fill="#0f172a">author_id</text>
+<text x="1988" y="475.5" font-size="12" fill="#94a3b8" text-anchor="end">int</text>
+<line x1="1752" y1="484" x2="1988" y2="484" stroke="#f1f5f9"/>
+<rect x="1752" y="489.0" width="24" height="16" rx="4" fill="#dcfce7"/>
+<text x="1764" y="501.0" font-size="9.5" font-weight="700" fill="#166534" text-anchor="middle">UK</text>
+<text x="1786" y="501.5" font-size="13" font-weight="400" fill="#0f172a">author_name</text>
+<text x="1988" y="501.5" font-size="12" fill="#94a3b8" text-anchor="end">string</text>
+<rect x="40" y="717" width="24" height="16" rx="4" fill="#fef3c7"/>
+<text x="52" y="729" font-size="9.5" font-weight="700" fill="#92400e" text-anchor="middle">PK</text>
+<text x="72" y="730" font-size="13" fill="#64748b">Primary key</text>
+<rect x="180" y="717" width="24" height="16" rx="4" fill="#e0e7ff"/>
+<text x="192" y="729" font-size="9.5" font-weight="700" fill="#3730a3" text-anchor="middle">FK</text>
+<text x="212" y="730" font-size="13" fill="#64748b">Foreign key</text>
+<rect x="320" y="717" width="24" height="16" rx="4" fill="#dcfce7"/>
+<text x="332" y="729" font-size="9.5" font-weight="700" fill="#166534" text-anchor="middle">UK</text>
+<text x="352" y="730" font-size="13" fill="#64748b">Unique</text>
+<rect x="460" y="717" width="24" height="16" rx="4" fill="#fee2e2"/>
+<text x="472" y="729" font-size="9.5" font-weight="700" fill="#991b1b" text-anchor="middle">NN</text>
+<text x="492" y="730" font-size="13" fill="#64748b">Not null</text>
+<line x1="620" y1="725" x2="670" y2="725" stroke="#64748b" stroke-width="1.6" fill="none"/>
+<line x1="628" y1="718" x2="628" y2="732" stroke="#64748b" stroke-width="1.6"/>
+<line x1="634" y1="718" x2="634" y2="732" stroke="#64748b" stroke-width="1.6"/>
+<text x="682" y="730" font-size="13" fill="#64748b">exactly one</text>
+<line x1="810" y1="725" x2="860" y2="725" stroke="#64748b" stroke-width="1.6" fill="none"/>
+<line x1="846" y1="725" x2="860" y2="717" stroke="#64748b" stroke-width="1.6"/>
+<line x1="846" y1="725" x2="860" y2="725" stroke="#64748b" stroke-width="1.6"/>
+<line x1="846" y1="725" x2="860" y2="733" stroke="#64748b" stroke-width="1.6"/>
+<circle cx="839" cy="725" r="5" fill="#ffffff" stroke="#64748b" stroke-width="1.6"/>
+<text x="872" y="730" font-size="13" fill="#64748b">zero or many</text>
+</svg>

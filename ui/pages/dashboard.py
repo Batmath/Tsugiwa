@@ -1,59 +1,78 @@
-from ui.pages.config import *
-from shiny import ui, Inputs, Outputs, Session, reactive, render
 import requests
+from shiny import Inputs, Outputs, Session, render, ui, reactive
+from shinywidgets import output_widget, render_widget
+import pandas as pd
+import numpy as np
 
+from ui.pages.config import *
+from ui.plots.figure import *
+from ui.api.client import *
 
-# shiny run ./ui/app.py --port 7950 --reload
-# localurl API : http://localhost:8080
 
 def page_ui():
-    return ui.page_sidebar(
-        ui.sidebar(
-            ui.input_select(
-                "filter_gender",
-                "Filter gender",
-                {"None" : "None", "Male" : "Male", "Female" : "Female", "Non-Binary" : "Non-Binary"},
-            ),
-            ui.input_slider("filter_birthday","Filter Birthday Year",min=1960,max=2020, value=[1990,2008],drag_range=False),#TODO : replace with current year
-            ui.input_switch("apply_birthday_filter", "Use Birthday filter ?", False),
-            ui.input_slider("filter_entries","Filter number of entries",min=1,max=2000, value=[0,2000],drag_range=False),#TODO : replace with current year
-            ui.input_switch("apply_entries_filter", "Use Entries filter ?", False),
-        ),
+    return ui.page_fluid(
         ui.h2("Dashboard"),
         ui.layout_columns(
             ui.value_box("Users", ui.output_ui("user_display"), showcase=ICONS["user"]),
             ui.value_box("Entries", ui.output_ui("entries_display"), showcase=ICONS["book"]),
         ),
+        ui.layout_columns(
+            ui.card(ui.card_header("Gender distribution"), output_widget("plot_gender_pie")),
+            ui.card(ui.card_header("Distribution of entries per user"), output_widget("plot_entries_hist")),
+        ),
     )
 
 def server(input: Inputs, output: Outputs, session: Session):
 
-    def fetch_count(endpoint, gender=None, birthday_bounds=None, entries_bounds=None):
-        url = param["API_URL"]+"/{}?counting=True".format(endpoint)
+    GENDERS = ["Male", "Female", "Non-Binary"]
+    COLS = ["gender", "entries"]
+    N_BINS = 30
+    limit = 2500
 
-        if gender != "None":
-            url += "&gender={}".format(gender)
+    def fetch_count(endpoint):
+        response = requests.get(f"{param['API_URL']}/{endpoint}?counting=True", timeout=90)
+        response.raise_for_status()
+        return response.json()["data"]
 
-        #require variables [min, max]
-        if birthday_bounds:
-            url+="&min_birthday={}&max_birthday={}".format(birthday_bounds[0], birthday_bounds[1])
-        if entries_bounds:
-            url+="&min_entries={}&max_entries={}".format(entries_bounds[0], entries_bounds[1])
-        
-        response = requests.get(url)
-        data = response.json()
-        return data['data']
+    @reactive.calc
+    def users_df():
+        total = fetch_count("users")
+        rows = []
+        for offset in range(0, total, limit):
+            response = requests.get(f"{param['API_URL']}/users/?limit={limit}&offset={offset}", timeout=90)
+            response.raise_for_status()
+            rows += response.json()["data"]
+        return pd.DataFrame(rows, columns=COLS)
+
+    @reactive.calc
+    def entries_total():
+        return fetch_count("entries")
 
     @render.ui
     def user_display():
-        birthday_bounds = input.filter_birthday() if input.apply_birthday_filter() else None
-        entries_bounds = input.filter_entries() if input.apply_entries_filter() else None
-        return fetch_count("users", gender=input.filter_gender(), birthday_bounds=birthday_bounds, entries_bounds=entries_bounds)
-        
-    
+        return len(users_df())
+
     @render.ui
     def entries_display():
-        birthday_bounds = input.filter_birthday() if input.apply_birthday_filter() else None
-        entries_bounds = input.filter_entries() if input.apply_entries_filter() else None
-        return fetch_count("entries", gender=input.filter_gender(), birthday_bounds=birthday_bounds, entries_bounds=entries_bounds)
-    pass
+        return entries_total()
+
+    @render_widget
+    def plot_gender_pie():
+        counts = users_df()["gender"].value_counts().reindex(GENDERS, fill_value=0)
+        return PiePlot(values=counts.tolist(), labels=GENDERS, max_visible=len(GENDERS)).figure()
+
+    @render_widget
+    def plot_entries_hist():
+        entries = users_df()["entries"].dropna()
+        end, size = 1, 1
+        if not entries.empty:
+            cap = max(float(entries.quantile(0.99)), 1.0)
+            size = max(1, int(np.ceil(cap / N_BINS)))
+            end = size * N_BINS
+            entries = entries.clip(upper= end-1)
+
+        fig = HistoPlot(x=entries.tolist(), xrange=(0, end), xlabel=f"Entries per user", ylabel="Users", 
+                        hovertemplate="%{x} entries<br>%{y} users<extra></extra>").figure()
+        fig.update_traces(xbins={"start": 0, "end": end, "size": size})
+        fig.update_xaxes(range=[0, end], dtick=size * 5)  # one label every 5 bins, so the labels can't pile up
+        return fig

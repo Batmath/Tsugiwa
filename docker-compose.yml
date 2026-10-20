@@ -2,13 +2,6 @@ services:
   scraper:
     env_file: 
       - .env
-    environment:
-      - CONNECTION_ISSUES_SLEEP=60
-      - RATE_LIMIT_SLEEP=180
-      - MIN_SLEEP=5
-      - MAX_SLEEP=1200
-      - MAX_USERS=30
-      - MIN_ENTRIES=1
     build:
       context: .
       dockerfile: ./scraper/Dockerfile
@@ -42,6 +35,8 @@ services:
       - "${UI_PORT}:${UI_PORT}"
     env_file: 
       - .env
+    environment:
+      - API_URL=http://api:${API_PORT}
     volumes:
       - ./shared:/app/shared
     restart: unless-stopped

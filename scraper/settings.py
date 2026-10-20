@@ -1,8 +1,10 @@
-from pydantic import BaseModel, FilePath, ValidationError, field_validator, ValidationInfo, ValidationError, model_validator
-from pydantic_settings import BaseSettings
 from pathlib import Path
-import shared.db_scheme as dbs
+
 from dotenv import load_dotenv
+from pydantic import FilePath, ValidationInfo, field_validator, model_validator
+from pydantic_settings import BaseSettings
+
+import shared.db_scheme as dbs
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / ".env")
@@ -35,7 +37,7 @@ class ParametersScraper(BaseSettings):
             they don't exist.
         """
         if info.field_name not in list(extensions.keys()):
-            raise ParameterError(f"The parameter added doesn't have corresponding extensions")
+            raise ParameterError("The parameter added doesn't have corresponding extensions")
         if not isinstance(value, (str, Path)):
             raise TypeError(f"FILE_PATH must be a string or Path, got {type(value).__name__}")
 
@@ -49,15 +51,13 @@ class ParametersScraper(BaseSettings):
             path.parent.mkdir(parents=True, exist_ok=True)
             path.touch()
         return path
-    
+
     @model_validator(mode='after')
     def ensure_db_init_from_dump(self):
-        print(self.DB_PATH.stat().st_size)
         if self.DB_PATH.stat().st_size == 0:
-            dbs.init_db(self.DB_PATH)
             dbs.build_db_from_dump(self.DUMP_PATH, self.DB_PATH)
         return self
-    
-if __name__ == "__main__":  
+
+if __name__ == "__main__":
     p = ParametersScraper()
     print(p.model_dump())

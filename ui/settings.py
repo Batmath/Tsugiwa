@@ -1,8 +1,8 @@
-from pydantic import BaseModel, FilePath, ValidationError, field_validator, ValidationInfo, ValidationError, model_validator
-from pydantic_settings import BaseSettings
 from pathlib import Path
-import shared.db_scheme as dbs
+
 from dotenv import load_dotenv
+from pydantic import model_validator
+from pydantic_settings import BaseSettings
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / ".env")
@@ -21,7 +21,8 @@ class ParametersUI(BaseSettings):
 
     @model_validator(mode='after')
     def update_port(self):
-        self.API_URL = f"http://api:{self.API_PORT}"
+        if not self.API_URL:
+            self.API_URL = f"http://localhost:{self.API_PORT}"
         return self
 
 if __name__ == "__main__":
