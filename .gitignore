@@ -17,5 +17,6 @@ shared/shared.egg-info
 coverage.xml
 junit/
 freeze
-*/__pycache__
-*/*/__pycache__
+__pycache__/
+.ruff_cache
+.mypy_cache
